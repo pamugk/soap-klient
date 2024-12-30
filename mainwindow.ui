@@ -11,9 +11,55 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>SOAP Klient</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="mainContentWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QWidget" name="sidebarWidget" native="true">
+      <property name="minimumSize">
+       <size>
+        <width>32</width>
+        <height>0</height>
+       </size>
+      </property>
+      <layout class="QVBoxLayout" name="sidebarWidgetLayout">
+       <item>
+        <widget class="QTreeView" name="projectsTreeView">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>300</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>300</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="headerHidden">
+          <bool>true</bool>
+         </property>
+         <attribute name="headerVisible">
+          <bool>false</bool>
+         </attribute>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QTabWidget" name="openPagesWidget"/>
+    </item>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -23,8 +69,337 @@
      <height>30</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionCreate_Empty_Project"/>
+    <addaction name="actionNew_SOAP_Project"/>
+    <addaction name="separator"/>
+    <addaction name="actionImport_Project"/>
+    <addaction name="actionImport_Packed_Project"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave_All_Projects"/>
+    <addaction name="actionOpen_All_Closed_Projects"/>
+    <addaction name="actionClose_All_Open_Projects"/>
+    <addaction name="separator"/>
+    <addaction name="actionRename_Workspace"/>
+    <addaction name="actionNew_Workspace"/>
+    <addaction name="actionSwitch_Workspace"/>
+    <addaction name="actionPreferences"/>
+    <addaction name="actionSave_Preferences"/>
+    <addaction name="actionImport_Preferences"/>
+    <addaction name="separator"/>
+    <addaction name="actionRecent"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+    <addaction name="actionExit_Without_Saving"/>
+   </widget>
+   <widget class="QMenu" name="menuProject">
+    <property name="title">
+     <string>Pro&amp;ject</string>
+    </property>
+    <addaction name="actionShow_Project_View"/>
+    <addaction name="separator"/>
+    <addaction name="actionAdd_WSDL"/>
+    <addaction name="actionAdd_WADL"/>
+    <addaction name="separator"/>
+    <addaction name="actionRename"/>
+    <addaction name="actionRemove"/>
+    <addaction name="actionReload_Project"/>
+    <addaction name="actionResolve"/>
+    <addaction name="actionClose_Project"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave_Project"/>
+    <addaction name="actionSave_Project_As"/>
+    <addaction name="actionExport_Project"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionStarter_Page"/>
+    <addaction name="separator"/>
+    <addaction name="actionSystem_Properties"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuProject"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionCreate_Empty_Project">
+   <property name="text">
+    <string>&amp;Create Empty Project</string>
+   </property>
+  </action>
+  <action name="actionNew_SOAP_Project">
+   <property name="text">
+    <string>&amp;New SOAP Project</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionNew_REST_Project">
+   <property name="text">
+    <string>New REST Project</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+N</string>
+   </property>
+  </action>
+  <action name="actionImport_Project">
+   <property name="text">
+    <string>&amp;Import Project</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actionImport_Packed_Project">
+   <property name="text">
+    <string>I&amp;mport Packed Project</string>
+   </property>
+  </action>
+  <action name="actionImport_Remote_Project">
+   <property name="text">
+    <string>Import Remote Project</string>
+   </property>
+  </action>
+  <action name="actionImport_Postman_Collection">
+   <property name="text">
+    <string>Import Postman Collection</string>
+   </property>
+  </action>
+  <action name="actionSave_All_Projects">
+   <property name="text">
+    <string>&amp;Save All Projects</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+S</string>
+   </property>
+  </action>
+  <action name="actionOpen_All_Closed_Projects">
+   <property name="text">
+    <string>&amp;Open All Closed Projects</string>
+   </property>
+  </action>
+  <action name="actionClose_All_Open_Projects">
+   <property name="text">
+    <string>Close &amp;All Open Projects</string>
+   </property>
+  </action>
+  <action name="actionRename_Workspace">
+   <property name="text">
+    <string>&amp;Rename Workspace</string>
+   </property>
+   <property name="shortcut">
+    <string>F2</string>
+   </property>
+  </action>
+  <action name="actionNew_Workspace">
+   <property name="text">
+    <string>New &amp;Workspace</string>
+   </property>
+  </action>
+  <action name="actionSwitch_Workspace">
+   <property name="text">
+    <string>Swi&amp;tch Workspace</string>
+   </property>
+  </action>
+  <action name="actionPreferences">
+   <property name="text">
+    <string>&amp;Preferences</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+P</string>
+   </property>
+  </action>
+  <action name="actionSave_Preferences">
+   <property name="text">
+    <string>Sa&amp;ve Preferences</string>
+   </property>
+  </action>
+  <action name="actionImport_Preferences">
+   <property name="text">
+    <string>Import Pre&amp;ferences</string>
+   </property>
+  </action>
+  <action name="actionRecent">
+   <property name="text">
+    <string>Recent</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>&amp;Exit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionExit_Without_Saving">
+   <property name="text">
+    <string>E&amp;xit Without Saving</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+Q</string>
+   </property>
+  </action>
+  <action name="actionStarter_Page">
+   <property name="text">
+    <string>&amp;Starter Page</string>
+   </property>
+  </action>
+  <action name="actionAPI_Testing_Dojo">
+   <property name="text">
+    <string>System Properties</string>
+   </property>
+  </action>
+  <action name="actionSystem_Properties">
+   <property name="text">
+    <string>System &amp;Properties</string>
+   </property>
+  </action>
+  <action name="actionSwitch_Window">
+   <property name="text">
+    <string>Switch Window</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="actionMaximize_Desktop">
+   <property name="text">
+    <string>Maximize Desktop</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+M</string>
+   </property>
+  </action>
+  <action name="actionClose_Current">
+   <property name="text">
+    <string>Close Current</string>
+   </property>
+  </action>
+  <action name="actionClose_Others">
+   <property name="text">
+    <string>Close Others</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+O</string>
+   </property>
+  </action>
+  <action name="actionClose_All">
+   <property name="text">
+    <string>Close All</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+L</string>
+   </property>
+  </action>
+  <action name="actionShow_Project_View">
+   <property name="text">
+    <string>&amp;Show Project View</string>
+   </property>
+  </action>
+  <action name="actionAdd_WSDL">
+   <property name="text">
+    <string>&amp;Add WSDL</string>
+   </property>
+  </action>
+  <action name="actionAdd_WADL">
+   <property name="text">
+    <string>Add &amp;WADL</string>
+   </property>
+  </action>
+  <action name="actionImport_Swagger_OpenAPI_Definition">
+   <property name="text">
+    <string>Import Swagger/OpenAPI Definition</string>
+   </property>
+  </action>
+  <action name="actionExport_Swagger_OpenAPI_Definition">
+   <property name="text">
+    <string>Export Swagger/OpenAPI Definition</string>
+   </property>
+  </action>
+  <action name="actionNew_REST_Service_From_URI">
+   <property name="text">
+    <string>New REST Service From URI</string>
+   </property>
+  </action>
+  <action name="actionLaunch_Test_Runner">
+   <property name="text">
+    <string>Launch TestRunner</string>
+   </property>
+  </action>
+  <action name="actionLaunch_LoadTestRunner">
+   <property name="text">
+    <string>Launch LoadTestRunner</string>
+   </property>
+  </action>
+  <action name="actionRename">
+   <property name="text">
+    <string>&amp;Rename</string>
+   </property>
+  </action>
+  <action name="actionRemove">
+   <property name="text">
+    <string>Re&amp;move</string>
+   </property>
+   <property name="shortcut">
+    <string>Del</string>
+   </property>
+  </action>
+  <action name="actionReload_Project">
+   <property name="text">
+    <string>Re&amp;load Project</string>
+   </property>
+   <property name="shortcut">
+    <string>F5</string>
+   </property>
+  </action>
+  <action name="actionResolve">
+   <property name="text">
+    <string>Res&amp;olve</string>
+   </property>
+  </action>
+  <action name="actionClose_Project">
+   <property name="text">
+    <string>&amp;Close Project</string>
+   </property>
+  </action>
+  <action name="actionSave_Project">
+   <property name="text">
+    <string>Save &amp;Project</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionSave_Project_As">
+   <property name="text">
+    <string>Sa&amp;ve Project As</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="actionExport_Project">
+   <property name="text">
+    <string>&amp;Export Project</string>
+   </property>
+  </action>
+  <action name="actionJBoss_WS_Artifacts">
+   <property name="text">
+    <string>JBossWS Artifacts</string>
+   </property>
+  </action>
+  <action name="actionJBossWS_JAX_WS_Artifacts">
+   <property name="text">
+    <string>JBossWS JAX-WS Artifacts</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
