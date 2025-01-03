@@ -1,7 +1,7 @@
 #ifndef WORKSPACEMODEL_H
 #define WORKSPACEMODEL_H
 
-#include "datastructures.h"
+#include "workspace.h"
 
 #include <QAbstractItemModel>
 #include <QObject>

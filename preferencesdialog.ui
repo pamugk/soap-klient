@@ -1,0 +1,2221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PreferencesDialog</class>
+ <widget class="QDialog" name="PreferencesDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>SOAP Klient Preferences</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="0" colspan="2">
+    <widget class="QDialogButtonBox" name="dialogButtonBox">
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QListWidget" name="pagesListWidget">
+     <property name="maximumSize">
+      <size>
+       <width>300</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <item>
+      <property name="text">
+       <string>HTTP Settings</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Proxy Settings</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>SSL Settings</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>WSDL Settings</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>UI Settings</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Editor Settings</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Tools</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>WS-I Settings</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Global Properties</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Global Security Settings</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>WS-A Settings</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Global Sensitive Information Tokens</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QStackedWidget" name="pagesStackedWidget">
+     <widget class="QWidget" name="httpSettingsPage">
+      <layout class="QVBoxLayout" name="httpSettingsPageLayout">
+       <item>
+        <widget class="QScrollArea" name="httpSettingsPageScrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="httpSettingsPageScrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>710</width>
+            <height>677</height>
+           </rect>
+          </property>
+          <layout class="QFormLayout" name="httpSettingsPageFormLayout">
+           <property name="labelAlignment">
+            <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="httpVersionLabel">
+             <property name="text">
+              <string>HTTP Version:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QComboBox" name="httpVersionComboBox"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="httpUserAgentHeaderLabel">
+             <property name="text">
+              <string>User-Agent Header:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="httpUserAgentHeaderLineEdit"/>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="httpRequestCompressionLabel">
+             <property name="text">
+              <string>Request compression:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QComboBox" name="httpRequestCompressionComboBox"/>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="httpResponseCompressionLabel">
+             <property name="text">
+              <string>Response compression:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QCheckBox" name="httpResponseCompressionCheckBox">
+             <property name="text">
+              <string>Accept compressed responses from host</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="httpResponseDecompressionLabel">
+             <property name="text">
+              <string>Disable Response Decompression:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QCheckBox" name="httpResponseDecompressionCheckBox">
+             <property name="text">
+              <string>Disable decompression of compressed responses</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="httpCloseConnectionLabel">
+             <property name="text">
+              <string>Close connections after request:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QCheckBox" name="httpCloseConnectionCheckBox">
+             <property name="text">
+              <string>Close the HTTP connection after each SOAP request</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="httpChunkingThresholdLabel">
+             <property name="text">
+              <string>Chunking Threshold:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QSpinBox" name="httpChunkingThresholdSpinBox">
+             <property name="maximum">
+              <number>2147483647</number>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="httpAuthenticateLabel">
+             <property name="text">
+              <string>Authenticate Preemptively:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="1">
+            <widget class="QCheckBox" name="httpAuthenticateCheckBox">
+             <property name="text">
+              <string>Adds authentication information to outgoing request</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="0">
+            <widget class="QLabel" name="httpExpectContinueLabel">
+             <property name="text">
+              <string>Expect-Continue:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="1">
+            <widget class="QCheckBox" name="httpExpectContinueCheckBox">
+             <property name="text">
+              <string>Adds Expect-Continue header to outgoing request</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="0">
+            <widget class="QLabel" name="httpPreEncodedEndpointsLabel">
+             <property name="text">
+              <string>Pre-encoded Endpoints:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="1">
+            <widget class="QCheckBox" name="httpPreEncodedEndpointsCheckBox">
+             <property name="text">
+              <string>URI contains encoded endpoints, don't try to re-encode</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="0">
+            <widget class="QLabel" name="httpNormalizeSlashesLabel">
+             <property name="text">
+              <string>Normalize Forward Slashes:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="1">
+            <widget class="QCheckBox" name="httpNormalizeSlashesCheckBox">
+             <property name="text">
+              <string>Replaces duplicate forward slashes in HTTP request endpoints with a single slash</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="0">
+            <widget class="QLabel" name="httpBindAddressLabel">
+             <property name="text">
+              <string>Bind Address:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="1">
+            <widget class="QLineEdit" name="httpBindAddressLineEdit"/>
+           </item>
+           <item row="12" column="0">
+            <widget class="QLabel" name="httpIncludeRequestTimeLabel">
+             <property name="text">
+              <string>Include request in time taken:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="1">
+            <widget class="QCheckBox" name="httpIncludeRequestTimeCheckBox">
+             <property name="text">
+              <string>Includes the time it took to write the request in time-taken</string>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="0">
+            <widget class="QLabel" name="httpIncludeResponseTimeLabel">
+             <property name="text">
+              <string>Include response in time taken:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="1">
+            <widget class="QCheckBox" name="httpIncludeResponseTimeCheckBox">
+             <property name="text">
+              <string>Includes the time it took to read the entire response in time-taken</string>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="0">
+            <widget class="QLabel" name="httpSocketTimeoutLabel">
+             <property name="text">
+              <string>Socket timeout (ms):</string>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="1">
+            <widget class="QSpinBox" name="httpSocketTimeoutSpinBox">
+             <property name="maximum">
+              <number>3600</number>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="0">
+            <widget class="QLabel" name="httpMaxResponseSizeLabel">
+             <property name="text">
+              <string>Max response size:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="1">
+            <widget class="QSpinBox" name="httpMaxResponseSizeSpinBox">
+             <property name="maximum">
+              <number>2147483647</number>
+             </property>
+            </widget>
+           </item>
+           <item row="16" column="0">
+            <widget class="QLabel" name="httpMaxConnectionsPerHostLabel">
+             <property name="text">
+              <string>Max Connections Per Host:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="16" column="1">
+            <widget class="QSpinBox" name="httpMaxConnectionsPerHostSpinBox">
+             <property name="maximum">
+              <number>2147483647</number>
+             </property>
+            </widget>
+           </item>
+           <item row="19" column="0">
+            <widget class="QLabel" name="httpMockLogLabel">
+             <property name="text">
+              <string>Enable Mock HTTP Log:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="20" column="0">
+            <widget class="QLabel" name="httpStartMockLabel">
+             <property name="text">
+              <string>Start REST MockService:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="18" column="0">
+            <widget class="QLabel" name="httpLeaveMockLabel">
+             <property name="text">
+              <string>Leave MockEngine:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="18" column="1">
+            <widget class="QCheckBox" name="httpLeaveMockCheckBox">
+             <property name="text">
+              <string>Leave MockEngine running when stopping MockService</string>
+             </property>
+            </widget>
+           </item>
+           <item row="19" column="1">
+            <widget class="QCheckBox" name="httpMockLogCheckBox">
+             <property name="text">
+              <string>Logs wire content of all mock requests</string>
+             </property>
+            </widget>
+           </item>
+           <item row="20" column="1">
+            <widget class="QCheckBox" name="httpStartMockCheckBox">
+             <property name="text">
+              <string>Start REST MockService after creation</string>
+             </property>
+            </widget>
+           </item>
+           <item row="17" column="0">
+            <widget class="QLabel" name="httpMaxConnectionsTotalLabel">
+             <property name="text">
+              <string>Max Total Connections:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="17" column="1">
+            <widget class="QSpinBox" name="httpMaxConnectionsTotalSpinBox">
+             <property name="maximum">
+              <number>2147483647</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="proxySettingsPage">
+      <layout class="QVBoxLayout" name="proxySettingsPageLayout">
+       <item>
+        <widget class="QScrollArea" name="proxySettingsPageScrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="proxySettingsPageScrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>563</width>
+            <height>536</height>
+           </rect>
+          </property>
+          <layout class="QFormLayout" name="proxySettingsPageFormLayout">
+           <property name="labelAlignment">
+            <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="proxyModeLabel">
+             <property name="text">
+              <string>Proxy Setting:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QWidget" name="proxyModeGroup" native="true">
+             <layout class="QVBoxLayout" name="proxyModeGroupLayout">
+              <item>
+               <widget class="QRadioButton" name="proxyAutomaticRadioButton">
+                <property name="text">
+                 <string>Automatic</string>
+                </property>
+                <attribute name="buttonGroup">
+                 <string notr="true">proxyModeButtonGroup</string>
+                </attribute>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="proxyNoneRadioButton">
+                <property name="text">
+                 <string>None</string>
+                </property>
+                <attribute name="buttonGroup">
+                 <string notr="true">proxyModeButtonGroup</string>
+                </attribute>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="proxyManualRadioButton">
+                <property name="text">
+                 <string>Manual</string>
+                </property>
+                <attribute name="buttonGroup">
+                 <string notr="true">proxyModeButtonGroup</string>
+                </attribute>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="proxyHostLineEdit"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="proxyHostLabel">
+             <property name="text">
+              <string>Host:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="proxyPortLabel">
+             <property name="text">
+              <string>Port:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="proxyExcludesLabel">
+             <property name="text">
+              <string>Excludes:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLineEdit" name="proxyExcludesLineEdit"/>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="proxyUsernameLabel">
+             <property name="text">
+              <string>Username:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QLineEdit" name="proxyUsernameLineEdit"/>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="proxyPasswordLabel">
+             <property name="text">
+              <string>Password:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="KPasswordLineEdit" name="proxyPasswordLineEdit"/>
+           </item>
+           <item row="2" column="1">
+            <widget class="QSpinBox" name="proxyPortSpinBox">
+             <property name="maximum">
+              <number>65535</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="sslSettingsPage">
+      <layout class="QVBoxLayout" name="sslSettingsPageLayout">
+       <item>
+        <widget class="QScrollArea" name="sslSettingsPageScrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="sslSettingsPageScrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>563</width>
+            <height>536</height>
+           </rect>
+          </property>
+          <layout class="QFormLayout" name="sslSettingsPageFormLayout">
+           <property name="labelAlignment">
+            <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="sslKeyStoreLabel">
+             <property name="text">
+              <string>KeyStore:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="sslKeyStorepasswordLabel">
+             <property name="text">
+              <string>KeyStore Password:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="sslMockLabel">
+             <property name="text">
+              <string>Enable Mock SSL:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="sslMockPortLabel">
+             <property name="text">
+              <string>Mock Port:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="sslMockKeyStoreLabel">
+             <property name="text">
+              <string>Mock KeyStore:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="sslMockPasswordLabel">
+             <property name="text">
+              <string>Mock Password:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="sslMockKeyPasswordLabel">
+             <property name="text">
+              <string>Mock Key Password:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="sslMockTrustStoreLabel">
+             <property name="text">
+              <string>Mock TrustStore:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="0">
+            <widget class="QLabel" name="sslMockTrustStorePasswordLabel">
+             <property name="text">
+              <string>Mock TrustStore Password:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="0">
+            <widget class="QLabel" name="sslClientAuthenticationLabel">
+             <property name="text">
+              <string>Client Authentication:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="KPasswordLineEdit" name="sslKeyStorePasswordLineEdit"/>
+           </item>
+           <item row="5" column="1">
+            <widget class="KPasswordLineEdit" name="sslMockPasswordLineEdit"/>
+           </item>
+           <item row="6" column="1">
+            <widget class="KPasswordLineEdit" name="sslMockKeyPasswordLineEdit"/>
+           </item>
+           <item row="8" column="1">
+            <widget class="KPasswordLineEdit" name="sslMockTrustStorePasswordLineEdit"/>
+           </item>
+           <item row="3" column="1">
+            <widget class="QSpinBox" name="sslMockPortSpinBox">
+             <property name="maximum">
+              <number>65535</number>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QCheckBox" name="sslMockCheckBox">
+             <property name="text">
+              <string>enable SSL for Mock Services</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="1">
+            <widget class="QCheckBox" name="sslClientAuthenticationCheckBox">
+             <property name="text">
+              <string>requires client authentication</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="KUrlRequester" name="sslKeyStoreUrlRequester"/>
+           </item>
+           <item row="4" column="1">
+            <widget class="KUrlRequester" name="sslMockKeyStoreUrlRequester"/>
+           </item>
+           <item row="7" column="1">
+            <widget class="KUrlRequester" name="sslMockTrustStoreUrlRequester"/>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="wsdlSettingsPage">
+      <layout class="QVBoxLayout" name="wsdlSettingsPageLayout">
+       <item>
+        <widget class="QScrollArea" name="wsdlSettingsPageScrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="wsdlSettingsPageScrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-4</y>
+            <width>749</width>
+            <height>519</height>
+           </rect>
+          </property>
+          <layout class="QFormLayout" name="wsdlSettingsFormLayout">
+           <property name="labelAlignment">
+            <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="wsdlCacheLabel">
+             <property name="text">
+              <string>Cache WSDLs:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QCheckBox" name="wsdlCacheCheckBox">
+             <property name="text">
+              <string>caches and associates WSDLs locally for offline access and improved performance</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="wsdlSampleValuesLabel">
+             <property name="text">
+              <string>Sample Values:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QCheckBox" name="wsdlSampleValuesCheckBox">
+             <property name="text">
+              <string>generate example values in new requests</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="wsdlTypeCommentLabel">
+             <property name="text">
+              <string>Type Comment:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QCheckBox" name="wsdlTypeCommentCheckBox">
+             <property name="text">
+              <string>generate comments with type information in new requests</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="wsdlIncludeOptionalLabel">
+             <property name="text">
+              <string>Include Optional:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QCheckBox" name="wsdlIncludeOptionalCheckBox">
+             <property name="text">
+              <string>always include optional schema elements when creating requests</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="wsdlPrettyPrintLabel">
+             <property name="text">
+              <string>Pretty Print:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QCheckBox" name="wsdlPrettyPrintCheckBox">
+             <property name="text">
+              <string>pretty print response messages</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="wsdlAttachmentPartsLabel">
+             <property name="text">
+              <string>Attachment Parts:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QCheckBox" name="wsdlAttachmentPartsCheckBox">
+             <property name="text">
+              <string>generate rpc message parts for attachments</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="wsdlSchemaDirectoryLabel">
+             <property name="text">
+              <string>Schema Directory:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="1">
+            <widget class="KUrlRequester" name="wsdlSchemaDirectoryUrlRequester"/>
+           </item>
+           <item row="8" column="0">
+            <widget class="QLabel" name="wsdlBindingNameLabel">
+             <property name="text">
+              <string>Name with Binding:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="1">
+            <widget class="QCheckBox" name="wsdlBindingNameCheckBox">
+             <property name="text">
+              <string>uses the WSDL binding name (instead of portType) for imported interfaces</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="0">
+            <widget class="QLabel" name="wsdlStrictSchemaTypesLabel">
+             <property name="text">
+              <string>Strict schema types:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="1">
+            <widget class="QCheckBox" name="wsdlStrictSchemaTypesCheckBox">
+             <property name="text">
+              <string>fails schema imports if type/particles are redefined</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="0">
+            <widget class="QLabel" name="wsdlCompressionLabel">
+             <property name="text">
+              <string>Compression Limit:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="1">
+            <widget class="QSpinBox" name="wsdlCompressionSpinBox">
+             <property name="maximum">
+              <number>2147483647</number>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="0">
+            <widget class="QLabel" name="wsdlPrettyPrintProjectFilesLabel">
+             <property name="text">
+              <string>Pretty Print Project Files:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="1">
+            <widget class="QCheckBox" name="wsdlPrettyPrintProjectFilesCheckBox">
+             <property name="text">
+              <string>pretty prints project files</string>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="0">
+            <widget class="QLabel" name="wsdlTrimLabel">
+             <property name="text">
+              <string>Trim WSDL:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="1">
+            <widget class="QCheckBox" name="wsdlTrimCheckBox">
+             <property name="text">
+              <string>Trims leading and trailing whitespaces from WSDL file (might not work on non 8 bit encoding)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="wsdlNoContentTypeValidationLabel">
+             <property name="text">
+              <string>No Content-Type Validation:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QCheckBox" name="wsdlNoContentTypeValidationCheckBox">
+             <property name="text">
+              <string>allow incorrect content-types in mime-attachments</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="0">
+            <widget class="QLabel" name="wsdlExcludedTypesLabel">
+             <property name="text">
+              <string>Excluded types:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="1">
+            <widget class="KEditListWidget" name="wsdlExcludedTypesEditListWidget">
+             <property name="buttons">
+              <set>KEditListWidget::Button::Add|KEditListWidget::Button::Remove</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="uiSettingsPage">
+      <layout class="QVBoxLayout" name="uiSettingsPageLayout">
+       <item>
+        <widget class="QScrollArea" name="uiSettingsPageScrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="uiSettingsPageScrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-163</y>
+            <width>658</width>
+            <height>678</height>
+           </rect>
+          </property>
+          <layout class="QFormLayout" name="uiSettingsFormLayout">
+           <property name="labelAlignment">
+            <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="uiCloseProjectsLabel">
+             <property name="text">
+              <string>Close Projects:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QCheckBox" name="uiCloseProjectsCheckBox">
+             <property name="text">
+              <string>Close all projects on startup</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="uiOrderProjectsLabel">
+             <property name="text">
+              <string>Order Projects:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QCheckBox" name="uiOrderProjectsCheckBox">
+             <property name="text">
+              <string>Order Projects alphabetically in tree</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="uiOrderServicesLabel">
+             <property name="text">
+              <string>Order Services:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QCheckBox" name="uiOrderServicesCheckBox">
+             <property name="text">
+              <string>Order Services alphabetically in tree</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="uiOrderRequestsLabel">
+             <property name="text">
+              <string>Order Requests:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QCheckBox" name="uiOrderRequestsCheckBox">
+             <property name="text">
+              <string>Order Requests alphabetically in tree</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="uiShowDescriptionsLabel">
+             <property name="text">
+              <string>Show Descriptions:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QCheckBox" name="uiShowDescriptionsCheckBox">
+             <property name="text">
+              <string>Show description content when available</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="uiSaveProjectLabel">
+             <property name="text">
+              <string>Save projects on exit:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QCheckBox" name="uiSaveProjectCheckBox">
+             <property name="text">
+              <string>Save all projects on exit</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="uiCreatBackupLabel">
+             <property name="text">
+              <string>Create Backup:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QCheckBox" name="uiCreatBackupCheckBox">
+             <property name="text">
+              <string>Backup project files before they are saved</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="uiBackupFolderLabel">
+             <property name="text">
+              <string>Backup Folder:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="1">
+            <widget class="KUrlRequester" name="uiBackupFolderUrlRequester"/>
+           </item>
+           <item row="8" column="0">
+            <widget class="QLabel" name="uiAutosaveIntervalLabel">
+             <property name="text">
+              <string>AutoSave Interval:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="1">
+            <widget class="QSpinBox" name="uiAutosaveIntervalSpinBox">
+             <property name="maximum">
+              <number>2147483647</number>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="0">
+            <widget class="QLabel" name="uiDesktopTypeLabel">
+             <property name="text">
+              <string>Desktop Type:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="1">
+            <widget class="QComboBox" name="uiDesktopTypeComboBox"/>
+           </item>
+           <item row="10" column="0">
+            <widget class="QLabel" name="uiMostRecentPanelLabel">
+             <property name="text">
+              <string>Select most recently used desktop panel on close:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="1">
+            <widget class="QCheckBox" name="uiMostRecentPanelCheckBox">
+             <property name="text">
+              <string>Show most recently used panel on close (requires restart)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="0">
+            <widget class="QLabel" name="uiNativeLookLabel">
+             <property name="text">
+              <string>Native LF:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="1">
+            <widget class="QCheckBox" name="uiNativeLookCheckBox">
+             <property name="text">
+              <string>Use native Look &amp; Feel (requires restart)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="0">
+            <widget class="QLabel" name="uiGroovyLogLabel">
+             <property name="text">
+              <string>Do not disable Groovy Log:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="1">
+            <widget class="QCheckBox" name="uiGroovyLogCheckBox">
+             <property name="text">
+              <string>Do not disable the groovy log when running load tests</string>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="0">
+            <widget class="QLabel" name="uiLogTabsLabel">
+             <property name="text">
+              <string>Show Log Tabs:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="1">
+            <widget class="QCheckBox" name="uiLogTabsCheckBox">
+             <property name="text">
+              <string>Shows log tabs when starting</string>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="0">
+            <widget class="QLabel" name="uiShowStartupPageLabel">
+             <property name="text">
+              <string>Show Startup Page:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="1">
+            <widget class="QCheckBox" name="uiShowStartupPageCheckBox">
+             <property name="text">
+              <string>Open startup web page when starting</string>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="0">
+            <widget class="QLabel" name="uiDisableTooltipsLabel">
+             <property name="text">
+              <string>Disable Tooltips:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="1">
+            <widget class="QCheckBox" name="uiDisableTooltipsCheckBox">
+             <property name="text">
+              <string>Disables all tooltips</string>
+             </property>
+            </widget>
+           </item>
+           <item row="16" column="0">
+            <widget class="QLabel" name="uiNormalizeLinebreakLabel">
+             <property name="text">
+              <string>Normalize line-break:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="16" column="1">
+            <widget class="QCheckBox" name="uiNormalizeLinebreakCheckBox">
+             <property name="text">
+              <string>Normalize line-breaks when saving project</string>
+             </property>
+            </widget>
+           </item>
+           <item row="17" column="0">
+            <widget class="QLabel" name="uiGargabeCollectionIntervalLabel">
+             <property name="text">
+              <string>Garbage Collection Interval (s):</string>
+             </property>
+            </widget>
+           </item>
+           <item row="17" column="1">
+            <widget class="QSpinBox" name="uiGargabeCollectionIntervalSpinBox">
+             <property name="maximum">
+              <number>2147483647</number>
+             </property>
+            </widget>
+           </item>
+           <item row="18" column="0">
+            <widget class="QLabel" name="uiRawResponseSizeLabel">
+             <property name="text">
+              <string>Size of Raw Response Message to Show:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="18" column="1">
+            <widget class="QSpinBox" name="uiRawResponseSizeSpinBox">
+             <property name="maximum">
+              <number>2147483647</number>
+             </property>
+            </widget>
+           </item>
+           <item row="19" column="0">
+            <widget class="QLabel" name="uiRawRequestSizeLabel">
+             <property name="text">
+              <string>Size of Raw Request Message to Show:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="19" column="1">
+            <widget class="QSpinBox" name="uiRawRequestSizeSpinBox">
+             <property name="maximum">
+              <number>2147483647</number>
+             </property>
+            </widget>
+           </item>
+           <item row="20" column="0">
+            <widget class="QLabel" name="uiWrapRawContentLabel">
+             <property name="text">
+              <string>Wrap content in Raw Message Viewers:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="20" column="1">
+            <widget class="QCheckBox" name="uiWrapRawContentCheckBox">
+             <property name="text">
+              <string>Wraps content in Raw Message Viewers</string>
+             </property>
+            </widget>
+           </item>
+           <item row="21" column="0">
+            <widget class="QLabel" name="uiDisableUsageStatisticsLabel">
+             <property name="text">
+              <string>Disable Usage Statistics:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="21" column="1">
+            <widget class="QCheckBox" name="uiDisableUsageStatisticsCheckBox">
+             <property name="text">
+              <string>Do not send usage statistics</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="editorSettingsPage">
+      <layout class="QVBoxLayout" name="editorSettingsPageLayout">
+       <item>
+        <widget class="QScrollArea" name="editorSettingsPageScrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="editorSettingsPageScrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>563</width>
+            <height>536</height>
+           </rect>
+          </property>
+          <layout class="QFormLayout" name="editorSettingsFormLayout">
+           <property name="labelAlignment">
+            <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="editorFontLabel">
+             <property name="text">
+              <string>Editor Font:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="KFontRequester" name="editorFontFontRequester"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="editorXmlLinesLabel">
+             <property name="text">
+              <string>XML Line Numbers:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QCheckBox" name="editorXmlLinesCheckBox">
+             <property name="text">
+              <string>Show line numbers in XML editors by default</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="editorGroovyLinesLabel">
+             <property name="text">
+              <string>Groovy Line Numbers:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QCheckBox" name="editorGroovyLinesCheckBox">
+             <property name="text">
+              <string>Show line numbers in Groovy editors by default</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="editorAutoResizeLabel">
+             <property name="text">
+              <string>Disable auto-resize:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QCheckBox" name="editorAutoResizeCheckBox">
+             <property name="text">
+              <string>Disables automatic resizing of Request editors</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="editorTabbedLabel">
+             <property name="text">
+              <string>Tabbed request view:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QCheckBox" name="editorTabbedCheckBox">
+             <property name="text">
+              <string>Defaults the request editor to the tabbed layout</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="editorValidateRequestLabel">
+             <property name="text">
+              <string>Validate Requests:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QCheckBox" name="editorValidateRequestCheckBox">
+             <property name="text">
+              <string>Always validate request messages before they are send</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="editorAbortInvalidLabel">
+             <property name="text">
+              <string>Abort on invalid:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QCheckBox" name="editorAbortInvalidCheckBox">
+             <property name="text">
+              <string>Abort invalid requests</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="editorValidateResponseLabel">
+             <property name="text">
+              <string>Validate Responses:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="1">
+            <widget class="QCheckBox" name="editorValidateResponseCheckBox">
+             <property name="text">
+              <string>Always validate response messages</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="toolsPage">
+      <layout class="QVBoxLayout" name="toolsPageLayout">
+       <item>
+        <widget class="QScrollArea" name="toolsPageScrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="toolsPageScrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>542</width>
+            <height>652</height>
+           </rect>
+          </property>
+          <layout class="QFormLayout" name="toolsPageFormLayout">
+           <property name="labelAlignment">
+            <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="toolsJbossLabel">
+             <property name="text">
+              <string>JBossWS wstools:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="KUrlRequester" name="toolsJbossUrlRequester">
+             <property name="mode">
+              <set>KFile::Mode::Directory|KFile::Mode::ExistingOnly|KFile::Mode::LocalOnly</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="toolsJaxRpcLabel">
+             <property name="text">
+              <string>JAX-RPC WSCompile:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="KUrlRequester" name="toolsJaxRpcUrlRequester">
+             <property name="mode">
+              <set>KFile::Mode::Directory|KFile::Mode::ExistingOnly|KFile::Mode::LocalOnly</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="toolsJaxWsLabel">
+             <property name="text">
+              <string>JAX-WS WSImport:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="KUrlRequester" name="toolsJaxWsUrlRequester">
+             <property name="mode">
+              <set>KFile::Mode::Directory|KFile::Mode::ExistingOnly|KFile::Mode::LocalOnly</set>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="toolsAxis1Label">
+             <property name="text">
+              <string>Axis 1.X:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="KUrlRequester" name="toolsAxis1UrlRequester">
+             <property name="mode">
+              <set>KFile::Mode::Directory|KFile::Mode::ExistingOnly|KFile::Mode::LocalOnly</set>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="toolsAxis2Label">
+             <property name="text">
+              <string>Axis 2:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="KUrlRequester" name="toolsAxis2UrlRequester">
+             <property name="mode">
+              <set>KFile::Mode::Directory|KFile::Mode::ExistingOnly|KFile::Mode::LocalOnly</set>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="toolsDotnetWsdlLabel">
+             <property name="text">
+              <string>.NET 2.0 wsdl.exe:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="KUrlRequester" name="toolsDotnetWsdlUrlRequester">
+             <property name="mode">
+              <set>KFile::Mode::Directory|KFile::Mode::ExistingOnly|KFile::Mode::LocalOnly</set>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="toolsXfireLabel">
+             <property name="text">
+              <string>XFire 1.X:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="KUrlRequester" name="toolsXfireUrlRequester">
+             <property name="mode">
+              <set>KFile::Mode::Directory|KFile::Mode::ExistingOnly|KFile::Mode::LocalOnly</set>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="toolsCxfLabel">
+             <property name="text">
+              <string>CXF 2.X:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="1">
+            <widget class="KUrlRequester" name="toolsCxfUrlRequester">
+             <property name="mode">
+              <set>KFile::Mode::Directory|KFile::Mode::ExistingOnly|KFile::Mode::LocalOnly</set>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="0">
+            <widget class="QLabel" name="toolsAntLabel">
+             <property name="text">
+              <string>ANT 1.6+</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="1">
+            <widget class="KUrlRequester" name="toolsAntUrlRequester">
+             <property name="mode">
+              <set>KFile::Mode::Directory|KFile::Mode::ExistingOnly|KFile::Mode::LocalOnly</set>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="0">
+            <widget class="QLabel" name="toolsGsoapLabel">
+             <property name="text">
+              <string>GSoap:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="1">
+            <widget class="KUrlRequester" name="toolsGsoapUrlRequester">
+             <property name="mode">
+              <set>KFile::Mode::Directory|KFile::Mode::ExistingOnly|KFile::Mode::LocalOnly</set>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="0">
+            <widget class="QLabel" name="toolsJaxbLabel">
+             <property name="text">
+              <string>JAXB xjc:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="1">
+            <widget class="KUrlRequester" name="toolsJaxbUrlRequester">
+             <property name="mode">
+              <set>KFile::Mode::Directory|KFile::Mode::ExistingOnly|KFile::Mode::LocalOnly</set>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="0">
+            <widget class="QLabel" name="toolsXmlBeansLabel">
+             <property name="text">
+              <string>XmlBeans 2.X:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="1">
+            <widget class="KUrlRequester" name="toolsXmlBeansUrlRequester">
+             <property name="mode">
+              <set>KFile::Mode::Directory|KFile::Mode::ExistingOnly|KFile::Mode::LocalOnly</set>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="0">
+            <widget class="QLabel" name="toolsJavacLabel">
+             <property name="text">
+              <string>JDK 1.5 javac:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="1">
+            <widget class="KUrlRequester" name="toolsJavacUrlRequester">
+             <property name="mode">
+              <set>KFile::Mode::Directory|KFile::Mode::ExistingOnly|KFile::Mode::LocalOnly</set>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="0">
+            <widget class="QLabel" name="toolsTcpMonLabel">
+             <property name="text">
+              <string>Apache TcpMon:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="1">
+            <widget class="KUrlRequester" name="toolsTcpMonUrlRequester">
+             <property name="mode">
+              <set>KFile::Mode::Directory|KFile::Mode::ExistingOnly|KFile::Mode::LocalOnly</set>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="0">
+            <widget class="QLabel" name="toolsWsaLabel">
+             <property name="text">
+              <string>Oracle wsa.jar:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="1">
+            <widget class="KUrlRequester" name="toolsWsaUrlRequester">
+             <property name="mode">
+              <set>KFile::Mode::Directory|KFile::Mode::ExistingOnly|KFile::Mode::LocalOnly</set>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="0">
+            <widget class="QLabel" name="toolsWadl2JavaLabel">
+             <property name="text">
+              <string>WADL2Java:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="15" column="1">
+            <widget class="KUrlRequester" name="toolsWadl2JavaUrlRequester">
+             <property name="mode">
+              <set>KFile::Mode::Directory|KFile::Mode::ExistingOnly|KFile::Mode::LocalOnly</set>
+             </property>
+            </widget>
+           </item>
+           <item row="16" column="0">
+            <widget class="QLabel" name="toolsHermesJmsLabel">
+             <property name="text">
+              <string>Hermes JMS:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="16" column="1">
+            <widget class="KUrlRequester" name="toolsHermesJmsUrlRequester">
+             <property name="mode">
+              <set>KFile::Mode::Directory|KFile::Mode::ExistingOnly|KFile::Mode::LocalOnly</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="wsiSettingsPage">
+      <layout class="QVBoxLayout" name="wsiSettingsPageLayout">
+       <item>
+        <widget class="QScrollArea" name="wsiSettingsPageScrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="wsiSettingsPageScrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>630</width>
+            <height>515</height>
+           </rect>
+          </property>
+          <layout class="QFormLayout" name="wsiSettingsPageFormLayout">
+           <property name="labelAlignment">
+            <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="wsiVerboseLabel">
+             <property name="text">
+              <string>Verbose:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QCheckBox" name="wsiVerboseCheckBox">
+             <property name="text">
+              <string>Verbose output of WSI tools</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="wsiProfileLabel">
+             <property name="text">
+              <string>Profile:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QComboBox" name="wsiProfileComboBox"/>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="wsiCorrelationLabel">
+             <property name="text">
+              <string>Correlation:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QComboBox" name="wsiCorrelationComboBox"/>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="wsiMessageEntryLabel">
+             <property name="text">
+              <string>Message entry:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QCheckBox" name="wsiMessageEntryCheckBox">
+             <property name="text">
+              <string>Message entriies should be included in the report</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="wsiFailureMessageLabel">
+             <property name="text">
+              <string>Failure message:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QCheckBox" name="wsiFailureMessageCheckBox">
+             <property name="text">
+              <string>Failure message defined for each test assertion should be included in the report</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="wsiAssertionDescriptionLabel">
+             <property name="text">
+              <string>Assertion description:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QCheckBox" name="wsiAssertionDescriptionCheckBox">
+             <property name="text">
+              <string>Description of each test assertion should be included in the report</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="wsiToolLocationLabel">
+             <property name="text">
+              <string>Tool location:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="KUrlRequester" name="wsiToolLocationUrlRequester"/>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="wsiShowLogLabel">
+             <property name="text">
+              <string>Show log:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="1">
+            <widget class="QCheckBox" name="wsiShowLogCheckBox">
+             <property name="text">
+              <string>Show console-log for ws-i analyzer</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="0">
+            <widget class="QLabel" name="wsiOutputFolderLabel">
+             <property name="text">
+              <string>Output folder:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="1">
+            <widget class="KUrlRequester" name="wsiOutputFolderUrlRequester"/>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="globalPropertiesPage">
+      <layout class="QVBoxLayout" name="globalPropertiesPageLayout">
+       <item>
+        <widget class="QCheckBox" name="globalPropertiesEnableOverrideCheckBox">
+         <property name="text">
+          <string>Enables overriding of any property-reference with global properties</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="globalPropertiesTableActionsWidget" native="true">
+         <layout class="QHBoxLayout" name="globalPropertiesTableActionsLayout">
+          <item>
+           <widget class="QToolButton" name="globalPropertiesAddButton">
+            <property name="toolTip">
+             <string>Adds a property to the property list</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset theme="list-add"/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="globalPropertiesRemoveButton">
+            <property name="toolTip">
+             <string>Removes the selected property from the property list</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset theme="list-remove"/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="globalPropertiesUpButton">
+            <property name="toolTip">
+             <string>Moves the selected property up one list</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset theme="go-up"/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="globalPropertiesDownButton">
+            <property name="toolTip">
+             <string>Moves the selected property down one item</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset theme="go-down"/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="globalPropertiesClearButton">
+            <property name="toolTip">
+             <string>Clears all current property values</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset theme="edit-clear"/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="globalPropertiesImportButton">
+            <property name="toolTip">
+             <string>Loads property values from an external file</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset theme="document-open"/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="globalPropertiesExportButton">
+            <property name="toolTip">
+             <string>Saves current property-values to a file</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset theme="document-save-as"/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="globalPropertiesTableActionsHorizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="globalPropertiesTableWidget">
+         <attribute name="horizontalHeaderStretchLastSection">
+          <bool>true</bool>
+         </attribute>
+         <column>
+          <property name="text">
+           <string>Name</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Value</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="globalSecurityPage">
+      <layout class="QVBoxLayout" name="globalSecurityPageLayout">
+       <item>
+        <widget class="QScrollArea" name="globalSecurityPageScrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="globalSecurityPageScrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>633</width>
+            <height>515</height>
+           </rect>
+          </property>
+          <layout class="QFormLayout" name="globalSecurityPageFormLayout">
+           <property name="labelAlignment">
+            <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="globalSecurityPasswordLabel">
+             <property name="text">
+              <string>Password:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="KPasswordLineEdit" name="globalSecurityPasswordLineEdit"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="globalSecurityDisableScriptsLabel">
+             <property name="text">
+              <string>Disable the Load and Save scripts:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QCheckBox" name="globalSecurityDisableScriptsCheckBox">
+             <property name="text">
+              <string>Do not run the Load and Save scripts on opening and saving projects</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="wsaSettingsPage">
+      <layout class="QVBoxLayout" name="wsaSettingsPageLayout">
+       <item>
+        <widget class="QScrollArea" name="wsaSettingsPageScrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="wsaSettingsPageScrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>615</width>
+            <height>515</height>
+           </rect>
+          </property>
+          <layout class="QFormLayout" name="wsaSettingsPageFormLayout">
+           <property name="labelAlignment">
+            <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="wsaSoapOverrideLabel">
+             <property name="text">
+              <string>Soap action overrides wsa action:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QCheckBox" name="wsaSoapOverrideCheckBox">
+             <property name="text">
+              <string>Soap action if present overrides wsa action</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="wsaDefaultRelationshipTpeLabel">
+             <property name="text">
+              <string>Use default Relationship Type:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QCheckBox" name="wsaDefaultRelationshipTypeCheckBox">
+             <property name="text">
+              <string>Use default 'reply' for RelationshipType</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="wsaDefaultRelatesToLabel">
+             <property name="text">
+              <string>Use default RelatesTo:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QCheckBox" name="wsaDefaultRelatesToCheckBox">
+             <property name="text">
+              <string>Use default 'unspecified' for Relates To</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="wsaOverrideHeadersLabel">
+             <property name="text">
+              <string>Override existing headers:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QCheckBox" name="wsaOverrideHeadersCheckBox">
+             <property name="text">
+              <string>Replaces existing WS-A headers (or skips them if unchecked)</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="wsaAddressingPolicyLabel">
+             <property name="text">
+              <string>Enable for optional Addressing policy:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QCheckBox" name="wsaAddressingPolicyCheckBox">
+             <property name="text">
+              <string>Enables WS-Addressing for Addressing Optional='true'</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="globalSensitiveInformationTokensPage">
+      <layout class="QVBoxLayout" name="globalSensitiveInformationTokensLayout">
+       <item>
+        <widget class="QWidget" name="globalSensitiveInformationTokensTableActionsWidget" native="true">
+         <layout class="QHBoxLayout" name="globalSensitiveInformationTokensTableActionsLayout">
+          <item>
+           <widget class="QToolButton" name="globalSensitiveInformationTokensAddButton">
+            <property name="toolTip">
+             <string>Adds a property to the property list</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset theme="list-add"/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="globalSensitiveInformationTokensRemoveButton">
+            <property name="toolTip">
+             <string>Removes the selected property from the property list</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset theme="list-remove"/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="globalSensitiveInformationTokensUpButton">
+            <property name="toolTip">
+             <string>Moves the selected property up one list</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset theme="go-up"/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="globalSensitiveInformationTokensDownButton">
+            <property name="toolTip">
+             <string>Moves the selected property down one item</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset theme="go-down"/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="globalSensitiveInformationTokensClearButton">
+            <property name="toolTip">
+             <string>Clears all current property values</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset theme="edit-clear"/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="globalSensitiveInformationTokensImportButton">
+            <property name="toolTip">
+             <string>Loads property values from an external file</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset theme="document-open"/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="globalSensitiveInformationTokensExportButton">
+            <property name="toolTip">
+             <string>Saves current property-values to a file</string>
+            </property>
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset theme="document-save-as"/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="globalSensitiveInformationTokensTableActionsHorizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="globalSensitiveInformationTokensTableWidget">
+         <attribute name="horizontalHeaderStretchLastSection">
+          <bool>true</bool>
+         </attribute>
+         <column>
+          <property name="text">
+           <string>Token</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Description</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>KUrlRequester</class>
+   <extends>QWidget</extends>
+   <header>kurlrequester.h</header>
+  </customwidget>
+  <customwidget>
+   <class>KEditListWidget</class>
+   <extends>QWidget</extends>
+   <header>keditlistwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>KFontRequester</class>
+   <extends>QWidget</extends>
+   <header>kfontrequester.h</header>
+  </customwidget>
+  <customwidget>
+   <class>KPasswordLineEdit</class>
+   <extends>QWidget</extends>
+   <header>kpasswordlineedit.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>dialogButtonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dialogButtonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>PreferencesDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <buttongroups>
+  <buttongroup name="proxyModeButtonGroup"/>
+ </buttongroups>
+</ui>

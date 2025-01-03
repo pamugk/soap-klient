@@ -1,11 +1,12 @@
-#ifndef DATASTRUCTURES_H
-#define DATASTRUCTURES_H
+#ifndef WORKSPACE_H
+#define WORKSPACE_H
 
 #include <QList>
-#include <QStringView>
+#include <QString>
 
 namespace data
 {
+
 struct ProjectEntry
 {
     QString name;
@@ -22,4 +23,4 @@ struct Workspace
 };
 }
 
-#endif // DATASTRUCTURES_H
+#endif // WORKSPACE_H

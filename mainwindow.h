@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "preferences.h"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -15,7 +16,11 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void showPreferencesDialog();
+
 private:
+    data::Preferences preferences;
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H

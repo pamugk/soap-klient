@@ -9,18 +9,28 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(QT_MIN_VERSION "6.6.0")
+set(KF_MIN_VERSION "6.0.0")
+
+find_package(ECM ${KF_MIN_VERSION} REQUIRED NO_MODULE)
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Widgets LinguistTools)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets LinguistTools)
+
+find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS CoreAddons KIO WidgetsAddons)
 
 set(TS_FILES soap-klient_ru_RU.ts)
 
 set(PROJECT_SOURCES
-        datastructures.h
-        main.cpp
-        mainwindow.cpp mainwindow.h mainwindow.ui
-        workspacemodel.h workspacemodel.cpp
-        xmlparser.h xmlparser.cpp
-        ${TS_FILES}
+    main.cpp
+    mainwindow.cpp mainwindow.h mainwindow.ui
+    preferences.h
+    preferencesdialog.cpp preferencesdialog.h preferencesdialog.ui
+    workspace.h
+    workspacemodel.h workspacemodel.cpp
+    xmlparser.h xmlparser.cpp
+    ${TS_FILES}
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -50,7 +60,12 @@ else()
     qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 endif()
 
-target_link_libraries(soap-klient PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(soap-klient PRIVATE
+    Qt${QT_VERSION_MAJOR}::Core
+    Qt${QT_VERSION_MAJOR}::Widgets
+    KF6::KIOWidgets
+    KF6::WidgetsAddons
+)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
