@@ -2,12 +2,131 @@
 
 #include <QDebug>
 #include <QFile>
+#include <QList>
+#include <QPair>
+#include <QStringList>
 #include <QXmlStreamReader>
 
 namespace xml {
 
 const QLatin1StringView DEFAULT_NAMESPACE = QLatin1StringView("");
 const QLatin1StringView SOAPUI_CONFIG_NAMESPACE = QLatin1StringView("http://eviware.com/soapui/config");
+
+QList<QPair<QString, QString>> parseSettingsKeyValueList(const QStringView &xml)
+{
+    QList<QPair<QString, QString>> result;
+
+    const QLatin1StringView ENTRY_ELEMENT = QLatin1StringView("entry");
+
+    QXmlStreamReader xmlReader(xml);
+    while (!xmlReader.atEnd())
+    {
+        xmlReader.readNext();
+        if (xmlReader.isStartElement()
+                && xmlReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
+                && xmlReader.name() == ENTRY_ELEMENT)
+        {
+            auto entryAttributes = xmlReader.attributes();
+            result.append(QPair<QString, QString>(QString(xmlReader.attributes().value(DEFAULT_NAMESPACE, "key")),
+                                                  QString(xmlReader.attributes().value(DEFAULT_NAMESPACE, "value"))));
+        }
+    }
+
+    return result;
+}
+
+QList<QPair<QString, QString>> parseSettingsPropertyList(const QStringView &xml)
+{
+    QList<QPair<QString, QString>> result;
+
+    const QLatin1StringView NAME_ELEMENT = QLatin1StringView("name");
+    const QLatin1StringView PROPERTY_ELEMENT = QLatin1StringView("property");
+    const QLatin1StringView VALUE_ELEMENT = QLatin1StringView("value");
+
+    QXmlStreamReader xmlReader(xml);
+    while (!xmlReader.atEnd())
+    {
+        xmlReader.readNext();
+        if (xmlReader.isStartElement()
+                && xmlReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
+                && xmlReader.name() == PROPERTY_ELEMENT)
+        {
+            QString name;
+            QString value;
+
+            do
+            {
+                xmlReader.readNext();
+
+                if (xmlReader.isStartElement()
+                        && xmlReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE)
+                {
+                    if (xmlReader.name() == NAME_ELEMENT)
+                    {
+                        do
+                        {
+                            xmlReader.readNext();
+                            if (xmlReader.isCharacters())
+                            {
+                                name = QString(xmlReader.text());
+                            }
+                        } while (!xmlReader.atEnd() && !(xmlReader.isEndElement()
+                                                         && xmlReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
+                                                         && xmlReader.name() == NAME_ELEMENT));
+                    }
+                    else if (xmlReader.name() == VALUE_ELEMENT)
+                    {
+                        do
+                        {
+                            xmlReader.readNext();
+                            if (xmlReader.isCharacters())
+                            {
+                                value = QString(xmlReader.text());
+                            }
+                        } while (!xmlReader.atEnd() && !(xmlReader.isEndElement()
+                                                         && xmlReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
+                                                         && xmlReader.name() == VALUE_ELEMENT));
+                    }
+                }
+            } while (!xmlReader.atEnd() && !(xmlReader.isEndElement()
+                                             && xmlReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
+                                             && xmlReader.name() == PROPERTY_ELEMENT));
+            result.append(QPair<QString, QString>(name, value));
+        }
+    }
+
+    return result;
+}
+
+QStringList parseSettingsValueList(const QStringView &xml)
+{
+    QStringList result;
+
+    const QLatin1StringView ENTRY_ELEMENT = QLatin1StringView("entry");
+
+    QXmlStreamReader xmlReader(xml);
+    while (!xmlReader.atEnd())
+    {
+        xmlReader.readNext();
+        if (xmlReader.isStartElement()
+                && xmlReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
+                && xmlReader.name() == ENTRY_ELEMENT)
+        {
+            do
+            {
+                xmlReader.readNext();
+                if (xmlReader.isCharacters())
+                {
+                    result.append(QString(xmlReader.text()));
+                }
+            } while (!xmlReader.atEnd() && !(xmlReader.isEndElement()
+                                             && xmlReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
+                                             && xmlReader.name() == ENTRY_ELEMENT));
+        }
+    }
+
+    return result;
+}
 
 data::Preferences parseSettingsFile(const QString &settingsFilePath)
 {
@@ -45,7 +164,22 @@ data::Preferences parseSettingsFile(const QString &settingsFilePath)
 
                             if (settingsReader.isCharacters())
                             {
-                                value = QString(settingsReader.text());
+                                if (id == "WsdlSettings@excluded-types" || id == "RecentAssertionSettings@recent-assertions")
+                                {
+                                    value = parseSettingsValueList(settingsReader.text());
+                                }
+                                else if (id == "RecentProjects" || id == "RecentWorkspaces")
+                                {
+                                    value = QVariant::fromValue(parseSettingsKeyValueList(settingsReader.text()));
+                                }
+                                else if (id == "GlobalPropertySettings@properties" || id == "GlobalPropertySettings@security_scans_properties")
+                                {
+                                    value = QVariant::fromValue(parseSettingsPropertyList(settingsReader.text()));
+                                }
+                                else
+                                {
+                                    value = QString(settingsReader.text());
+                                }
                             }
                         } while(!settingsReader.atEnd() && !(settingsReader.isEndElement()
                                                               && settingsReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE

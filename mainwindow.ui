@@ -73,6 +73,14 @@
     <property name="title">
      <string>File</string>
     </property>
+    <widget class="QMenu" name="menuRecent">
+     <property name="title">
+      <string>Recent</string>
+     </property>
+     <addaction name="actionRecentEditors"/>
+     <addaction name="actionRecentProjects"/>
+     <addaction name="actionRecentWorkspaces"/>
+    </widget>
     <addaction name="actionCreate_Empty_Project"/>
     <addaction name="actionNew_SOAP_Project"/>
     <addaction name="separator"/>
@@ -90,7 +98,7 @@
     <addaction name="actionSave_Preferences"/>
     <addaction name="actionImport_Preferences"/>
     <addaction name="separator"/>
-    <addaction name="actionRecent"/>
+    <addaction name="menuRecent"/>
     <addaction name="separator"/>
     <addaction name="actionExit"/>
     <addaction name="actionExit_Without_Saving"/>
@@ -223,11 +231,6 @@
   <action name="actionImport_Preferences">
    <property name="text">
     <string>Import Pre&amp;ferences</string>
-   </property>
-  </action>
-  <action name="actionRecent">
-   <property name="text">
-    <string>Recent</string>
    </property>
   </action>
   <action name="actionExit">
@@ -398,6 +401,21 @@
   <action name="actionJBossWS_JAX_WS_Artifacts">
    <property name="text">
     <string>JBossWS JAX-WS Artifacts</string>
+   </property>
+  </action>
+  <action name="actionRecentEditors">
+   <property name="text">
+    <string>Editors</string>
+   </property>
+  </action>
+  <action name="actionRecentProjects">
+   <property name="text">
+    <string>Projects</string>
+   </property>
+  </action>
+  <action name="actionRecentWorkspaces">
+   <property name="text">
+    <string>Workspaces</string>
    </property>
   </action>
  </widget>

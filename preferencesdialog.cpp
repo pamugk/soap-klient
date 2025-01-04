@@ -1,6 +1,8 @@
 #include "preferencesdialog.h"
 #include "ui_preferencesdialog.h"
 
+#include <QList>
+#include <QPair>
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
 
@@ -111,6 +113,7 @@ void PreferencesDialog::setPreferences(const data::Preferences &preferences)
     ui->wsdlNoContentTypeValidationCheckBox->setChecked(this->preferences.value(QLatin1StringView("WsdlSettings@allow-incorrect-contenttype")).toBool());
     ui->wsdlSchemaDirectoryUrlRequester->setUrl(this->preferences.value(QLatin1StringView("WsdlSettings@schema-directory")).toString());
     ui->wsdlBindingNameCheckBox->setChecked(this->preferences.value(QLatin1StringView("WsdlSettings@name-with-binding")).toBool());
+    ui->wsdlExcludedTypesEditListWidget->setItems(this->preferences.value(QLatin1StringView("WsdlSettings@excluded-types")).toStringList());
     ui->wsdlStrictSchemaTypesCheckBox->setChecked(this->preferences.value(QLatin1StringView("WsdlSettings@strict-schema-types")).toBool());
     ui->wsdlCompressionSpinBox->setValue(this->preferences.value(QLatin1StringView("WsdlSettings@compression-limit")).toInt());
     ui->wsdlPrettyPrintProjectFilesCheckBox->setChecked(this->preferences.value(QLatin1StringView("WsdlSettings@pretty-print-project-files")).toBool());
@@ -224,9 +227,28 @@ void PreferencesDialog::setPreferences(const data::Preferences &preferences)
     ui->wsiOutputFolderUrlRequester->setUrl(this->preferences.value(QLatin1StringView("WSISettings@outputFolder")).toString());
 
     ui->globalPropertiesEnableOverrideCheckBox->setChecked(this->preferences.value(QLatin1StringView("GlobalPropertySettings@enableOverride")).toBool());
+    auto globalProperties = this->preferences.value(QLatin1StringView("GlobalPropertySettings@properties")).value<QList<QPair<QString, QString>>>();
+    ui->globalPropertiesTableWidget->clearContents();
+    ui->globalPropertiesTableWidget->setRowCount(globalProperties.size());
+    for (int row = 0; row < globalProperties.size(); row++)
+    {
+        const auto &entry = globalProperties[row];
+        ui->globalPropertiesTableWidget->setItem(row, 0, new QTableWidgetItem(entry.first));
+        ui->globalPropertiesTableWidget->setItem(row, 1, new QTableWidgetItem(entry.second));
+    }
 
     ui->globalSecurityPasswordLineEdit->setPassword(this->preferences.value(QLatin1StringView("SecuritySettings@shadowProxyPassword")).toString());
     ui->globalSecurityDisableScriptsCheckBox->setChecked(this->preferences.value(QLatin1StringView("SecuritySettings@disable_project_load_save_scripts")).toBool());
+
+    auto sensitiveInformationTokens = this->preferences.value(QLatin1StringView("GlobalPropertySettings@security_scans_properties")).value<QList<QPair<QString, QString>>>();
+    ui->globalSensitiveInformationTokensTableWidget->clearContents();
+    ui->globalSensitiveInformationTokensTableWidget->setRowCount(sensitiveInformationTokens.size());
+    for (int row = 0; row < sensitiveInformationTokens.size(); row++)
+    {
+        const auto &entry = sensitiveInformationTokens[row];
+        ui->globalSensitiveInformationTokensTableWidget->setItem(row, 0, new QTableWidgetItem(entry.first));
+        ui->globalSensitiveInformationTokensTableWidget->setItem(row, 1, new QTableWidgetItem(entry.second));
+    }
 
     ui->wsaSoapOverrideCheckBox->setChecked(this->preferences.value(QLatin1StringView("WsaSettings@soapActionOverridesWsaAction")).toBool());
     ui->wsaDefaultRelationshipTypeCheckBox->setChecked(this->preferences.value(QLatin1StringView("WsaSettings@useDefaultRelationshipType")).toBool());
