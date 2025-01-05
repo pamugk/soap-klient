@@ -216,6 +216,9 @@
    </property>
   </action>
   <action name="actionPreferences">
+   <property name="icon">
+    <iconset theme="preferences-other"/>
+   </property>
    <property name="text">
     <string>&amp;Preferences</string>
    </property>
@@ -405,17 +408,17 @@
   </action>
   <action name="actionRecentEditors">
    <property name="text">
-    <string>Editors</string>
+    <string>&amp;Editors</string>
    </property>
   </action>
   <action name="actionRecentProjects">
    <property name="text">
-    <string>Projects</string>
+    <string>&amp;Projects</string>
    </property>
   </action>
   <action name="actionRecentWorkspaces">
    <property name="text">
-    <string>Workspaces</string>
+    <string>&amp;Workspaces</string>
    </property>
   </action>
  </widget>

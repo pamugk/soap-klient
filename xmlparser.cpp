@@ -164,15 +164,15 @@ data::Preferences parseSettingsFile(const QString &settingsFilePath)
 
                             if (settingsReader.isCharacters())
                             {
-                                if (id == "WsdlSettings@excluded-types" || id == "RecentAssertionSettings@recent-assertions")
+                                if (id == QLatin1StringView("WsdlSettings@excluded-types") || id == QLatin1StringView("RecentAssertionSettings@recent-assertions"))
                                 {
                                     value = parseSettingsValueList(settingsReader.text());
                                 }
-                                else if (id == "RecentProjects" || id == "RecentWorkspaces")
+                                else if (id == QLatin1StringView("RecentProjects") || id == QLatin1StringView("RecentWorkspaces"))
                                 {
                                     value = QVariant::fromValue(parseSettingsKeyValueList(settingsReader.text()));
                                 }
-                                else if (id == "GlobalPropertySettings@properties" || id == "GlobalPropertySettings@security_scans_properties")
+                                else if (id == QLatin1StringView("GlobalPropertySettings@properties") || id == QLatin1StringView("GlobalPropertySettings@security_scans_properties"))
                                 {
                                     value = QVariant::fromValue(parseSettingsPropertyList(settingsReader.text()));
                                 }

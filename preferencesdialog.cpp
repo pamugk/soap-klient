@@ -1,6 +1,7 @@
 #include "preferencesdialog.h"
 #include "ui_preferencesdialog.h"
 
+#include <KLocalizedString>
 #include <QList>
 #include <QPair>
 #include <QRegularExpression>
@@ -16,21 +17,21 @@ PreferencesDialog::PreferencesDialog(QWidget *parent) :
             this, &PreferencesDialog::setSelectedPage);
     ui->pagesListWidget->setCurrentRow(0);
 
-    ui->httpVersionComboBox->addItem("1.0");
-    ui->httpVersionComboBox->addItem("1.1");
+    ui->httpVersionComboBox->addItem(QLatin1String("1.0"));
+    ui->httpVersionComboBox->addItem(QLatin1String("1.1"));
 
-    ui->httpRequestCompressionComboBox->addItem(tr("None"), "None");
-    ui->httpRequestCompressionComboBox->addItem(tr("gzip"), "gzip");
-    ui->httpRequestCompressionComboBox->addItem(tr("deflate"), "deflate");
+    ui->httpRequestCompressionComboBox->addItem(i18n("None"), QLatin1String("None"));
+    ui->httpRequestCompressionComboBox->addItem(i18n("gzip"), QLatin1String("gzip"));
+    ui->httpRequestCompressionComboBox->addItem(i18n("deflate"), QLatin1String("deflate"));
 
-    ui->uiDesktopTypeComboBox->addItem(tr("Default"), "Default");
+    ui->uiDesktopTypeComboBox->addItem(i18n("Default"), QLatin1String("Default"));
 
-    ui->wsiProfileComboBox->addItem("BasicSecurityProfile-1.0-TAD.xml");
-    ui->wsiProfileComboBox->addItem("BasicSecurityProfile-1.1-TAD.xml");
+    ui->wsiProfileComboBox->addItem(QLatin1String("BasicSecurityProfile-1.0-TAD.xml"));
+    ui->wsiProfileComboBox->addItem(QLatin1String("BasicSecurityProfile-1.1-TAD.xml"));
 
-    ui->wsiCorrelationComboBox->addItem(tr("endpoint"), "endpoint");
-    ui->wsiCorrelationComboBox->addItem(tr("namespace"), "namespace");
-    ui->wsiCorrelationComboBox->addItem(tr("operation"), "operation");
+    ui->wsiCorrelationComboBox->addItem(i18n("endpoint"), QLatin1String("endpoint"));
+    ui->wsiCorrelationComboBox->addItem(i18n("namespace"), QLatin1String("namespace"));
+    ui->wsiCorrelationComboBox->addItem(i18n("operation"), QLatin1String("operation"));
 }
 
 PreferencesDialog::~PreferencesDialog()
@@ -46,15 +47,15 @@ void PreferencesDialog::setPreferences(const data::Preferences &preferences)
     ui->httpUserAgentHeaderLineEdit->setText(this->preferences.value(QLatin1StringView("HttpSettings@user-agent")).toString());
     auto requestCompression = this->preferences.value(QLatin1StringView("HttpSettings@request-compression")).toString();
     int selectedRequestCompression;
-    if (requestCompression == "None")
+    if (requestCompression == QLatin1StringView("None"))
     {
         selectedRequestCompression = 0;
     }
-    else if (requestCompression == "gzip")
+    else if (requestCompression == QLatin1StringView("gzip"))
     {
         selectedRequestCompression = 1;
     }
-    else if (requestCompression == "deflate")
+    else if (requestCompression == QLatin1StringView("deflate"))
     {
         selectedRequestCompression = 2;
     }
@@ -93,14 +94,14 @@ void PreferencesDialog::setPreferences(const data::Preferences &preferences)
     ui->proxyUsernameLineEdit->setText(this->preferences.value(QLatin1StringView("ProxySettings@username")).toString());
     ui->proxyPasswordLineEdit->setPassword(this->preferences.value(QLatin1StringView("ProxySettings@password")).toString());
 
-    ui->sslKeyStoreUrlRequester->setUrl(this->preferences.value(QLatin1StringView("SSLSettings@keyStore")).toString());
+    ui->sslKeyStoreUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("SSLSettings@keyStore")).toString()));
     ui->sslKeyStorePasswordLineEdit->setPassword(this->preferences.value(QLatin1StringView("SSLSettings@keyStorePassword")).toString());
     ui->sslMockCheckBox->setChecked(this->preferences.value(QLatin1StringView("SSLSettings@enableMockSSL")).toBool());
     ui->sslMockPortSpinBox->setValue(this->preferences.value(QLatin1StringView("SSLSettings@mockPort")).toInt());
-    ui->sslMockKeyStoreUrlRequester->setUrl(this->preferences.value(QLatin1StringView("SSLSettings@mockKeyStore")).toString());
+    ui->sslMockKeyStoreUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("SSLSettings@mockKeyStore")).toString()));
     ui->sslMockPasswordLineEdit->setPassword(this->preferences.value(QLatin1StringView("SSLSettings@mockPassword")).toString());
     ui->sslMockKeyPasswordLineEdit->setPassword(this->preferences.value(QLatin1StringView("SSLSettings@mockKeyStorePassword")).toString());
-    ui->sslMockTrustStoreUrlRequester->setUrl(this->preferences.value(QLatin1StringView("SSLSettings@mockTrustStore")).toString());
+    ui->sslMockTrustStoreUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("SSLSettings@mockTrustStore")).toString()));
     ui->sslMockTrustStorePasswordLineEdit->setPassword(this->preferences.value(QLatin1StringView("SSLSettings@mockTrustStorePassword")).toString());
     ui->sslClientAuthenticationCheckBox->setChecked(this->preferences.value(QLatin1StringView("SSLSettings@needClientAuthentication")).toBool());
 
@@ -111,7 +112,7 @@ void PreferencesDialog::setPreferences(const data::Preferences &preferences)
     ui->wsdlPrettyPrintCheckBox->setChecked(this->preferences.value(QLatin1StringView("WsdlSettings@pretty-print-response-xml")).toBool());
     ui->wsdlAttachmentPartsCheckBox->setChecked(this->preferences.value(QLatin1StringView("WsdlSettings@attachment-parts")).toBool());
     ui->wsdlNoContentTypeValidationCheckBox->setChecked(this->preferences.value(QLatin1StringView("WsdlSettings@allow-incorrect-contenttype")).toBool());
-    ui->wsdlSchemaDirectoryUrlRequester->setUrl(this->preferences.value(QLatin1StringView("WsdlSettings@schema-directory")).toString());
+    ui->wsdlSchemaDirectoryUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("WsdlSettings@schema-directory")).toString()));
     ui->wsdlBindingNameCheckBox->setChecked(this->preferences.value(QLatin1StringView("WsdlSettings@name-with-binding")).toBool());
     ui->wsdlExcludedTypesEditListWidget->setItems(this->preferences.value(QLatin1StringView("WsdlSettings@excluded-types")).toStringList());
     ui->wsdlStrictSchemaTypesCheckBox->setChecked(this->preferences.value(QLatin1StringView("WsdlSettings@strict-schema-types")).toBool());
@@ -126,11 +127,11 @@ void PreferencesDialog::setPreferences(const data::Preferences &preferences)
     ui->uiShowDescriptionsCheckBox->setChecked(this->preferences.value(QLatin1StringView("UISettings@show_descriptions")).toBool());
     ui->uiSaveProjectCheckBox->setChecked(this->preferences.value(QLatin1StringView("UISettings@auto_save_projects_on_exit")).toBool());
     ui->uiCreatBackupCheckBox->setChecked(this->preferences.value(QLatin1StringView("UISettings@create_backup")).toBool());
-    ui->uiBackupFolderUrlRequester->setUrl(this->preferences.value(QLatin1StringView("UISettings@backup_folder")).toString());
+    ui->uiBackupFolderUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("UISettings@backup_folder")).toString()));
     ui->uiAutosaveIntervalSpinBox->setValue(this->preferences.value(QLatin1StringView("UISettings@auto_save_interval")).toInt());
     auto uiDesktopType = this->preferences.value(QLatin1StringView("UISettings@desktop-type")).toString();
     int selectedDesktopType;
-    if (uiDesktopType == "Default")
+    if (uiDesktopType == QLatin1StringView("Default"))
     {
         selectedDesktopType = 0;
     }
@@ -159,7 +160,7 @@ void PreferencesDialog::setPreferences(const data::Preferences &preferences)
     }
     else
     {
-        QRegularExpression fontRegexp("^(.+)\\s+(\\d+)$");
+        QRegularExpression fontRegexp(QLatin1String("^(.+)\\s+(\\d+)$"));
         QRegularExpressionMatch fontMatch = fontRegexp.match(editorFontText);
         if (fontMatch.hasMatch())
         {
@@ -180,37 +181,37 @@ void PreferencesDialog::setPreferences(const data::Preferences &preferences)
     ui->editorAbortInvalidCheckBox->setChecked(this->preferences.value(QLatin1StringView("UISettings@abort_on_invalid_request")).toBool());
     ui->editorValidateResponseCheckBox->setChecked(this->preferences.value(QLatin1StringView("UISettings@auto_validate_response")).toBool());
 
-    ui->toolsJbossUrlRequester->setUrl(this->preferences.value(QLatin1StringView("ToolsSettings@jbossws_wstools")).toString());
-    ui->toolsJaxRpcUrlRequester->setUrl(this->preferences.value(QLatin1StringView("ToolsSettings@jwsdp_wscompile")).toString());
-    ui->toolsJaxWsUrlRequester->setUrl(this->preferences.value(QLatin1StringView("ToolsSettings@jwsdp_wsimport")).toString());
-    ui->toolsAxis1UrlRequester->setUrl(this->preferences.value(QLatin1StringView("ToolsSettings@axis_1_X")).toString());
-    ui->toolsAxis2UrlRequester->setUrl(this->preferences.value(QLatin1StringView("ToolsSettings@axis_2")).toString());
-    ui->toolsDotnetWsdlUrlRequester->setUrl(this->preferences.value(QLatin1StringView("ToolsSettings@dotnet_wsdl")).toString());
-    ui->toolsXfireUrlRequester->setUrl(this->preferences.value(QLatin1StringView("ToolsSettings@xfire")).toString());
-    ui->toolsCxfUrlRequester->setUrl(this->preferences.value(QLatin1StringView("ToolsSettings@cxf")).toString());
-    ui->toolsAntUrlRequester->setUrl(this->preferences.value(QLatin1StringView("ToolsSettings@ant")).toString());
-    ui->toolsGsoapUrlRequester->setUrl(this->preferences.value(QLatin1StringView("ToolsSettings@gsoap")).toString());
-    ui->toolsJaxbUrlRequester->setUrl(this->preferences.value(QLatin1StringView("ToolsSettings@jaxb")).toString());
-    ui->toolsXmlBeansUrlRequester->setUrl(this->preferences.value(QLatin1StringView("ToolsSettings@xmlbeans")).toString());
-    ui->toolsJavacUrlRequester->setUrl(this->preferences.value(QLatin1StringView("ToolsSettings@javac")).toString());
-    ui->toolsTcpMonUrlRequester->setUrl(this->preferences.value(QLatin1StringView("ToolsSettings@tcpmon")).toString());
-    ui->toolsWsaUrlRequester->setUrl(this->preferences.value(QLatin1StringView("ToolsSettings@wsa")).toString());
-    ui->toolsWadl2JavaUrlRequester->setUrl(this->preferences.value(QLatin1StringView("ToolsSettings@wadl2java")).toString());
-    ui->toolsHermesJmsUrlRequester->setUrl(this->preferences.value(QLatin1StringView("ToolsSettings@hermesjms")).toString());
+    ui->toolsJbossUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("ToolsSettings@jbossws_wstools")).toString()));
+    ui->toolsJaxRpcUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("ToolsSettings@jwsdp_wscompile")).toString()));
+    ui->toolsJaxWsUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("ToolsSettings@jwsdp_wsimport")).toString()));
+    ui->toolsAxis1UrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("ToolsSettings@axis_1_X")).toString()));
+    ui->toolsAxis2UrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("ToolsSettings@axis_2")).toString()));
+    ui->toolsDotnetWsdlUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("ToolsSettings@dotnet_wsdl")).toString()));
+    ui->toolsXfireUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("ToolsSettings@xfire")).toString()));
+    ui->toolsCxfUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("ToolsSettings@cxf")).toString()));
+    ui->toolsAntUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("ToolsSettings@ant")).toString()));
+    ui->toolsGsoapUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("ToolsSettings@gsoap")).toString()));
+    ui->toolsJaxbUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("ToolsSettings@jaxb")).toString()));
+    ui->toolsXmlBeansUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("ToolsSettings@xmlbeans")).toString()));
+    ui->toolsJavacUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("ToolsSettings@javac")).toString()));
+    ui->toolsTcpMonUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("ToolsSettings@tcpmon")).toString()));
+    ui->toolsWsaUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("ToolsSettings@wsa")).toString()));
+    ui->toolsWadl2JavaUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("ToolsSettings@wadl2java")).toString()));
+    ui->toolsHermesJmsUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("ToolsSettings@hermesjms")).toString()));
 
     ui->wsiVerboseCheckBox->setChecked(this->preferences.value(QLatin1StringView("WSISettings@verbose")).toBool());
     ui->wsiProfileComboBox->setCurrentText(this->preferences.value(QLatin1StringView("WSISettings@profile_type")).toString());
     auto wsiCorrelation = this->preferences.value(QLatin1StringView("WSISettings@correlation_type")).toString();
     int selectedWsiCorrelation;
-    if (wsiCorrelation == "endpoint")
+    if (wsiCorrelation == QLatin1StringView("endpoint"))
     {
         selectedWsiCorrelation = 0;
     }
-    else if (wsiCorrelation == "namespace")
+    else if (wsiCorrelation == QLatin1StringView("namespace"))
     {
         selectedWsiCorrelation = 1;
     }
-    else if (wsiCorrelation == "operation")
+    else if (wsiCorrelation == QLatin1StringView("operation"))
     {
         selectedWsiCorrelation = 2;
     }
@@ -222,9 +223,9 @@ void PreferencesDialog::setPreferences(const data::Preferences &preferences)
     ui->wsiMessageEntryCheckBox->setChecked(this->preferences.value(QLatin1StringView("WSISettings@messageEntry")).toBool());
     ui->wsiFailureMessageCheckBox->setChecked(this->preferences.value(QLatin1StringView("WSISettings@failureMessage")).toBool());
     ui->wsiAssertionDescriptionCheckBox->setChecked(this->preferences.value(QLatin1StringView("WSISettings@assertionDescription")).toBool());
-    ui->wsiToolLocationUrlRequester->setUrl(this->preferences.value(QLatin1StringView("WSISettings@location")).toString());
+    ui->wsiToolLocationUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("WSISettings@location")).toString()));
     ui->wsiShowLogCheckBox->setChecked(this->preferences.value(QLatin1StringView("WSISettings@showLog")).toBool());
-    ui->wsiOutputFolderUrlRequester->setUrl(this->preferences.value(QLatin1StringView("WSISettings@outputFolder")).toString());
+    ui->wsiOutputFolderUrlRequester->setUrl(QUrl(this->preferences.value(QLatin1StringView("WSISettings@outputFolder")).toString()));
 
     ui->globalPropertiesEnableOverrideCheckBox->setChecked(this->preferences.value(QLatin1StringView("GlobalPropertySettings@enableOverride")).toBool());
     auto globalProperties = this->preferences.value(QLatin1StringView("GlobalPropertySettings@properties")).value<QList<QPair<QString, QString>>>();

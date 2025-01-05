@@ -18,8 +18,8 @@ public:
 
     void setPreferences(const data::Preferences &preferences);
 
-private slots:
-    void setSelectedPage(int selectedPageIndex);
+private:
+    Q_SLOT void setSelectedPage(int selectedPageIndex);
 
 private:
     data::Preferences preferences;

@@ -4,6 +4,7 @@
 #include "preferencesdialog.h"
 #include "workspacemodel.h"
 #include "xmlparser.h"
+#include <KLocalizedString>
 #include <QLatin1StringView>
 #include <QList>
 #include <QPair>
@@ -19,23 +20,23 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionPreferences, &QAction::triggered,
             this, &MainWindow::showPreferencesDialog);
 
-    auto defaultWorkspacePath = QStandardPaths::locate(QStandardPaths::HomeLocation, "default-soapui-workspace.xml", QStandardPaths::LocateFile);
-    static_cast<WorkspaceModel*>(ui->projectsTreeView->model())->setWorkspacePath(defaultWorkspacePath);
+    auto defaultWorkspacePath = QStandardPaths::locate(QStandardPaths::HomeLocation, QLatin1StringView("default-soapui-workspace.xml"), QStandardPaths::LocateFile);
+    static_cast<WorkspaceModel*>(ui->projectsTreeView->model())->setWorkspace(xml::parseWorkspaceFile(defaultWorkspacePath));
 
-    auto defaultSettingsPath = QStandardPaths::locate(QStandardPaths::HomeLocation, "soapui-settings.xml", QStandardPaths::LocateFile);
+    auto defaultSettingsPath = QStandardPaths::locate(QStandardPaths::HomeLocation, QLatin1StringView("soapui-settings.xml"), QStandardPaths::LocateFile);
     this->preferences = xml::parseSettingsFile(defaultSettingsPath);
 
     auto menuRecentEditors = new QMenu();
-    menuRecentEditors->addAction(tr("empty"))->setEnabled(false);
+    menuRecentEditors->addAction(i18n("empty"))->setEnabled(false);
     menuRecentEditors->addSeparator();
-    menuRecentEditors->addAction(tr("Clear items"))->setEnabled(false);
+    menuRecentEditors->addAction(i18n("Clear items"))->setEnabled(false);
     ui->actionRecentEditors->setMenu(menuRecentEditors);
 
     auto menuRecentProjects = new QMenu();
     auto recentProjects = this->preferences.value(QLatin1StringView("RecentProjects")).value<QList<QPair<QString, QString>>>();
     if (recentProjects.isEmpty())
     {
-        menuRecentProjects->addAction(tr("empty"))->setEnabled(false);
+        menuRecentProjects->addAction(i18n("empty"))->setEnabled(false);
     }
     else
     {
@@ -45,14 +46,14 @@ MainWindow::MainWindow(QWidget *parent)
         }
     }
     menuRecentProjects->addSeparator();
-    menuRecentProjects->addAction(tr("Clear items"))->setEnabled(!recentProjects.empty());
+    menuRecentProjects->addAction(i18n("Clear items"))->setEnabled(!recentProjects.empty());
     ui->actionRecentProjects->setMenu(menuRecentProjects);
 
     auto menuRecentWorkspaces = new QMenu();
     auto recentWorkspaces = this->preferences.value(QLatin1StringView("RecentWorkspaces")).value<QList<QPair<QString, QString>>>();
     if (recentWorkspaces.isEmpty())
     {
-        menuRecentWorkspaces->addAction(tr("empty"))->setEnabled(false);
+        menuRecentWorkspaces->addAction(i18n("empty"))->setEnabled(false);
     }
     else
     {
@@ -62,7 +63,7 @@ MainWindow::MainWindow(QWidget *parent)
         }
     }
     menuRecentWorkspaces->addSeparator();
-    menuRecentWorkspaces->addAction(tr("Clear items"))->setEnabled(!recentWorkspaces.empty());
+    menuRecentWorkspaces->addAction(i18n("Clear items"))->setEnabled(!recentWorkspaces.empty());
     ui->actionRecentWorkspaces->setMenu(menuRecentWorkspaces);
 }
 

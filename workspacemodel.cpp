@@ -1,6 +1,5 @@
 #include "workspacemodel.h"
 
-#include "xmlparser.h"
 #include <QIcon>
 
 WorkspaceModel::WorkspaceModel(QObject *parent)
@@ -67,10 +66,9 @@ int WorkspaceModel::rowCount(const QModelIndex &parent) const
     return parent.isValid() ? 0 : workspace.projects.size();
 }
 
-void WorkspaceModel::setWorkspacePath(const QString &workspacePath)
+void WorkspaceModel::setWorkspace(const data::Workspace &workspace)
 {
     beginResetModel();
-    this->workspacePath = workspacePath;
-    this->workspace = xml::parseWorkspaceFile(workspacePath);
+    this->workspace = workspace;
     endResetModel();
 }

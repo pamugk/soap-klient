@@ -1,23 +1,18 @@
 #include "mainwindow.h"
 
+#include <KLocalizedString>
 #include <QApplication>
-#include <QLocale>
-#include <QTranslator>
+#include <QCommandLineParser>
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
+    QApplication app(argc, argv);
+    KLocalizedString::setApplicationDomain("soap-klient");
 
-    QTranslator translator;
-    const QStringList uiLanguages = QLocale::system().uiLanguages();
-    for (const QString &locale : uiLanguages) {
-        const QString baseName = "soap-klient_" + QLocale(locale).name();
-        if (translator.load(":/i18n/" + baseName)) {
-            a.installTranslator(&translator);
-            break;
-        }
-    }
+    QCommandLineParser parser;
+    parser.process(app);
+
     MainWindow w;
     w.show();
-    return a.exec();
+    return app.exec();
 }

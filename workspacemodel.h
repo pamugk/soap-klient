@@ -19,11 +19,10 @@ public:
     virtual QModelIndex parent(const QModelIndex &index) const override;
     virtual int rowCount(const QModelIndex &parent = QModelIndex()) const override;
 
-    void setWorkspacePath(const QString &workspacePath);
+    void setWorkspace(const data::Workspace &workspace);
 
 private:
     data::Workspace workspace;
-    QString workspacePath;
 
 };
 

@@ -16,8 +16,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-private slots:
-    void showPreferencesDialog();
+private:
+    Q_SLOT void showPreferencesDialog();
 
 private:
     data::Preferences preferences;
