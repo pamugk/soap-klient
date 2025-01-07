@@ -2,13 +2,11 @@
 #define MAINWINDOW_H
 
 #include "preferences.h"
-#include <QMainWindow>
+#include <KXmlGuiWindow>
 
-QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
-QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
+class MainWindow : public KXmlGuiWindow
 {
     Q_OBJECT
 

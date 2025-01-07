@@ -4,9 +4,7 @@
 #include "preferences.h"
 #include <QDialog>
 
-namespace Ui {
-class PreferencesDialog;
-}
+namespace Ui { class PreferencesDialog; }
 
 class PreferencesDialog : public QDialog
 {
@@ -17,9 +15,6 @@ public:
     ~PreferencesDialog();
 
     void setPreferences(const data::Preferences &preferences);
-
-private:
-    Q_SLOT void setSelectedPage(int selectedPageIndex);
 
 private:
     data::Preferences preferences;

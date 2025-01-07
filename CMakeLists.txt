@@ -2,10 +2,6 @@ cmake_minimum_required(VERSION 3.20)
 
 project(soap-klient VERSION 0.1 LANGUAGES CXX)
 
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -22,15 +18,15 @@ include(FeatureSummary)
 
 find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Widgets)
 
-find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS CoreAddons I18n KIO WidgetsAddons)
+find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS CoreAddons I18n KIO WidgetsAddons XmlGui)
 
 add_executable(soap-klient)
 
 target_sources(soap-klient PRIVATE
     main.cpp
-    mainwindow.cpp mainwindow.h mainwindow.ui
+    mainwindow.cpp mainwindow.h ui_mainwindow.h
     preferences.h
-    preferencesdialog.cpp preferencesdialog.h preferencesdialog.ui
+    preferencesdialog.cpp preferencesdialog.h ui_preferencesdialog.h
     workspace.h
     workspacemodel.h workspacemodel.cpp
     xmlparser.h xmlparser.cpp
@@ -43,6 +39,7 @@ target_link_libraries(soap-klient PRIVATE
     KF6::I18n
     KF6::KIOWidgets
     KF6::WidgetsAddons
+    KF6::XmlGui
 )
 
 install(TARGETS soap-klient ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
