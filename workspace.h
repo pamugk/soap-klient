@@ -11,8 +11,8 @@ struct ProjectEntry
 {
     QString name;
     QString path;
-    QString status;
-    QString type;
+    bool closed;
+    bool remote;
 };
 
 struct Workspace

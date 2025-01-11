@@ -27,6 +27,7 @@ target_sources(soap-klient PRIVATE
     mainwindow.cpp mainwindow.h ui_mainwindow.h
     preferences.h
     preferencesdialog.cpp preferencesdialog.h ui_preferencesdialog.h
+    project.h
     workspace.h
     workspacemodel.h workspacemodel.cpp
     xmlparser.h xmlparser.cpp

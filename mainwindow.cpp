@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
             this, &MainWindow::showPreferencesDialog);
 
     auto defaultSettingsPath = QStandardPaths::locate(QStandardPaths::HomeLocation, QStringLiteral("soapui-settings.xml"), QStandardPaths::LocateFile);
-    this->preferences = xml::parseSettingsFile(defaultSettingsPath);
+    this->preferences = xml::parseSettingsFile(defaultSettingsPath).value();
     auto recentProjects = this->preferences.value(QStringLiteral("RecentProjects")).value<QList<QPair<QString, QString>>>();
     if (recentProjects.isEmpty())
     {
@@ -53,7 +53,23 @@ MainWindow::MainWindow(QWidget *parent)
     auto projectsModel = new WorkspaceModel();
     ui->projectsTreeView->setModel(projectsModel);
     auto defaultWorkspacePath = QStandardPaths::locate(QStandardPaths::HomeLocation, QStringLiteral("default-soapui-workspace.xml"), QStandardPaths::LocateFile);
-    projectsModel->setWorkspace(xml::parseWorkspaceFile(defaultWorkspacePath));
+    auto workspace = xml::parseWorkspaceFile(defaultWorkspacePath).value();
+    QList<std::optional<data::Project>> projects;
+    for (auto &projectEntry: workspace.projects)
+    {
+        if (projectEntry.closed)
+        {
+            projects.append(std::nullopt);
+        }
+        else
+        {
+            auto project = xml::parseProjectFile(projectEntry.path);
+            projectEntry.closed = !project.has_value();
+            projectEntry.remote = projectEntry.closed;
+            projects.append(project);
+        }
+    }
+    projectsModel->setWorkspace(workspace, projects);
 }
 
 MainWindow::~MainWindow()
