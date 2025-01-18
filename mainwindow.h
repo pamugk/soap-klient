@@ -15,6 +15,7 @@ public:
     ~MainWindow();
 
 private:
+    Q_SLOT void selectWorkspaceModelItem(const QModelIndex &index);
     Q_SLOT void showPreferencesDialog();
 
 private:

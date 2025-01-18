@@ -79,23 +79,38 @@ QVariant WorkspaceModel::data(const QModelIndex &index, int role) const
 
         if (path[3] != -1)
         {
+            auto operationCall = &projects[path[3]]->interfaces[path[2]].operations[path[1]].calls[path[0]];
             if (role == Qt::DisplayRole)
             {
-                return projects[path[3]]->interfaces[path[2]].operations[path[1]].calls[path[0]].name;
+                return operationCall->name;
+            }
+            else if (role == Qt::UserRole)
+            {
+                return QVariant::fromValue(NodeKind::OPERATION_CALL);
             }
         }
         else if (path[2] != -1)
         {
+            auto operation = &projects[path[2]]->interfaces[path[1]].operations[path[0]];
             if (role == Qt::DisplayRole)
             {
-                return projects[path[2]]->interfaces[path[1]].operations[path[0]].name;
+                return operation->name;
+            }
+            else if (role == Qt::UserRole)
+            {
+                return QVariant::fromValue(NodeKind::OPERATION);
             }
         }
         else if (path[1] != -1)
         {
+            auto interface = &projects[path[1]]->interfaces[path[0]];
             if (role == Qt::DisplayRole)
             {
-                return projects[path[1]]->interfaces[path[0]].name;
+                return interface->name;
+            }
+            else if (role == Qt::UserRole)
+            {
+                return QVariant::fromValue(NodeKind::INTERFACE);
             }
         }
         else
@@ -119,6 +134,10 @@ QVariant WorkspaceModel::data(const QModelIndex &index, int role) const
                 {
                     return QIcon::fromTheme(QIcon::ThemeIcon::FolderOpen);
                 }
+            }
+            else if (role == Qt::UserRole)
+            {
+                return QVariant::fromValue(NodeKind::PROJECT);
             }
         }
 

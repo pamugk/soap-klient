@@ -26,6 +26,14 @@ public:
 
     void setWorkspace(const data::Workspace &workspace, const QList<std::optional<data::Project>> &projects);
 
+    enum NodeKind
+    {
+        PROJECT,
+        INTERFACE,
+        OPERATION,
+        OPERATION_CALL,
+    };
+
 private:
     QList<Node*> projectNodes;
     QList<std::optional<data::Project>> projects;

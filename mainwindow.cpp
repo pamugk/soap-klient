@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include "interfacepage.h"
+#include "operationcallpage.h"
+#include "projectpage.h"
 #include "preferencesdialog.h"
 #include "workspacemodel.h"
 #include "xmlparser.h"
@@ -18,6 +21,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->actionPreferences, &QAction::triggered,
             this, &MainWindow::showPreferencesDialog);
+    connect(ui->projectsTreeView, &QAbstractItemView::activated,
+            this, &MainWindow::selectWorkspaceModelItem);
 
     auto defaultSettingsPath = QStandardPaths::locate(QStandardPaths::HomeLocation, QStringLiteral("soapui-settings.xml"), QStandardPaths::LocateFile);
     this->preferences = xml::parseSettingsFile(defaultSettingsPath).value();
@@ -75,6 +80,39 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::selectWorkspaceModelItem(const QModelIndex &index)
+{
+    QWidget *previousPage = ui->mainContentWidgetLayout->itemAtPosition(0, 1)->widget();
+    QWidget *nextPage;
+    if (index.isValid())
+    {
+        auto entryData = index.data(Qt::UserRole).value<WorkspaceModel::NodeKind>();
+        switch (entryData)
+        {
+        case WorkspaceModel::PROJECT:
+            nextPage = new ProjectPage(ui->mainContentWidget);
+            break;
+        case WorkspaceModel::INTERFACE:
+            nextPage = new InterfacePage(ui->mainContentWidget);
+            break;
+        case WorkspaceModel::OPERATION:
+            nextPage = new QWidget(ui->mainContentWidget);
+            break;
+        case WorkspaceModel::OPERATION_CALL:
+            nextPage = new OperationCallPage(ui->mainContentWidget);
+            break;
+        }
+    }
+    else
+    {
+        nextPage = new QWidget(ui->mainContentWidget);
+    }
+
+    QLayoutItem *replacedItem = ui->mainContentWidgetLayout->replaceWidget(previousPage, nextPage);
+    delete replacedItem;
+    previousPage->deleteLater();
 }
 
 void MainWindow::showPreferencesDialog()

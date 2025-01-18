@@ -23,11 +23,14 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS CoreAddons I18n KIO Widge
 add_executable(soap-klient)
 
 target_sources(soap-klient PRIVATE
+    interfacepage.cpp interfacepage.h ui_interfacepage.h
     main.cpp
     mainwindow.cpp mainwindow.h ui_mainwindow.h
+    operationcallpage.cpp operationcallpage.h ui_operationcallpage.h
     preferences.h
     preferencesdialog.cpp preferencesdialog.h ui_preferencesdialog.h
     project.h
+    projectpage.cpp projectpage.h ui_projectpage.h
     workspace.h
     workspacemodel.h workspacemodel.cpp
     xmlparser.h xmlparser.cpp
