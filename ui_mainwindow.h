@@ -4,8 +4,10 @@
 #include <KLocalizedString>
 #include <KXmlGuiWindow>
 #include <QGridLayout>
+#include <QLabel>
 #include <QMenuBar>
 #include <QStackedWidget>
+#include <QProgressBar>
 #include <QStatusBar>
 #include <QTreeView>
 #include <QVBoxLayout>
@@ -20,6 +22,8 @@ struct MainWindow
     QWidget *mainContentWidget;
     QGridLayout *mainContentWidgetLayout;
     QTreeView *projectsTreeView;
+
+    QWidget *progressWidget;
 
     void setupUi(KXmlGuiWindow *implementation)
     {
@@ -101,6 +105,17 @@ struct MainWindow
         implementation->setCentralWidget(mainContentWidget);
 
         implementation->setStatusBar(new QStatusBar(implementation));
+        progressWidget = new QWidget(implementation->statusBar());
+        progressWidget->setLayout(new QHBoxLayout(progressWidget));
+        auto progressBar = new QProgressBar(progressWidget);
+        progressBar->setMinimum(0);
+        progressBar->setMinimumWidth(100);
+        progressBar->setMaximum(0);
+        progressBar->setMaximumWidth(100);
+        progressWidget->layout()->addWidget(progressBar);
+        auto progressLabel = new QLabel(i18n("Executing SOAP request…"), progressWidget);
+        progressWidget->layout()->addWidget(progressLabel);
+        progressWidget->hide();
     }
 };
 }

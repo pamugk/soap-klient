@@ -7,6 +7,7 @@
 #include <optional>
 #include <QAbstractItemModel>
 #include <QObject>
+#include <variant>
 
 class WorkspaceModel : public QAbstractItemModel
 {
@@ -26,12 +27,16 @@ public:
 
     void setWorkspace(const data::Workspace &workspace, const QList<std::optional<data::Project>> &projects);
 
-    enum NodeKind
+    struct NodeData
     {
-        PROJECT,
-        INTERFACE,
-        OPERATION,
-        OPERATION_CALL,
+        enum
+        {
+            PROJECT,
+            INTERFACE,
+            OPERATION,
+            OPERATION_CALL,
+        } kind;
+        std::variant<const std::optional<data::Project>*, const data::Interface*, const data::Operation*, const data::OperationCall*> contents;
     };
 
 private:

@@ -1,6 +1,8 @@
 #ifndef OPERATIONCALLPAGE_H
 #define OPERATIONCALLPAGE_H
 
+#include "operationcall.h"
+#include "soapclient.h"
 #include <QWidget>
 
 namespace Ui { class OperationCallPage; }
@@ -12,7 +14,11 @@ public:
     explicit OperationCallPage(QWidget *parent = nullptr);
     ~OperationCallPage();
 
+    void initialize(const data::OperationCall *data);
+    Q_SLOT void sendRequest();
+
 private:
+    SoapClient *soapClient;
     Ui::OperationCallPage *ui;
 
 };

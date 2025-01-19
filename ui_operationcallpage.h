@@ -2,11 +2,14 @@
 #define UI_OPERATIONCALLPAGE_H
 
 #include <KLocalizedString>
+#include <KTextEdit>
+#include <KTextEditor/Document>
+#include <KTextEditor/Editor>
+#include <KTextEditor/View>
 #include <QHBoxLayout>
 #include <QLineEdit>
 #include <QSplitter>
 #include <QTabWidget>
-#include <QTextEdit>
 #include <QToolButton>
 #include <QVBoxLayout>
 #include <QWidget>
@@ -18,10 +21,12 @@ struct OperationCallPage
     QToolButton *sendRequestButton;
     QToolButton *abortRequestButton;
     QLineEdit *urlLineEdit;
-    QTextEdit *requestXmlTextEdit;
-    QTextEdit *requestRawTextEdit;
-    QTextEdit *responseXmlTextEdit;
-    QTextEdit *responseRawTextEdit;
+    KTextEditor::Document *requestXmlDocument;
+    KTextEditor::View *requestXmlView;
+    KTextEdit *requestRawTextEdit;
+    KTextEditor::Document *responseXmlDocument;
+    KTextEditor::View *responseXmlView;
+    KTextEdit *responseRawTextEdit;
 
     void setupUi(QWidget *implementation)
     {
@@ -33,33 +38,43 @@ struct OperationCallPage
         sendRequestButton->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStart));
         pageHeader->layout()->addWidget(sendRequestButton);
         abortRequestButton = new QToolButton(pageHeader);
+        abortRequestButton->setEnabled(false);
         abortRequestButton->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStop));
         pageHeader->layout()->addWidget(abortRequestButton);
         urlLineEdit = new QLineEdit(implementation);
+        urlLineEdit->setReadOnly(true);
         pageHeader->layout()->addWidget(urlLineEdit);
         implementation->layout()->addWidget(pageHeader);
 
         auto contentSplitter = new QSplitter(implementation);
         const QSize minimumTabSize(200, 200);
+        auto textEditor = KTextEditor::Editor::instance();
 
         auto requestTabWidget = new QTabWidget(contentSplitter);
         requestTabWidget->setMinimumSize(minimumTabSize);
         requestTabWidget->setTabPosition(QTabWidget::West);
-        requestXmlTextEdit = new QTextEdit(requestTabWidget);
-        requestTabWidget->addTab(requestXmlTextEdit, i18n("XML"));
-        requestRawTextEdit = new QTextEdit(requestTabWidget);
+        requestXmlDocument = textEditor->createDocument(implementation);
+        requestXmlDocument->setEncoding(QStringLiteral("UTF-8"));
+        requestXmlDocument->setMode(QStringLiteral("XML"));
+        requestXmlView = requestXmlDocument->createView(contentSplitter);
+        requestTabWidget->addTab(requestXmlView, i18n("XML"));
+        requestRawTextEdit = new KTextEdit(requestTabWidget);
         requestRawTextEdit->setReadOnly(true);
+        requestRawTextEdit->setText(i18n("<missing raw request data>"));
         requestTabWidget->addTab(requestRawTextEdit, i18n("Raw"));
         contentSplitter->addWidget(requestTabWidget);
 
         auto responseTabWidget = new QTabWidget(contentSplitter);
         requestTabWidget->setMinimumSize(minimumTabSize);
         responseTabWidget->setTabPosition(QTabWidget::West);
-        responseXmlTextEdit = new QTextEdit(responseTabWidget);
-        responseXmlTextEdit->setReadOnly(true);
-        responseTabWidget->addTab(responseXmlTextEdit, i18n("XML"));
-        responseRawTextEdit = new QTextEdit(responseTabWidget);
-        requestRawTextEdit->setReadOnly(true);
+        responseXmlDocument = textEditor->createDocument(implementation);
+        responseXmlDocument->setEncoding(QStringLiteral("UTF-8"));
+        responseXmlDocument->setReadWrite(false);
+        responseXmlView = responseXmlDocument->createView(responseTabWidget);
+        responseTabWidget->addTab(responseXmlView, i18n("XML"));
+        responseRawTextEdit = new KTextEdit(responseTabWidget);
+        responseRawTextEdit->setReadOnly(true);
+        responseRawTextEdit->setText(i18n("<missing raw response data>"));
         responseTabWidget->addTab(responseRawTextEdit, i18n("Raw"));
         contentSplitter->addWidget(responseTabWidget);
 

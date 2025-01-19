@@ -1,6 +1,8 @@
 #ifndef PROJECT_H
 #define PROJECT_H
 
+#include "operationcall.h"
+
 #include <QList>
 #include <QString>
 #include <QStringList>
@@ -19,23 +21,6 @@ struct DefinitionCache
     QString type;
     QString rootPart;
     QList<DefinitionCachePart> parts;
-};
-
-struct WsaConfig
-{
-    QString mustUnderstand;
-    QString version;
-    QString action;
-};
-
-struct OperationCall
-{
-    QString id;
-    QString name;
-    QString encoding;
-    QString endpoint;
-    QString request;
-    WsaConfig wsaConfig;
 };
 
 struct Operation

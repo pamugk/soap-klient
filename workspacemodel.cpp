@@ -86,7 +86,7 @@ QVariant WorkspaceModel::data(const QModelIndex &index, int role) const
             }
             else if (role == Qt::UserRole)
             {
-                return QVariant::fromValue(NodeKind::OPERATION_CALL);
+                return QVariant::fromValue<NodeData>({ NodeData::OPERATION_CALL, operationCall });
             }
         }
         else if (path[2] != -1)
@@ -98,7 +98,7 @@ QVariant WorkspaceModel::data(const QModelIndex &index, int role) const
             }
             else if (role == Qt::UserRole)
             {
-                return QVariant::fromValue(NodeKind::OPERATION);
+                return QVariant::fromValue<NodeData>({ NodeData::OPERATION, operation });
             }
         }
         else if (path[1] != -1)
@@ -110,7 +110,7 @@ QVariant WorkspaceModel::data(const QModelIndex &index, int role) const
             }
             else if (role == Qt::UserRole)
             {
-                return QVariant::fromValue(NodeKind::INTERFACE);
+                return QVariant::fromValue<NodeData>({ NodeData::INTERFACE, interface });
             }
         }
         else
@@ -137,7 +137,7 @@ QVariant WorkspaceModel::data(const QModelIndex &index, int role) const
             }
             else if (role == Qt::UserRole)
             {
-                return QVariant::fromValue(NodeKind::PROJECT);
+                return QVariant::fromValue<NodeData>({ NodeData::PROJECT, &projects[path[0]] });
             }
         }
 

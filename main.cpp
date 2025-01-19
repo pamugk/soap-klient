@@ -1,14 +1,17 @@
 #include "mainwindow.h"
 
+#include "soapclient.h"
 #include <KAboutData>
 #include <KLocalizedString>
 #include <QApplication>
 #include <QCommandLineParser>
+#include <QNetworkAccessManager>
 #include <QString>
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+    app.setProperty("soapClient", QVariant::fromValue(new SoapClient(&app)));
     KLocalizedString::setApplicationDomain("soap-klient");
 
     KAboutData aboutData(

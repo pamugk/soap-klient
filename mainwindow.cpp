@@ -5,11 +5,14 @@
 #include "operationcallpage.h"
 #include "projectpage.h"
 #include "preferencesdialog.h"
+#include "soapclient.h"
 #include "workspacemodel.h"
 #include "xmlparser.h"
 
 #include <KLocalizedString>
+#include <QApplication>
 #include <QList>
+#include <QNetworkReply>
 #include <QPair>
 #include <QStandardPaths>
 
@@ -18,6 +21,32 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    auto soapClient = QCoreApplication::instance()->property("soapClient").value<SoapClient*>();
+    connect(soapClient, &SoapClient::soapRequestStarted,
+            this, [this]()
+    {
+        statusBar()->clearMessage();
+        statusBar()->addWidget(ui->progressWidget);
+        ui->progressWidget->show();
+    });
+    connect(soapClient, &SoapClient::soapRequestFinished,
+            this, [this](QNetworkReply *reply)
+    {
+        if (reply->error() == QNetworkReply::NoError)
+        {
+            statusBar()->showMessage(i18n("Request completed successfully"), 2000);
+        }
+        else if (reply->error() == QNetworkReply::OperationCanceledError)
+        {
+            statusBar()->clearMessage();
+        }
+        else
+        {
+            statusBar()->showMessage(i18n("An error occured: %1").arg(reply->errorString()), 0);
+        }
+        statusBar()->removeWidget(ui->progressWidget);
+    });
 
     connect(ui->actionPreferences, &QAction::triggered,
             this, &MainWindow::showPreferencesDialog);
@@ -88,21 +117,24 @@ void MainWindow::selectWorkspaceModelItem(const QModelIndex &index)
     QWidget *nextPage;
     if (index.isValid())
     {
-        auto entryData = index.data(Qt::UserRole).value<WorkspaceModel::NodeKind>();
-        switch (entryData)
+        const auto entryData = index.data(Qt::UserRole).value<WorkspaceModel::NodeData>();
+        switch (entryData.kind)
         {
-        case WorkspaceModel::PROJECT:
+        case WorkspaceModel::NodeData::PROJECT:
             nextPage = new ProjectPage(ui->mainContentWidget);
             break;
-        case WorkspaceModel::INTERFACE:
+        case WorkspaceModel::NodeData::INTERFACE:
             nextPage = new InterfacePage(ui->mainContentWidget);
             break;
-        case WorkspaceModel::OPERATION:
+        case WorkspaceModel::NodeData::OPERATION:
             nextPage = new QWidget(ui->mainContentWidget);
             break;
-        case WorkspaceModel::OPERATION_CALL:
+        case WorkspaceModel::NodeData::OPERATION_CALL:
+        {
             nextPage = new OperationCallPage(ui->mainContentWidget);
+            static_cast<OperationCallPage*>(nextPage)->initialize(std::get<const data::OperationCall *>(entryData.contents));
             break;
+        }
         }
     }
     else

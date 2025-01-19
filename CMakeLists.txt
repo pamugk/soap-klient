@@ -16,9 +16,9 @@ include(KDECMakeSettings)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(FeatureSummary)
 
-find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Widgets)
+find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Network Widgets Xml)
 
-find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS CoreAddons I18n KIO WidgetsAddons XmlGui)
+find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS CoreAddons I18n KIO TextEditor TextWidgets WidgetsAddons XmlGui)
 
 add_executable(soap-klient)
 
@@ -26,11 +26,13 @@ target_sources(soap-klient PRIVATE
     interfacepage.cpp interfacepage.h ui_interfacepage.h
     main.cpp
     mainwindow.cpp mainwindow.h ui_mainwindow.h
+    operationcall.h
     operationcallpage.cpp operationcallpage.h ui_operationcallpage.h
     preferences.h
     preferencesdialog.cpp preferencesdialog.h ui_preferencesdialog.h
     project.h
     projectpage.cpp projectpage.h ui_projectpage.h
+    soapclient.h soapclient.cpp
     workspace.h
     workspacemodel.h workspacemodel.cpp
     xmlparser.h xmlparser.cpp
@@ -38,10 +40,15 @@ target_sources(soap-klient PRIVATE
 
 target_link_libraries(soap-klient PRIVATE
     Qt6::Core
+    Qt6::Network
     Qt6::Widgets
+    Qt6::Xml
+
     KF6::CoreAddons
     KF6::I18n
     KF6::KIOWidgets
+    KF6::TextEditor
+    KF6::TextWidgets
     KF6::WidgetsAddons
     KF6::XmlGui
 )
