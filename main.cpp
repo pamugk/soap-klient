@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
             i18n("Open-source GUI SOAP client, somewhat compatible with SoapUI"),
             KAboutLicense::GPL_V3,
             i18n("(c) 2024"),
-            i18n("Educational application..."),
+            i18n("Simple application to test SOAP services"),
             QStringLiteral("https://github.com/pamugk/soap-klient/"),
             QString());
 

@@ -1,6 +1,7 @@
 #ifndef UI_MAINWINDOW_H
 #define UI_MAINWINDOW_H
 
+#include <KHelpMenu>
 #include <KLocalizedString>
 #include <KXmlGuiWindow>
 #include <QGridLayout>
@@ -78,10 +79,8 @@ struct MainWindow
         menuProject->addAction(i18n("Save Project As"), QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_S));
         menuProject->addAction(i18n("Export Project"));
 
-        auto menuHelp = menuBar->addMenu(i18n("Help"));
-        menuHelp->addAction(i18n("Starter Page"));
-        menuHelp->addSeparator();
-        menuHelp->addAction(i18n("System &Properties"));
+        auto menuHelp = new KHelpMenu(menuBar);
+        menuBar->addMenu(menuHelp->menu());
 
         implementation->setMenuBar(menuBar);
 
