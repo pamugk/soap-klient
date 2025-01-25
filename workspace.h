@@ -1,6 +1,9 @@
 #ifndef WORKSPACE_H
 #define WORKSPACE_H
 
+#include "project.h"
+
+#include <optional>
 #include <QList>
 #include <QString>
 
@@ -13,6 +16,8 @@ struct ProjectEntry
     QString path;
     bool closed;
     bool remote;
+
+    std::optional<data::Project> data;
 };
 
 struct Workspace

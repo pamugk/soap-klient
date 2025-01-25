@@ -79,14 +79,14 @@ QVariant WorkspaceModel::data(const QModelIndex &index, int role) const
 
         if (path[3] != -1)
         {
-            auto operationCall = &projects[path[3]]->interfaces[path[2]].operations[path[1]].calls[path[0]];
+            auto operationCall = &workspace.projects[path[3]].data->interfaces[path[2]].operations[path[1]].calls[path[0]];
             if (role == Qt::DisplayRole)
             {
                 return operationCall->name;
             }
             else if (role == Qt::UserRole)
             {
-                auto project = &projects[path[3]];
+                auto project = &workspace.projects[path[3]].data;
                 auto interface = &project->value().interfaces[path[2]];
                 auto operation = &interface->operations[path[1]];
                 return QVariant::fromValue<NodeData>(
@@ -101,14 +101,14 @@ QVariant WorkspaceModel::data(const QModelIndex &index, int role) const
         }
         else if (path[2] != -1)
         {
-            auto operation = &projects[path[2]]->interfaces[path[1]].operations[path[0]];
+            auto operation = &workspace.projects[path[2]].data->interfaces[path[1]].operations[path[0]];
             if (role == Qt::DisplayRole)
             {
                 return operation->name;
             }
             else if (role == Qt::UserRole)
             {
-                auto project = &projects[path[2]];
+                auto project = &workspace.projects[path[2]].data;
                 auto interface = &project->value().interfaces[path[1]];
                 return QVariant::fromValue<NodeData>(
                             {
@@ -122,14 +122,14 @@ QVariant WorkspaceModel::data(const QModelIndex &index, int role) const
         }
         else if (path[1] != -1)
         {
-            auto interface = &projects[path[1]]->interfaces[path[0]];
+            auto interface = &workspace.projects[path[1]].data->interfaces[path[0]];
             if (role == Qt::DisplayRole)
             {
                 return interface->name;
             }
             else if (role == Qt::UserRole)
             {
-                auto project = &projects[path[1]];
+                auto project = &workspace.projects[path[1]].data;
                 return QVariant::fromValue<NodeData>(
                             {
                                 NodeData::INTERFACE,
@@ -167,7 +167,7 @@ QVariant WorkspaceModel::data(const QModelIndex &index, int role) const
                 return QVariant::fromValue<NodeData>(
                             {
                                 NodeData::PROJECT,
-                                &projects[path[0]],
+                                &workspace.projects[path[0]].data,
                                 nullptr,
                                 nullptr,
                                 nullptr,
@@ -227,12 +227,11 @@ int WorkspaceModel::rowCount(const QModelIndex &parent) const
     return projectNodes.size();
 }
 
-void WorkspaceModel::setWorkspace(const data::Workspace &workspace, const QList<std::optional<data::Project>> &projects)
+void WorkspaceModel::setWorkspace(const data::Workspace &workspace)
 {
     beginResetModel();
 
     this->workspace = workspace;
-    this->projects = projects;
 
     qDeleteAll(projectNodes);
     projectNodes.resize(workspace.projects.size());
@@ -240,9 +239,9 @@ void WorkspaceModel::setWorkspace(const data::Workspace &workspace, const QList<
     {
         auto projectNode = new WorkspaceModel::Node(i);
         projectNodes[i] = projectNode;
-        if (projects[i].has_value())
+        if (workspace.projects[i].data.has_value())
         {
-            auto project = &projects[i].value();
+            auto project = &workspace.projects[i].data.value();
             for (qsizetype j = 0; j < project->interfaces.size(); j++)
             {
                 auto interfaceNode = new WorkspaceModel::Node(j);

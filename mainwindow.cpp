@@ -9,6 +9,7 @@
 #include "workspacemodel.h"
 #include "xmlparser.h"
 
+#include <algorithm>
 #include <KLocalizedString>
 #include <QApplication>
 #include <QList>
@@ -88,22 +89,27 @@ MainWindow::MainWindow(QWidget *parent)
     ui->projectsTreeView->setModel(projectsModel);
     auto defaultWorkspacePath = QStandardPaths::locate(QStandardPaths::HomeLocation, QStringLiteral("default-soapui-workspace.xml"), QStandardPaths::LocateFile);
     auto workspace = xml::parseWorkspaceFile(defaultWorkspacePath).value();
-    QList<std::optional<data::Project>> projects;
     for (auto &projectEntry: workspace.projects)
     {
         if (projectEntry.closed)
         {
-            projects.append(std::nullopt);
+            projectEntry.data = std::nullopt;
         }
         else
         {
             auto project = xml::parseProjectFile(projectEntry.path);
             projectEntry.closed = !project.has_value();
             projectEntry.remote = projectEntry.closed;
-            projects.append(project);
+            for (auto &interface: project->interfaces)
+            {
+                std::sort(interface.operations.begin(), interface.operations.end(), [](data::Operation a, data::Operation b) { return a.name < b.name; });
+            }
+            std::sort(project->interfaces.begin(), project->interfaces.end(), [](data::Interface a, data::Interface b) { return a.name < b.name; });
+            projectEntry.data = project;
         }
     }
-    projectsModel->setWorkspace(workspace, projects);
+    std::sort(workspace.projects.begin(), workspace.projects.end(), [](data::ProjectEntry a, data::ProjectEntry b) { return a.name < b.name; });
+    projectsModel->setWorkspace(workspace);
 }
 
 MainWindow::~MainWindow()
@@ -148,6 +154,7 @@ void MainWindow::selectWorkspaceModelItem(const QModelIndex &index)
     QLayoutItem *replacedItem = ui->mainContentWidgetLayout->replaceWidget(previousPage, nextPage);
     delete replacedItem;
     previousPage->deleteLater();
+    statusBar()->clearMessage();
 }
 
 void MainWindow::showPreferencesDialog()

@@ -24,7 +24,7 @@ public:
     virtual QModelIndex parent(const QModelIndex &index) const override;
     virtual int rowCount(const QModelIndex &parent = QModelIndex()) const override;
 
-    void setWorkspace(const data::Workspace &workspace, const QList<std::optional<data::Project>> &projects);
+    void setWorkspace(const data::Workspace &workspace);
 
     struct NodeData
     {
@@ -43,7 +43,6 @@ public:
 
 private:
     QList<Node*> projectNodes;
-    QList<std::optional<data::Project>> projects;
     data::Workspace workspace;
 
 };
