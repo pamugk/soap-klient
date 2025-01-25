@@ -132,7 +132,10 @@ void MainWindow::selectWorkspaceModelItem(const QModelIndex &index)
         case WorkspaceModel::NodeData::OPERATION_CALL:
         {
             nextPage = new OperationCallPage(ui->mainContentWidget);
-            static_cast<OperationCallPage*>(nextPage)->initialize(std::get<const data::OperationCall *>(entryData.contents));
+            static_cast<OperationCallPage*>(nextPage)->initialize(
+                        entryData.interface,
+                        entryData.operation,
+                        entryData.operationCall);
             break;
         }
         }

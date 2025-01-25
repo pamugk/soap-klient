@@ -42,7 +42,6 @@ struct OperationCallPage
         abortRequestButton->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStop));
         pageHeader->layout()->addWidget(abortRequestButton);
         urlLineEdit = new QLineEdit(implementation);
-        urlLineEdit->setReadOnly(true);
         pageHeader->layout()->addWidget(urlLineEdit);
         implementation->layout()->addWidget(pageHeader);
 
@@ -69,6 +68,7 @@ struct OperationCallPage
         responseTabWidget->setTabPosition(QTabWidget::West);
         responseXmlDocument = textEditor->createDocument(implementation);
         responseXmlDocument->setEncoding(QStringLiteral("UTF-8"));
+        responseXmlDocument->setMode(QStringLiteral("XML"));
         responseXmlDocument->setReadWrite(false);
         responseXmlView = responseXmlDocument->createView(responseTabWidget);
         responseTabWidget->addTab(responseXmlView, i18n("XML"));

@@ -7,7 +7,6 @@
 #include <optional>
 #include <QAbstractItemModel>
 #include <QObject>
-#include <variant>
 
 class WorkspaceModel : public QAbstractItemModel
 {
@@ -36,7 +35,10 @@ public:
             OPERATION,
             OPERATION_CALL,
         } kind;
-        std::variant<const std::optional<data::Project>*, const data::Interface*, const data::Operation*, const data::OperationCall*> contents;
+        const std::optional<data::Project> * project;
+        const data::Interface *interface;
+        const data::Operation *operation;
+        const data::OperationCall *operationCall;
     };
 
 private:

@@ -9,13 +9,31 @@ SoapClient::SoapClient(QObject *parent)
 
 }
 
-QNetworkReply * SoapClient::sendRequest(const QUrl &url,
-                                        const QString &requestText)
+QNetworkReply * SoapClient::sendRequest(const SoapRequest &request)
 {
-    QNetworkRequest request(url);
-    request.setHeader(QNetworkRequest::ContentTypeHeader, QLatin1StringView("application/soap+xml;charset=UTF-8"));
+    QNetworkRequest networkRequest(request.url);
+    switch (request.soapVersion)
+    {
+    case SoapVersion::VERSION_1_1:
+    {
+        networkRequest.setHeader(QNetworkRequest::ContentTypeHeader, QLatin1StringView("text/xml;charset=UTF-8"));
+        networkRequest.setRawHeader("SOAPAction", request.action.toLatin1());
+        break;
+    }
+    case SoapVersion::VERSION_1_2:
+    {
+        networkRequest.setHeader(QNetworkRequest::ContentTypeHeader,
+                                 QString::fromLatin1("application/soap+xml;charset=UTF-8;action=%1").arg(request.action));
+        break;
+    }
+    default:
+    {
+        networkRequest.setHeader(QNetworkRequest::ContentTypeHeader, QLatin1StringView("application/soap+xml;charset=UTF-8"));
+    }
+    }
 
-    QNetworkReply *reply = networkManager->post(request, requestText.toUtf8());
+
+    QNetworkReply *reply = networkManager->post(networkRequest, request.body.toUtf8());
     Q_EMIT soapRequestStarted();
     connect(reply, &QNetworkReply::finished,
             this, [this, reply]()

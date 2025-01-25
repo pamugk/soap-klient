@@ -23,6 +23,7 @@ find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS CoreAddons I18n KIO TextE
 add_executable(soap-klient)
 
 target_sources(soap-klient PRIVATE
+    interface.h
     interfacepage.cpp interfacepage.h ui_interfacepage.h
     main.cpp
     mainwindow.cpp mainwindow.h ui_mainwindow.h
