@@ -17,6 +17,29 @@ const auto ENDPOINT_ELEMENT = QStringLiteral("endpoint");
 const auto INTERFACE_ELEMENT = QStringLiteral("interface");
 const auto OPERATION_ELEMENT = QStringLiteral("operation");
 
+void skipUnknownSection(QXmlStreamReader &projectReader)
+{
+    if (!projectReader.isStartElement())
+    {
+        return;
+    }
+
+    unsigned int nestedLevel = 1;
+    do
+    {
+        projectReader.readNext();
+
+        if (projectReader.isStartElement())
+        {
+            nestedLevel++;
+        }
+        else if (projectReader.isEndElement())
+        {
+            nestedLevel--;
+        }
+    } while (!projectReader.atEnd() && nestedLevel > 0);
+}
+
 bool parseBoolean(const QStringView &booleanValue)
 {
     return booleanValue == QStringLiteral("true");
@@ -92,11 +115,23 @@ void parseProjectInterfaceDefinitionCache(QXmlStreamReader &projectReader,
                                                              && projectReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
                                                              && projectReader.name() == TYPE_ELEMENT));
                     }
+                    else
+                    {
+                        skipUnknownSection(projectReader);
+                    }
+                }
+                else
+                {
+                    skipUnknownSection(projectReader);
                 }
             } while (!projectReader.atEnd() && !(projectReader.isEndElement()
                                                  && projectReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
                                                  && projectReader.name() == PART_ELEMENT));
             definitionCache.parts.append(part);
+        }
+        else
+        {
+            skipUnknownSection(projectReader);
         }
     } while (!projectReader.atEnd() && !(projectReader.isEndElement()
                                          && projectReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
@@ -192,11 +227,23 @@ data::Operation parseProjectInterfaceOperation(QXmlStreamReader &projectReader)
                         call.wsaConfig.version = QString(wsaConfigAttributes.value(DEFAULT_NAMESPACE, "version"));
                         call.wsaConfig.action = QString(wsaConfigAttributes.value(DEFAULT_NAMESPACE, "action"));
                     }
+                    else
+                    {
+                        skipUnknownSection(projectReader);
+                    }
+                }
+                else
+                {
+                    skipUnknownSection(projectReader);
                 }
             } while (!projectReader.atEnd() && !(projectReader.isEndElement()
                                                  && projectReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
                                                  && projectReader.name() == CALL_ELEMENT));
             operation.calls.append(call);
+        }
+        else
+        {
+            skipUnknownSection(projectReader);
         }
     } while (!projectReader.atEnd() && !(projectReader.isEndElement()
                                          && projectReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
@@ -252,6 +299,10 @@ data::Interface parseProjectInterface(QXmlStreamReader &projectReader)
                                                              && projectReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
                                                              && projectReader.name() == ENDPOINT_ELEMENT));
                     }
+                    else
+                    {
+                        skipUnknownSection(projectReader);
+                    }
                 } while (!projectReader.atEnd() && !(projectReader.isEndElement()
                                                      && projectReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
                                                      && projectReader.name() == ENDPOINTS_ELEMENT));
@@ -260,6 +311,14 @@ data::Interface parseProjectInterface(QXmlStreamReader &projectReader)
             {
                 interfaceEntry.operations.append(parseProjectInterfaceOperation(projectReader));
             }
+            else
+            {
+                skipUnknownSection(projectReader);
+            }
+        }
+        else
+        {
+            skipUnknownSection(projectReader);
         }
     } while (!projectReader.atEnd() && !(projectReader.isEndElement()
                                          && projectReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
@@ -304,9 +363,17 @@ std::optional<data::Project> parseProjectFile(const QString &projectFilePath)
                     {
                         project.interfaces.append(parseProjectInterface(projectReader));
                     }
+                    else
+                    {
+                        skipUnknownSection(projectReader);
+                    }
                 } while (!projectReader.atEnd() && !(projectReader.isEndElement()
                                                       && projectReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
                                                       && projectReader.name() == PROJECT_ELEMENT));
+            }
+            else
+            {
+                skipUnknownSection(projectReader);
             }
         }
         projectFile.close();
@@ -332,6 +399,10 @@ QList<QPair<QString, QString>> parseSettingsKeyValueList(const QStringView &xml)
             auto entryAttributes = xmlReader.attributes();
             result.append(QPair<QString, QString>(QString(entryAttributes.value(DEFAULT_NAMESPACE, "key")),
                                                   QString(entryAttributes.value(DEFAULT_NAMESPACE, "value"))));
+        }
+        else
+        {
+            skipUnknownSection(xmlReader);
         }
     }
 
@@ -391,11 +462,23 @@ QList<QPair<QString, QString>> parseSettingsPropertyList(const QStringView &xml)
                                                          && xmlReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
                                                          && xmlReader.name() == VALUE_ELEMENT));
                     }
+                    else
+                    {
+                        skipUnknownSection(xmlReader);
+                    }
+                }
+                else
+                {
+                    skipUnknownSection(xmlReader);
                 }
             } while (!xmlReader.atEnd() && !(xmlReader.isEndElement()
                                              && xmlReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
                                              && xmlReader.name() == PROPERTY_ELEMENT));
             result.append(QPair<QString, QString>(name, value));
+        }
+        else
+        {
+            skipUnknownSection(xmlReader);
         }
     }
 
@@ -426,6 +509,10 @@ QStringList parseSettingsValueList(const QStringView &xml)
             } while (!xmlReader.atEnd() && !(xmlReader.isEndElement()
                                              && xmlReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
                                              && xmlReader.name() == ENTRY_ELEMENT));
+        }
+        else
+        {
+            skipUnknownSection(xmlReader);
         }
     }
 
@@ -492,9 +579,17 @@ std::optional<data::Preferences> parseSettingsFile(const QString &settingsFilePa
 
                         preferences.insert(id, value);
                     }
+                    else
+                    {
+                        skipUnknownSection(settingsReader);
+                    }
                 } while (!settingsReader.atEnd() && !(settingsReader.isEndElement()
                                                       && settingsReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
                                                       && settingsReader.name() == SETTINGS_ELEMENT));
+            }
+            else
+            {
+                skipUnknownSection(settingsReader);
             }
         }
         settinsgFile.close();
@@ -556,9 +651,17 @@ std::optional<data::Workspace> parseWorkspaceFile(const QString &workspaceFilePa
 
                         workspace.projects << projectEntry;
                     }
+                    else
+                    {
+                        skipUnknownSection(workspaceReader);
+                    }
                 } while (!workspaceReader.atEnd() && !(workspaceReader.isEndElement()
                                                        && workspaceReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
                                                        && workspaceReader.name() == WORKSPACE_ELEMENT));
+            }
+            else
+            {
+                skipUnknownSection(workspaceReader);
             }
         }
         if (workspaceReader.hasError())
