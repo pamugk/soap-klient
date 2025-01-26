@@ -2,6 +2,7 @@
 #define PROJECT_H
 
 #include "interface.h"
+#include "testsuite.h".h"
 
 #include <QList>
 #include <QString>
@@ -18,6 +19,7 @@ struct Project
     bool abortOnError;
     QString runType;
     QList<Interface> interfaces;
+    QList<TestSuite> testSuites;
 };
 }
 

@@ -16,6 +16,9 @@ const auto DEFINITION_CACHE_ELEMENT = QStringLiteral("definitionCache");
 const auto ENDPOINT_ELEMENT = QStringLiteral("endpoint");
 const auto INTERFACE_ELEMENT = QStringLiteral("interface");
 const auto OPERATION_ELEMENT = QStringLiteral("operation");
+const auto TEST_CASE_ELEMENT = QStringLiteral("testCase");
+const auto TEST_STEP_ELEMENT = QStringLiteral("testStep");
+const auto TEST_SUITE_ELEMENT = QStringLiteral("testSuite");
 
 void skipUnknownSection(QXmlStreamReader &projectReader)
 {
@@ -326,6 +329,96 @@ data::Interface parseProjectInterface(QXmlStreamReader &projectReader)
     return interfaceEntry;
 }
 
+data::TestStep parseTestStep(QXmlStreamReader &projectReader)
+{
+    const auto testStepAttributes = projectReader.attributes();
+    data::TestStep testStep;
+    testStep.id = QString(testStepAttributes.value(DEFAULT_NAMESPACE, "id"));
+    testStep.name = QString(testStepAttributes.value(DEFAULT_NAMESPACE, "name"));
+    do
+    {
+        projectReader.readNext();
+    } while (!projectReader.atEnd() && !(projectReader.isEndElement()
+                                         && projectReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
+                                         && projectReader.name() == TEST_STEP_ELEMENT));
+    return testStep;
+}
+
+data::TestCase parseTestCase(QXmlStreamReader &projectReader)
+{
+    const auto testCaseAttributes = projectReader.attributes();
+    data::TestCase testCase;
+    testCase.id = QString(testCaseAttributes.value(DEFAULT_NAMESPACE, "id"));
+    testCase.failOnError = parseBoolean(testCaseAttributes.value(DEFAULT_NAMESPACE, "failOnError"));
+    testCase.failTestCaseOnErrors = parseBoolean(testCaseAttributes.value(DEFAULT_NAMESPACE, "failTestCaseOnErrors"));
+    testCase.keepSession = parseBoolean(testCaseAttributes.value(DEFAULT_NAMESPACE, "keepSession"));
+    testCase.maxResults = testCaseAttributes.value(DEFAULT_NAMESPACE, "maxResults").toUInt();
+    testCase.name = QString(testCaseAttributes.value(DEFAULT_NAMESPACE, "name"));
+    testCase.searchProperties = parseBoolean(testCaseAttributes.value(DEFAULT_NAMESPACE, "searchProperties"));
+    testCase.name = QString(testCaseAttributes.value(DEFAULT_NAMESPACE, "name"));
+    do
+    {
+        if (projectReader.readNextStartElement())
+        {
+            if (projectReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
+                    && projectReader.name() == TEST_STEP_ELEMENT)
+            {
+                testCase.testSteps.append(parseTestStep(projectReader));
+            }
+            else
+            {
+                skipUnknownSection(projectReader);
+            }
+        }
+    } while (!projectReader.atEnd() && !(projectReader.isEndElement()
+                                         && projectReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
+                                         && projectReader.name() == TEST_CASE_ELEMENT));
+    return testCase;
+}
+
+data::TestSuite parseTestSuite(QXmlStreamReader &projectReader)
+{
+    const auto RUN_TYPE_ELEMENT = QStringLiteral("runType");
+
+    const auto testSuiteAttributes = projectReader.attributes();
+    data::TestSuite testSuite;
+    testSuite.id = QString(testSuiteAttributes.value(DEFAULT_NAMESPACE, "id"));
+    testSuite.name = QString(testSuiteAttributes.value(DEFAULT_NAMESPACE, "name"));
+    do
+    {
+        if (projectReader.readNextStartElement())
+        {
+            if (projectReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
+                                && projectReader.name() == RUN_TYPE_ELEMENT)
+            {
+                do
+                {
+                    projectReader.readNext();
+
+                    if (projectReader.isCharacters())
+                    {
+                        testSuite.runType = QString(projectReader.text());
+                    }
+                } while (!projectReader.atEnd() && !(projectReader.isEndElement()
+                                                     && projectReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
+                                                     && projectReader.name() == RUN_TYPE_ELEMENT));
+            }
+            else if (projectReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
+                    && projectReader.name() == TEST_CASE_ELEMENT)
+            {
+                testSuite.testCases.append(parseTestCase(projectReader));
+            }
+            else
+            {
+                skipUnknownSection(projectReader);
+            }
+        }
+    } while (!projectReader.atEnd() && !(projectReader.isEndElement()
+                                         && projectReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
+                                         && projectReader.name() == TEST_SUITE_ELEMENT));
+    return testSuite;
+}
+
 std::optional<data::Project> parseProjectFile(const QString &projectFilePath)
 {
     std::optional<data::Project> result = std::nullopt;
@@ -358,10 +451,20 @@ std::optional<data::Project> parseProjectFile(const QString &projectFilePath)
                     projectReader.readNext();
 
                     if (projectReader.isStartElement()
-                            && projectReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE
-                            && projectReader.name() == INTERFACE_ELEMENT)
+                            && projectReader.namespaceUri() == SOAPUI_CONFIG_NAMESPACE)
                     {
-                        project.interfaces.append(parseProjectInterface(projectReader));
+                        if (projectReader.name() == INTERFACE_ELEMENT)
+                        {
+                            project.interfaces.append(parseProjectInterface(projectReader));
+                        }
+                        else if (projectReader.name() == TEST_SUITE_ELEMENT)
+                        {
+                            project.testSuites.append(parseTestSuite(projectReader));
+                        }
+                        else
+                        {
+                            skipUnknownSection(projectReader);
+                        }
                     }
                     else
                     {

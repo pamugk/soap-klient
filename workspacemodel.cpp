@@ -79,65 +79,150 @@ QVariant WorkspaceModel::data(const QModelIndex &index, int role) const
 
         if (path[3] != -1)
         {
-            auto operationCall = &workspace.projects[path[3]].data->interfaces[path[2]].operations[path[1]].calls[path[0]];
-            if (role == Qt::DisplayRole)
+            auto project = &workspace.projects[path[3]].data;
+            if (path[2] >= project->value().interfaces.size())
             {
-                return operationCall->name;
+                auto testSuiteIndex = path[2] - project->value().interfaces.size();
+                auto testStep = &project->value().testSuites[testSuiteIndex].testCases[path[1]].testSteps[0];
+                if (role == Qt::DisplayRole)
+                {
+                    return testStep->name;
+                }
+                else if (role == Qt::UserRole)
+                {
+                    return QVariant::fromValue<NodeData>(
+                                {
+                                    NodeData::TEST_STEP,
+                                    &workspace.projects[path[0]].data,
+                                    nullptr,
+                                    nullptr,
+                                    nullptr,
+                                });
+                }
             }
-            else if (role == Qt::UserRole)
+            else
             {
-                auto project = &workspace.projects[path[3]].data;
-                auto interface = &project->value().interfaces[path[2]];
-                auto operation = &interface->operations[path[1]];
-                return QVariant::fromValue<NodeData>(
-                            {
-                                NodeData::OPERATION_CALL,
-                                project,
-                                interface,
-                                operation,
-                                operationCall,
-                            });
+                auto operationCall = &project->value().interfaces[path[2]].operations[path[1]].calls[path[0]];
+                if (role == Qt::DisplayRole)
+                {
+                    return operationCall->name;
+                }
+                else if (role == Qt::UserRole)
+                {
+                    auto interface = &project->value().interfaces[path[2]];
+                    auto operation = &interface->operations[path[1]];
+                    return QVariant::fromValue<NodeData>(
+                                {
+                                    NodeData::OPERATION_CALL,
+                                    project,
+                                    interface,
+                                    operation,
+                                    operationCall,
+                                });
+                }
             }
         }
         else if (path[2] != -1)
         {
-            auto operation = &workspace.projects[path[2]].data->interfaces[path[1]].operations[path[0]];
-            if (role == Qt::DisplayRole)
+            auto project = &workspace.projects[path[2]].data;
+            if (path[1] >= project->value().interfaces.size())
             {
-                return operation->name;
+                auto testSuiteIndex = path[1] - project->value().interfaces.size();
+                auto testCase = &project->value().testSuites[testSuiteIndex].testCases[path[0]];
+                if (role == Qt::DisplayRole)
+                {
+                    return testCase->name;
+                }
+                else if (role == Qt::DecorationRole)
+                {
+                    return QIcon::fromTheme(QStringLiteral("emblem-ok-symbolic"));
+                }
+                else if (role == Qt::UserRole)
+                {
+                    return QVariant::fromValue<NodeData>(
+                                {
+                                    NodeData::TEST_CASE,
+                                    &workspace.projects[path[0]].data,
+                                    nullptr,
+                                    nullptr,
+                                    nullptr,
+                                });
+                }
             }
-            else if (role == Qt::UserRole)
+            else
             {
-                auto project = &workspace.projects[path[2]].data;
-                auto interface = &project->value().interfaces[path[1]];
-                return QVariant::fromValue<NodeData>(
-                            {
-                                NodeData::OPERATION,
-                                project,
-                                interface,
-                                operation,
-                                nullptr,
-                            });
+                auto operation = &project->value().interfaces[path[1]].operations[path[0]];
+                if (role == Qt::DisplayRole)
+                {
+                    return operation->name;
+                }
+                else if (role == Qt::DecorationRole)
+                {
+                    return QIcon::fromTheme(QStringLiteral("emblem-synchronizing-symbolic"));
+                }
+                else if (role == Qt::UserRole)
+                {
+                    auto interface = &project->value().interfaces[path[1]];
+                    return QVariant::fromValue<NodeData>(
+                                {
+                                    NodeData::OPERATION,
+                                    project,
+                                    interface,
+                                    operation,
+                                    nullptr,
+                                });
+                }
             }
         }
         else if (path[1] != -1)
         {
-            auto interface = &workspace.projects[path[1]].data->interfaces[path[0]];
-            if (role == Qt::DisplayRole)
+            auto project = &workspace.projects[path[1]].data;
+            if (path[0] >= project->value().interfaces.size())
             {
-                return interface->name;
+                auto testSuiteIndex = path[0] - project->value().interfaces.size();
+                auto testSuite = &project->value().testSuites[testSuiteIndex];
+                if (role == Qt::DisplayRole)
+                {
+                    return testSuite->name;
+                }
+                else if (role == Qt::DecorationRole)
+                {
+                    return QIcon::fromTheme(QStringLiteral("view-grid-symbolic"));
+                }
+                else if (role == Qt::UserRole)
+                {
+                    return QVariant::fromValue<NodeData>(
+                                {
+                                    NodeData::TEST_SUITE,
+                                    &workspace.projects[path[0]].data,
+                                    nullptr,
+                                    nullptr,
+                                    nullptr,
+                                });
+                }
             }
-            else if (role == Qt::UserRole)
+            else
             {
-                auto project = &workspace.projects[path[1]].data;
-                return QVariant::fromValue<NodeData>(
-                            {
-                                NodeData::INTERFACE,
-                                project,
-                                interface,
-                                nullptr,
-                                nullptr,
-                            });
+                auto interface = &project->value().interfaces[path[0]];
+                if (role == Qt::DisplayRole)
+                {
+                    return interface->name;
+                }
+                else if (role == Qt::DecorationRole)
+                {
+                    return QIcon::fromTheme(QStringLiteral("network-transmit-symbolic"));
+                }
+                else if (role == Qt::UserRole)
+                {
+                    return QVariant::fromValue<NodeData>(
+                                {
+                                    NodeData::INTERFACE,
+                                    project,
+                                    interface,
+                                    nullptr,
+                                    nullptr,
+                                });
+                }
             }
         }
         else
@@ -255,6 +340,22 @@ void WorkspaceModel::setWorkspace(const data::Workspace &workspace)
                     for (qsizetype l = 0; l < operation->calls.size(); l++)
                     {
                         operationNode->addChild(new WorkspaceModel::Node(l));
+                    }
+                }
+            }
+            for (qsizetype j = 0; j < project->testSuites.size(); j++)
+            {
+                auto testSuiteNode = new WorkspaceModel::Node(project->interfaces.size() + j);
+                projectNode->addChild(testSuiteNode);
+                auto testSuite = &project->testSuites[j];
+                for (qsizetype k = 0; k < testSuite->testCases.size(); k++)
+                {
+                    auto testCaseNode = new WorkspaceModel::Node(k);
+                    testSuiteNode->addChild(testCaseNode);
+                    auto testCase = &testSuite->testCases[k];
+                    for (qsizetype l = 0; l < testCase->testSteps.size(); l++)
+                    {
+                        testCaseNode->addChild(new WorkspaceModel::Node(l));
                     }
                 }
             }

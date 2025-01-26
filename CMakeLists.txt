@@ -34,6 +34,9 @@ target_sources(soap-klient PRIVATE
     project.h
     projectpage.cpp projectpage.h ui_projectpage.h
     soapclient.h soapclient.cpp
+    testcase.h
+    teststep.h
+    testsuite.h
     workspace.h
     workspacemodel.h workspacemodel.cpp
     xmlparser.h xmlparser.cpp

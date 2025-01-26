@@ -132,9 +132,6 @@ void MainWindow::selectWorkspaceModelItem(const QModelIndex &index)
         case WorkspaceModel::NodeData::INTERFACE:
             nextPage = new InterfacePage(ui->mainContentWidget);
             break;
-        case WorkspaceModel::NodeData::OPERATION:
-            nextPage = new QWidget(ui->mainContentWidget);
-            break;
         case WorkspaceModel::NodeData::OPERATION_CALL:
         {
             nextPage = new OperationCallPage(ui->mainContentWidget);
@@ -144,6 +141,9 @@ void MainWindow::selectWorkspaceModelItem(const QModelIndex &index)
                         entryData.operationCall);
             break;
         }
+        default:
+            nextPage = new QWidget(ui->mainContentWidget);
+            break;
         }
     }
     else
