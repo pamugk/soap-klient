@@ -1,0 +1,1038 @@
+# Translation of soap-klient in LANGUAGE
+# Copyright (C) 2025
+# This file is distributed under the same license as the soap-klient package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: soap-klient\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-09 16:37+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../src/operationcallpage.cpp ../src/ui_operationcallpage.h
+msgid "<missing raw response data>"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "WSDL Definition"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "WSDL URL"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "Namespace"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "Binding"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "SOAP Version"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "Style"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "WS-A version"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "Definition Parts"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "Operations"
+msgstr ""
+
+#: ../src/ui_interfacepage.h ../src/ui_projectpage.h
+msgid "Overview"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "Endpoint"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "Username"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "Password"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "Domain"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "WSS-Type"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "WSS-TimeTotal"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "Outgoing WSS"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "Incoming WSS"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "Mode"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "Service Endpoints"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "WSDL Content"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "WS-I Compliance"
+msgstr ""
+
+#: ../src/ui_mainwindow.h ../src/main.cpp
+msgid "SOAP Klient"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "File"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Create empty project"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "New SOAP Project"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Import Project"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Import Packed Project"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Save All Projects"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Open All Closed Projects"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Close All Open Projects"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Rename Workspace"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "New Workspace"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Switch Workspace"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Preferences"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Save Preferences"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Import Preferences"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Recent"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Editors"
+msgstr ""
+
+#: ../src/ui_mainwindow.h ../src/mainwindow.cpp
+msgid "empty"
+msgstr ""
+
+#: ../src/ui_mainwindow.h ../src/mainwindow.cpp
+msgid "Clear items"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Projects"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Workspaces"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Exit"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Exit Without Saving"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Project"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Show Project View"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Add WSDL"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Add WADL"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Rename"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Remove"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Reload Project"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Close Project"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Save Project"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Save Project As…"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Export Project"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "Executing SOAP request…"
+msgstr ""
+
+#: ../src/ui_projectpage.h
+msgid "Project Summary"
+msgstr ""
+
+#: ../src/ui_projectpage.h
+msgid "File Path"
+msgstr ""
+
+#: ../src/ui_projectpage.h
+msgid "Interface Summary"
+msgstr ""
+
+#: ../src/mainwindow.cpp
+msgid "Request completed successfully"
+msgstr ""
+
+#: ../src/mainwindow.cpp
+msgid "An error occured: %1"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "SOAP Klient Preferences"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "HTTP Settings"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Proxy Settings"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "SSL Settings"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "WSDL Settings"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "UI Settings"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Editor Settings"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Tools"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "WS-I Settings"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Global Properties"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Global Security Settings"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "WS-A Settings"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Global Sensitive Information Tokens"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "HTTP Version:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "User-Agent Header:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Request compression:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "None"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "gzip"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "deflate"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Response compression:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Accept compressed responses from host"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Disable Response Decompression:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Disable decompression of compressed responses"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Close connections after request:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Close the HTTP connection after each SOAP request"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Chunking Threshold:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Authenticate Preemptively:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Adds authentication information to outgoing request"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Expect-Continue:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Adds Expect-Continue header to outgoing request"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Pre-encoded Endpoints:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "URI contains encoded endpoints, don't try to re-encode"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Normalize Forward Slashes:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Replaces duplicate forward slashes in HTTP request endpoints with a single slash"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Bind Address:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Include request in time taken:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Includes the time it took to write the request in time-taken"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Include response in time taken:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Includes the time it took to read the entire response in time-taken"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Socket timeout (ms):"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Max response size:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Max Connections Per Host:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Max Total Connections:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Proxy Setting:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Automatic"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Manual"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Host:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Port:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Excludes:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Username:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Password:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "KeyStore:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "KeyStore Password:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Client Authentication:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "requires client authentication"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Cache WSDLs:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "caches and associates WSDLs locally for offline access and improved performance"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Sample Values:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "generate example values in new requests"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Type Comment:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "generate comments with type information in new requests"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Include Optional:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "always include optional schema elements when creating requests"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Pretty Print:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "pretty print response messages"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Attachment Parts:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "generate rpc message parts for attachments"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Schema Directory:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Name with Binding:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "uses the WSDL binding name (instead of portType) for imported interfaces"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Strict schema types:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "fails schema imports if type/particles are redefined"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Compression Limit:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Pretty Print Project Files:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "pretty prints project files"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Trim WSDL:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Trims leading and trailing whitespaces from WSDL file (might not work on non 8 bit encoding)"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "No Content-Type Validation:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "allow incorrect content-types in mime-attachments"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Excluded types:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Close Projects:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Close all projects on startup"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Order Projects:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Order Projects alphabetically in tree"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Order Services:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Order Services alphabetically in tree"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Order Requests:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Order Requests alphabetically in tree"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Show Descriptions:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Show description content when available"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Save projects on exit:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Save all projects on exit"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Create Backup:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Backup project files before they are saved"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Backup Folder:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "AutoSave Interval:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Native LF:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Use native Look & Feel (requires restart)"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Show Log Tabs:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Shows log tabs when starting"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Show Startup Page:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Open startup web page when starting"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Disable Tooltips:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Disables all tooltips"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Normalize line-break:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Normalize line-breaks when saving project"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Garbage Collection Interval (s):"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Size of Raw Response Message to Show:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Size of Raw Request Message to Show:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Wrap content in Raw Message Viewers:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Wraps content in Raw Message Viewers"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Disable Usage Statistics:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Do not send usage statistics"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Editor Font:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "XML Line Numbers:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Show line numbers in XML editors by default"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Disable auto-resize:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Disables automatic resizing of Request editors"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Tabbed request view:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Defaults the request editor to the tabbed layout"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Validate Requests:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Always validate request messages before they are send"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Abort on invalid:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Abort invalid requests"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Validate Responses:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Always validate response messages"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "JBossWS wstools:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "JAX-RPC WSCompile:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "JAX-WS WSImport:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Axis 1.X:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Axis 2:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid ".NET 2.0 wsdl.exe:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "XFire 1.X:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "CXF 2.X:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "ANT 1.6+"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "GSoap:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "JAXB xjc:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "XmlBeans 2.X:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "JDK 1.5 javac:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Apache TcpMon:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Oracle wsa.jar:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "WADL2Java:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Hermes JMS:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Verbose:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Verbose output of WSI tools"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Profile:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Correlation:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "endpoint"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "namespace"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "operation"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Message entry:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Message entriies should be included in the report"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Failure message:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Failure message defined for each test assertion should be included in the report"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Assertion description:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Description of each test assertion should be included in the report"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Tool location:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Show log:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Show console-log for ws-i analyzer"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Output folder:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Enables overriding of any property-reference with global properties"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Name"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Value"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Disable the Load and Save scripts:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Do not run the Load and Save scripts on opening and saving projects"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Soap action overrides wsa action:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Soap action if present overrides wsa action"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Use default Relationship Type:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Use default 'reply' for RelationshipType"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Use default RelatesTo:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Use default 'unspecified' for Relates To"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Override existing headers:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Replaces existing WS-A headers (or skips them if unchecked)"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Enable for optional Addressing policy:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Enables WS-Addressing for Addressing Optional='true'"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Token"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Description"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Adds a property to the property list"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Removes the selected property from the property list"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Moves the selected property up one item"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Moves the selected property down one item"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Clears all current property values"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Loads property values from an external file"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Saves current property-values to a file"
+msgstr ""
+
+#: ../src/ui_operationcallpage.h
+msgid "XML"
+msgstr ""
+
+#: ../src/ui_operationcallpage.h
+msgid "<missing raw request data>"
+msgstr ""
+
+#: ../src/ui_operationcallpage.h
+msgid "Raw"
+msgstr ""
+
+#: ../src/ui_operationcallpage.h
+msgid "Submit request to specified endpoint URL"
+msgstr ""
+
+#: ../src/ui_operationcallpage.h
+msgid "Abort ongoing request"
+msgstr ""
+
+#: ../src/main.cpp
+msgid "Open-source GUI SOAP client, somewhat compatible with SoapUI"
+msgstr ""
+
+#: ../src/main.cpp
+msgid "(c) 2024"
+msgstr ""
+
+#: ../src/main.cpp
+msgid "Simple application to test SOAP services"
+msgstr ""

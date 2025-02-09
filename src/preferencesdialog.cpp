@@ -19,6 +19,8 @@ PreferencesDialog::~PreferencesDialog()
     delete ui;
 }
 
+QRegularExpression fontRegexp(QLatin1String("^(.+)\\s+(\\d+)$"));
+
 void PreferencesDialog::setPreferences(const data::Preferences &preferences)
 {
     this->preferences = preferences;
@@ -59,9 +61,6 @@ void PreferencesDialog::setPreferences(const data::Preferences &preferences)
     ui->httpMaxResponseSizeSpinBox->setValue(this->preferences.value(QStringLiteral("HttpSettings@max_response_size")).toInt());
     ui->httpMaxConnectionsPerHostSpinBox->setValue(this->preferences.value(QStringLiteral("HttpSettings@max_connections_per_host")).toInt());
     ui->httpMaxConnectionsTotalSpinBox->setValue(this->preferences.value(QStringLiteral("HttpSettings@max_total_connections")).toInt());
-    ui->httpLeaveMockCheckBox->setChecked(this->preferences.value(QStringLiteral("HttpSettings@leave_mockengine")).toBool());
-    ui->httpMockLogCheckBox->setChecked(this->preferences.value(QStringLiteral("HttpSettings@enable_mock_wire_log")).toBool());
-    ui->httpStartMockCheckBox->setChecked(this->preferences.value(QStringLiteral("HttpSettings@start_mock_service")).toBool());
 
     bool proxyEnabled = this->preferences.value(QStringLiteral("ProxySettings@enableProxy")).toBool();
     bool proxyAutoMode = this->preferences.value(QStringLiteral("ProxySettings@autoProxy")).toBool();
@@ -76,13 +75,6 @@ void PreferencesDialog::setPreferences(const data::Preferences &preferences)
 
     ui->sslKeyStoreUrlRequester->setUrl(QUrl(this->preferences.value(QStringLiteral("SSLSettings@keyStore")).toString()));
     ui->sslKeyStorePasswordLineEdit->setPassword(this->preferences.value(QStringLiteral("SSLSettings@keyStorePassword")).toString());
-    ui->sslMockCheckBox->setChecked(this->preferences.value(QStringLiteral("SSLSettings@enableMockSSL")).toBool());
-    ui->sslMockPortSpinBox->setValue(this->preferences.value(QStringLiteral("SSLSettings@mockPort")).toInt());
-    ui->sslMockKeyStoreUrlRequester->setUrl(QUrl(this->preferences.value(QStringLiteral("SSLSettings@mockKeyStore")).toString()));
-    ui->sslMockPasswordLineEdit->setPassword(this->preferences.value(QStringLiteral("SSLSettings@mockPassword")).toString());
-    ui->sslMockKeyPasswordLineEdit->setPassword(this->preferences.value(QStringLiteral("SSLSettings@mockKeyStorePassword")).toString());
-    ui->sslMockTrustStoreUrlRequester->setUrl(QUrl(this->preferences.value(QStringLiteral("SSLSettings@mockTrustStore")).toString()));
-    ui->sslMockTrustStorePasswordLineEdit->setPassword(this->preferences.value(QStringLiteral("SSLSettings@mockTrustStorePassword")).toString());
     ui->sslClientAuthenticationCheckBox->setChecked(this->preferences.value(QStringLiteral("SSLSettings@needClientAuthentication")).toBool());
 
     ui->wsdlCacheCheckBox->setChecked(this->preferences.value(QStringLiteral("WsdlSettings@cache-wsdls")).toBool());
@@ -109,20 +101,7 @@ void PreferencesDialog::setPreferences(const data::Preferences &preferences)
     ui->uiCreatBackupCheckBox->setChecked(this->preferences.value(QStringLiteral("UISettings@create_backup")).toBool());
     ui->uiBackupFolderUrlRequester->setUrl(QUrl(this->preferences.value(QStringLiteral("UISettings@backup_folder")).toString()));
     ui->uiAutosaveIntervalSpinBox->setValue(this->preferences.value(QStringLiteral("UISettings@auto_save_interval")).toInt());
-    auto uiDesktopType = this->preferences.value(QStringLiteral("UISettings@desktop-type")).toString();
-    int selectedDesktopType;
-    if (uiDesktopType == QStringLiteral("Default"))
-    {
-        selectedDesktopType = 0;
-    }
-    else
-    {
-        selectedDesktopType = -1;
-    }
-    ui->uiDesktopTypeComboBox->setCurrentIndex(selectedDesktopType);
-    ui->uiMostRecentPanelCheckBox->setChecked(this->preferences.value(QStringLiteral("UISettings@mru_panel_selector")).toBool());
     ui->uiNativeLookCheckBox->setChecked(this->preferences.value(QStringLiteral("UISettings@native-laf")).toBool());
-    ui->uiGroovyLogCheckBox->setChecked(this->preferences.value(QStringLiteral("UISettings@dont-disable-groovy-log")).toBool());
     ui->uiLogTabsCheckBox->setChecked(this->preferences.value(QStringLiteral("UISettings@show_logs_at_startup")).toBool());
     ui->uiShowStartupPageCheckBox->setChecked(this->preferences.value(QStringLiteral("UISettings@show_startup_page")).toBool());
     ui->uiDisableTooltipsCheckBox->setChecked(this->preferences.value(QStringLiteral("UISettings@disable_tooltips")).toBool());
@@ -140,7 +119,6 @@ void PreferencesDialog::setPreferences(const data::Preferences &preferences)
     }
     else
     {
-        QRegularExpression fontRegexp(QLatin1String("^(.+)\\s+(\\d+)$"));
         QRegularExpressionMatch fontMatch = fontRegexp.match(editorFontText);
         if (fontMatch.hasMatch())
         {
@@ -154,7 +132,6 @@ void PreferencesDialog::setPreferences(const data::Preferences &preferences)
         }
     }
     ui->editorXmlLinesCheckBox->setChecked(this->preferences.value(QStringLiteral("UISettings@show_xml_line_numbers")).toBool());
-    ui->editorGroovyLinesCheckBox->setChecked(this->preferences.value(QStringLiteral("UISettings@show_groovy_line_numbers")).toBool());
     ui->editorAutoResizeCheckBox->setChecked(this->preferences.value(QStringLiteral("UISettings@no_resize_request_editor")).toBool());
     ui->editorTabbedCheckBox->setChecked(this->preferences.value(QStringLiteral("UISettings@start_with_request_tabs")).toBool());
     ui->editorValidateRequestCheckBox->setChecked(this->preferences.value(QStringLiteral("UISettings@auto_validate_request")).toBool());

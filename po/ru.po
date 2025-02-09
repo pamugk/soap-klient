@@ -1,0 +1,1039 @@
+# SPDX-FileCopyrightText: 2025 Translation of soap-klient in ru
+# Copyright (C) 2025
+# This file is distributed under the same license as the soap-klient package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: soap-klient\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-09 16:37+0500\n"
+"PO-Revision-Date: 2025-02-09 16:34+0500\n"
+"Last-Translator: pamugk <->\n"
+"Language-Team: Russian <>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 24.12.2\n"
+
+#: ../src/operationcallpage.cpp ../src/ui_operationcallpage.h
+msgid "<missing raw response data>"
+msgstr "<отсутствуют данные ответа>"
+
+#: ../src/ui_interfacepage.h
+msgid "WSDL Definition"
+msgstr "Определение WSDL"
+
+#: ../src/ui_interfacepage.h
+msgid "WSDL URL"
+msgstr "URL WSDL"
+
+#: ../src/ui_interfacepage.h
+msgid "Namespace"
+msgstr "Пространство имён"
+
+#: ../src/ui_interfacepage.h
+msgid "Binding"
+msgstr "Биндинг"
+
+#: ../src/ui_interfacepage.h
+msgid "SOAP Version"
+msgstr "Версия SOAP"
+
+#: ../src/ui_interfacepage.h
+msgid "Style"
+msgstr "Стиль"
+
+#: ../src/ui_interfacepage.h
+msgid "WS-A version"
+msgstr "Версия WS-A"
+
+#: ../src/ui_interfacepage.h
+msgid "Definition Parts"
+msgstr "Части определения"
+
+#: ../src/ui_interfacepage.h
+msgid "Operations"
+msgstr "Операции"
+
+#: ../src/ui_interfacepage.h ../src/ui_projectpage.h
+msgid "Overview"
+msgstr "Обзор"
+
+#: ../src/ui_interfacepage.h
+msgid "Endpoint"
+msgstr "Эндпойнт"
+
+#: ../src/ui_interfacepage.h
+msgid "Username"
+msgstr "Логин"
+
+#: ../src/ui_interfacepage.h
+msgid "Password"
+msgstr "Пароль"
+
+#: ../src/ui_interfacepage.h
+msgid "Domain"
+msgstr "Домен"
+
+#: ../src/ui_interfacepage.h
+msgid "WSS-Type"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "WSS-TimeTotal"
+msgstr ""
+
+#: ../src/ui_interfacepage.h
+msgid "Outgoing WSS"
+msgstr "Исходящий WSS"
+
+#: ../src/ui_interfacepage.h
+msgid "Incoming WSS"
+msgstr "Входящий WSS"
+
+#: ../src/ui_interfacepage.h
+msgid "Mode"
+msgstr "Режим"
+
+#: ../src/ui_interfacepage.h
+msgid "Service Endpoints"
+msgstr "Эндпойнты сервиса"
+
+#: ../src/ui_interfacepage.h
+msgid "WSDL Content"
+msgstr "Содержимое WSDL"
+
+#: ../src/ui_interfacepage.h
+msgid "WS-I Compliance"
+msgstr "Соответствие WS-I"
+
+#: ../src/ui_mainwindow.h ../src/main.cpp
+msgid "SOAP Klient"
+msgstr ""
+
+#: ../src/ui_mainwindow.h
+msgid "File"
+msgstr "Файл"
+
+#: ../src/ui_mainwindow.h
+msgid "Create empty project"
+msgstr "Создать пустой проект"
+
+#: ../src/ui_mainwindow.h
+msgid "New SOAP Project"
+msgstr "Новый SOAP проект"
+
+#: ../src/ui_mainwindow.h
+msgid "Import Project"
+msgstr "Импортировать проект"
+
+#: ../src/ui_mainwindow.h
+msgid "Import Packed Project"
+msgstr "Импортировать упакованный проект"
+
+#: ../src/ui_mainwindow.h
+msgid "Save All Projects"
+msgstr "Сохранить все проекты"
+
+#: ../src/ui_mainwindow.h
+msgid "Open All Closed Projects"
+msgstr "Открыть все закрытые проекты"
+
+#: ../src/ui_mainwindow.h
+msgid "Close All Open Projects"
+msgstr "Закрыть все открытые проекты"
+
+#: ../src/ui_mainwindow.h
+msgid "Rename Workspace"
+msgstr "Переименовать рабочее пространство"
+
+#: ../src/ui_mainwindow.h
+msgid "New Workspace"
+msgstr "Новое рабочее пространство"
+
+#: ../src/ui_mainwindow.h
+msgid "Switch Workspace"
+msgstr "Переключить рабочее пространство"
+
+#: ../src/ui_mainwindow.h
+msgid "Preferences"
+msgstr "Настройки"
+
+#: ../src/ui_mainwindow.h
+msgid "Save Preferences"
+msgstr "Сохранить настройки"
+
+#: ../src/ui_mainwindow.h
+msgid "Import Preferences"
+msgstr "Испортировать настройки"
+
+#: ../src/ui_mainwindow.h
+msgid "Recent"
+msgstr "Недавние"
+
+#: ../src/ui_mainwindow.h
+msgid "Editors"
+msgstr "Редакторы"
+
+#: ../src/ui_mainwindow.h ../src/mainwindow.cpp
+msgid "empty"
+msgstr "пусто"
+
+#: ../src/ui_mainwindow.h ../src/mainwindow.cpp
+msgid "Clear items"
+msgstr "Очистить список"
+
+#: ../src/ui_mainwindow.h
+msgid "Projects"
+msgstr "Проекты"
+
+#: ../src/ui_mainwindow.h
+msgid "Workspaces"
+msgstr "Рабочие пространства"
+
+#: ../src/ui_mainwindow.h
+msgid "Exit"
+msgstr "Выход"
+
+#: ../src/ui_mainwindow.h
+msgid "Exit Without Saving"
+msgstr "Выход без сохранения"
+
+#: ../src/ui_mainwindow.h
+msgid "Project"
+msgstr "Проект"
+
+#: ../src/ui_mainwindow.h
+msgid "Show Project View"
+msgstr "Открыть обзор проекта"
+
+#: ../src/ui_mainwindow.h
+msgid "Add WSDL"
+msgstr "Добавить WSDL"
+
+#: ../src/ui_mainwindow.h
+msgid "Add WADL"
+msgstr "Добавить WADL"
+
+#: ../src/ui_mainwindow.h
+msgid "Rename"
+msgstr "Переименовать"
+
+#: ../src/ui_mainwindow.h
+msgid "Remove"
+msgstr "Удалить"
+
+#: ../src/ui_mainwindow.h
+msgid "Reload Project"
+msgstr "Перезагрузить проект"
+
+#: ../src/ui_mainwindow.h
+msgid "Close Project"
+msgstr "Закрыть проект"
+
+#: ../src/ui_mainwindow.h
+msgid "Save Project"
+msgstr "Сохранить проект"
+
+#: ../src/ui_mainwindow.h
+msgid "Save Project As…"
+msgstr "Сохранить проект как…"
+
+#: ../src/ui_mainwindow.h
+msgid "Export Project"
+msgstr "Экспортировать проект"
+
+#: ../src/ui_mainwindow.h
+msgid "Executing SOAP request…"
+msgstr "Выполняется SOAP-запрос…"
+
+#: ../src/ui_projectpage.h
+msgid "Project Summary"
+msgstr "Сводка по проекту"
+
+#: ../src/ui_projectpage.h
+msgid "File Path"
+msgstr "Путь к файлу"
+
+#: ../src/ui_projectpage.h
+msgid "Interface Summary"
+msgstr "Сводка по интерфейсу"
+
+#: ../src/mainwindow.cpp
+msgid "Request completed successfully"
+msgstr "Запрос успешно выполнен"
+
+#: ../src/mainwindow.cpp
+msgid "An error occured: %1"
+msgstr "Возникла ошибка: %1"
+
+#: ../src/ui_preferencesdialog.h
+msgid "SOAP Klient Preferences"
+msgstr "Настройки SOAP Klient"
+
+#: ../src/ui_preferencesdialog.h
+msgid "HTTP Settings"
+msgstr "Настройки HTTP"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Proxy Settings"
+msgstr "Настройки прокси"
+
+#: ../src/ui_preferencesdialog.h
+msgid "SSL Settings"
+msgstr "Настройки SSL"
+
+#: ../src/ui_preferencesdialog.h
+msgid "WSDL Settings"
+msgstr "Настройки WSDL"
+
+#: ../src/ui_preferencesdialog.h
+msgid "UI Settings"
+msgstr "Настройки UI"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Editor Settings"
+msgstr "Настройки редактора"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Tools"
+msgstr "Инструменты"
+
+#: ../src/ui_preferencesdialog.h
+msgid "WS-I Settings"
+msgstr "Настройки WS-I"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Global Properties"
+msgstr "Глобальный свойства"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Global Security Settings"
+msgstr "Глобальные настройки безопасности"
+
+#: ../src/ui_preferencesdialog.h
+msgid "WS-A Settings"
+msgstr "Настройки WS-A"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Global Sensitive Information Tokens"
+msgstr "Глобальные токены чувствительной информации"
+
+#: ../src/ui_preferencesdialog.h
+msgid "HTTP Version:"
+msgstr "Версия HTTP:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "User-Agent Header:"
+msgstr "Заголовок User-Agent:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Request compression:"
+msgstr "Сжатие запроса:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "None"
+msgstr "Нет"
+
+#: ../src/ui_preferencesdialog.h
+msgid "gzip"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "deflate"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Response compression:"
+msgstr "Сжатие ответа:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Accept compressed responses from host"
+msgstr "Принимать сжатые ответы"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Disable Response Decompression:"
+msgstr "Отключить восстановление ответа:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Disable decompression of compressed responses"
+msgstr "Отключить восстановление сжатых ответов"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Close connections after request:"
+msgstr "Закрывать соединения после запроса:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Close the HTTP connection after each SOAP request"
+msgstr "Закрывать HTTP-соединения после каждого SOAP-запроса"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Chunking Threshold:"
+msgstr "Порог деления на части:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Authenticate Preemptively:"
+msgstr "Предварительно аутентифицировать:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Adds authentication information to outgoing request"
+msgstr "Добавляет информацию для аутентификации в отправляемый запрос"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Expect-Continue:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Adds Expect-Continue header to outgoing request"
+msgstr "Добавляет заголовок Expect-Continue к отправляемым запросам"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Pre-encoded Endpoints:"
+msgstr "Заранее закодированные эндпойнты"
+
+#: ../src/ui_preferencesdialog.h
+msgid "URI contains encoded endpoints, don't try to re-encode"
+msgstr "URI содержит уже закодированные эндпойнты"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Normalize Forward Slashes:"
+msgstr "Нормализация прямых слэшей:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Replaces duplicate forward slashes in HTTP request endpoints with a single slash"
+msgstr "Заменяет в эндпойнтах HTTP-запросов дублирующиеся прямые слэши одним слэшем"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Bind Address:"
+msgstr "Адрес привязки:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Include request in time taken:"
+msgstr "Включить запрос во время выполнения:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Includes the time it took to write the request in time-taken"
+msgstr "Включает потраченное на отправку запроса время во время выполнения"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Include response in time taken:"
+msgstr "Включить ответ во время выполнения:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Includes the time it took to read the entire response in time-taken"
+msgstr "Включить потраченное на чтение ответа время во время выполнения"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Socket timeout (ms):"
+msgstr "Таймаут сокета (мс.):"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Max response size:"
+msgstr "Максимальный размер ответа:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Max Connections Per Host:"
+msgstr "Максимум подключений к хосту:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Max Total Connections:"
+msgstr "Общее максимальное количество подключений:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Proxy Setting:"
+msgstr "Настройка прокси:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Automatic"
+msgstr "Автоматическая"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Manual"
+msgstr "Ручная"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Host:"
+msgstr "Хост:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Port:"
+msgstr "Порт:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Excludes:"
+msgstr "Исключая:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Username:"
+msgstr "Логин:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Password:"
+msgstr "Пароль:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "KeyStore:"
+msgstr "Хранилище приватных ключей"
+
+#: ../src/ui_preferencesdialog.h
+msgid "KeyStore Password:"
+msgstr "Пароль к хранилищу приватных ключей"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Client Authentication:"
+msgstr "Аутентификация клиента:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "requires client authentication"
+msgstr "требовать аутентификацию клиента"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Cache WSDLs:"
+msgstr "Сохранять WSDL:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "caches and associates WSDLs locally for offline access and improved performance"
+msgstr "локально сохранять WSDL для оффлайн-доступа и улучшения производительности"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Sample Values:"
+msgstr "Примеры значений:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "generate example values in new requests"
+msgstr "генерировать примеры значений в новых запросах"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Type Comment:"
+msgstr "Комментарий о типе:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "generate comments with type information in new requests"
+msgstr "генерировать комментарии с информацией о типе в новых запросах"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Include Optional:"
+msgstr "Учитывать необязательное:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "always include optional schema elements when creating requests"
+msgstr "всегда учитывать необязательные элементы схемы при создании запросов"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Pretty Print:"
+msgstr "Структурная распечатка:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "pretty print response messages"
+msgstr "включить структурную распечатку содержимого ответов"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Attachment Parts:"
+msgstr "Части приложений:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "generate rpc message parts for attachments"
+msgstr "генерировать части сообщений RPC для приложений"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Schema Directory:"
+msgstr "Директория схемы:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Name with Binding:"
+msgstr "Называть по биндингу:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "uses the WSDL binding name (instead of portType) for imported interfaces"
+msgstr "использовать название биндинга из WSDL (вместо portType) для импортируемых интерфейсов"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Strict schema types:"
+msgstr "Строгий контроль типов схемы:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "fails schema imports if type/particles are redefined"
+msgstr "прекращать импорт схемы при выявлении переопределённых типов/частей"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Compression Limit:"
+msgstr "Предел сжатия:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Pretty Print Project Files:"
+msgstr "Структурная распечатка файлов проекта:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "pretty prints project files"
+msgstr "включить структурную распечатку файлов проекта"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Trim WSDL:"
+msgstr "Прибирать WSDL:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Trims leading and trailing whitespaces from WSDL file (might not work on non 8 bit encoding)"
+msgstr "убирать ведущие и оконечные пробельные символы из файла WSDL (может не сработать на не-8-битных кодировках)"
+
+#: ../src/ui_preferencesdialog.h
+msgid "No Content-Type Validation:"
+msgstr "Отключить проверку Content-Type:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "allow incorrect content-types in mime-attachments"
+msgstr "разрешить некорректные типы содержимого в приложениях"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Excluded types:"
+msgstr "Исключаемые типы:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Close Projects:"
+msgstr "Закрывать проекты:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Close all projects on startup"
+msgstr "Закрывать все проекты при запуске"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Order Projects:"
+msgstr "Упорядочивать проекты:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Order Projects alphabetically in tree"
+msgstr "Упорядочивать проекты в дереве по алфавиту"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Order Services:"
+msgstr "Упорядочивать сервисы:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Order Services alphabetically in tree"
+msgstr "Упорядочивать сервисы в дереве по алфавиту"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Order Requests:"
+msgstr "Упорядочивать запросы:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Order Requests alphabetically in tree"
+msgstr "Упорядочивать запросы в дереве по алфавиту"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Show Descriptions:"
+msgstr "Отображать описания:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Show description content when available"
+msgstr "Отображать описательный контент (при наличии)"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Save projects on exit:"
+msgstr "Сохранять проекты при выходе:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Save all projects on exit"
+msgstr "Сохранять все проекты при выходе"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Create Backup:"
+msgstr "Создавать резервные копии:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Backup project files before they are saved"
+msgstr "Создавать резервные копии файлов проектов перед их сохранением"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Backup Folder:"
+msgstr "Папка для резервных копий:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "AutoSave Interval:"
+msgstr "Интервал автосохранения:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Native LF:"
+msgstr "Нативный вид:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Use native Look & Feel (requires restart)"
+msgstr "Использовать нативный вид (требуется перезапуск)"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Show Log Tabs:"
+msgstr "Отображать вкладки логов:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Shows log tabs when starting"
+msgstr "Отображать вкладки логов при запуске"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Show Startup Page:"
+msgstr "Отображать стартовую страницу:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Open startup web page when starting"
+msgstr "Открывать стартовую страницу при запуске"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Disable Tooltips:"
+msgstr "Отключить всплывающие подсказки"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Disables all tooltips"
+msgstr "Отключает все всплывающие подсказки"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Normalize line-break:"
+msgstr "Нормализовать переводы строк:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Normalize line-breaks when saving project"
+msgstr "Нормализовать переводы строк при сохранении проекта"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Garbage Collection Interval (s):"
+msgstr "Интервал сборки мусора (с.):"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Size of Raw Response Message to Show:"
+msgstr "Размер отображаемой части необработанных данных ответа:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Size of Raw Request Message to Show:"
+msgstr "Размер отображаемой части необработанных данных ответа:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Wrap content in Raw Message Viewers:"
+msgstr "Переносить строки содержимого необработанных данных:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Wraps content in Raw Message Viewers"
+msgstr "Включить перенос строк отображаемого содержимого необработанных данных"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Disable Usage Statistics:"
+msgstr "Отключить статистику использования:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Do not send usage statistics"
+msgstr "Не отсылать статистику использования"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Editor Font:"
+msgstr "Шрифт редактора:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "XML Line Numbers:"
+msgstr "Номера строк XML"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Show line numbers in XML editors by default"
+msgstr "По умолчанию отображать номера строк в редакторе XML"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Disable auto-resize:"
+msgstr "Отключить автоматическое изменение размера:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Disables automatic resizing of Request editors"
+msgstr "Отключить автоматическое изменение размера редактора запросов"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Tabbed request view:"
+msgstr "Вид на основе вкладок:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Defaults the request editor to the tabbed layout"
+msgstr "По умолчанию использовать редактор с макетом на основе вкладок"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Validate Requests:"
+msgstr "Проверять запросы:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Always validate request messages before they are send"
+msgstr "Всегда проверять содержимое запросов перед отправкой"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Abort on invalid:"
+msgstr "Прерывать по некорректности:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Abort invalid requests"
+msgstr "Прерывать выполнение некорректных запросов"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Validate Responses:"
+msgstr "Проверять ответы:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Always validate response messages"
+msgstr "Всегда проверять содержимое ответов"
+
+#: ../src/ui_preferencesdialog.h
+msgid "JBossWS wstools:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "JAX-RPC WSCompile:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "JAX-WS WSImport:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Axis 1.X:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Axis 2:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid ".NET 2.0 wsdl.exe:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "XFire 1.X:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "CXF 2.X:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "ANT 1.6+"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "GSoap:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "JAXB xjc:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "XmlBeans 2.X:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "JDK 1.5 javac:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Apache TcpMon:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Oracle wsa.jar:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "WADL2Java:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Hermes JMS:"
+msgstr ""
+
+#: ../src/ui_preferencesdialog.h
+msgid "Verbose:"
+msgstr "Подробности:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Verbose output of WSI tools"
+msgstr "Включить подробный вывод инструментов WSI"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Profile:"
+msgstr "Профиль:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Correlation:"
+msgstr "Корреляция:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "endpoint"
+msgstr "эндпойнт"
+
+#: ../src/ui_preferencesdialog.h
+msgid "namespace"
+msgstr "пространство имён"
+
+#: ../src/ui_preferencesdialog.h
+msgid "operation"
+msgstr "операция"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Message entry:"
+msgstr "Содержимое сообщения:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Message entriies should be included in the report"
+msgstr "Содержимое сообщений должно быть включено в отчёт"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Failure message:"
+msgstr "Сообщение об ошибке:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Failure message defined for each test assertion should be included in the report"
+msgstr "Заданное для каждой тестовой проверки сообщение об ошибке должно быть включено в отчёт"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Assertion description:"
+msgstr "Описание сопоставления:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Description of each test assertion should be included in the report"
+msgstr "Описание каждого тестового сопоставления должно быть включено в отчёт"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Tool location:"
+msgstr "Расположение инструмента:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Show log:"
+msgstr "Отображать вывод:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Show console-log for ws-i analyzer"
+msgstr "Отображать консольный вывод анализатора ws-i"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Output folder:"
+msgstr "Папка для результатов:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Enables overriding of any property-reference with global properties"
+msgstr "Включить переопределение любых ссылок на свойства глобальными свойствами"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Name"
+msgstr "Название"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Value"
+msgstr "Значение"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Disable the Load and Save scripts:"
+msgstr "Отключить скрипты на загрузку и сохранение:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Do not run the Load and Save scripts on opening and saving projects"
+msgstr "Не выполнять скрипты на загрузку и сохранение при открытии и сохранении проектов"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Soap action overrides wsa action:"
+msgstr "Переопределение WSA-действия SOAP-действием:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Soap action if present overrides wsa action"
+msgstr "SOAP-действие должно переопределять WSA-действие (при наличии)"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Use default Relationship Type:"
+msgstr "Использовать тип отношения по умолчанию:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Use default 'reply' for RelationshipType"
+msgstr "По умолчанию использовать 'reply' в качестве значения RelationshipType"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Use default RelatesTo:"
+msgstr "Использовать RelatesTo по умолчанию:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Use default 'unspecified' for Relates To"
+msgstr "По умолчанию использовать 'unspecified' в качестве значения RelatesTo"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Override existing headers:"
+msgstr "Переопределять существующие заголовки:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Replaces existing WS-A headers (or skips them if unchecked)"
+msgstr "Переопределять существующие заголовки WS-A (или пропускать их, если опция не выбрана)"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Enable for optional Addressing policy:"
+msgstr "Включить для политики необязательной адресации:"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Enables WS-Addressing for Addressing Optional='true'"
+msgstr "Включать WS-Addressing, когда Addressing Optional='true'"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Token"
+msgstr "Токен"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Description"
+msgstr "Описание"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Adds a property to the property list"
+msgstr "Добавить свойство"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Removes the selected property from the property list"
+msgstr "Удалить свойство из списка свойств"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Moves the selected property up one item"
+msgstr "Переместить выбранное свойство на одну позицию вверх"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Moves the selected property down one item"
+msgstr "Переместить выбранное свойство на одну позицию вниз"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Clears all current property values"
+msgstr "Очистить значения всех свойств"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Loads property values from an external file"
+msgstr "Загрузить значения свойств из файла"
+
+#: ../src/ui_preferencesdialog.h
+msgid "Saves current property-values to a file"
+msgstr "Сохраняет свойства и их значения в файл"
+
+#: ../src/ui_operationcallpage.h
+msgid "XML"
+msgstr ""
+
+#: ../src/ui_operationcallpage.h
+msgid "<missing raw request data>"
+msgstr "<отсутствуют данные запроса>"
+
+#: ../src/ui_operationcallpage.h
+msgid "Raw"
+msgstr ""
+
+#: ../src/ui_operationcallpage.h
+msgid "Submit request to specified endpoint URL"
+msgstr "Отправить запрос по указанному URL эндпойнта"
+
+#: ../src/ui_operationcallpage.h
+msgid "Abort ongoing request"
+msgstr "Прервать выполняющийся запрос"
+
+#: ../src/main.cpp
+msgid "Open-source GUI SOAP client, somewhat compatible with SoapUI"
+msgstr "Графический SOAP-клиент с открытым исходным кодом, отчасти совместимый с SoapUI"
+
+#: ../src/main.cpp
+msgid "(c) 2024"
+msgstr ""
+
+#: ../src/main.cpp
+msgid "Simple application to test SOAP services"
+msgstr "Простое приложение для тестирование SOAP-сервисов"

@@ -72,11 +72,10 @@ struct MainWindow
         menuProject->addAction(i18n("Rename"));
         menuProject->addAction(i18n("Remove"), QKeySequence(Qt::Key_Delete));
         menuProject->addAction(i18n("Reload Project"), QKeySequence(Qt::Key_F5));
-        menuProject->addAction(i18n("Resolve"));
         menuProject->addAction(i18n("Close Project"));
         menuProject->addSeparator();
         menuProject->addAction(i18n("Save Project"), QKeySequence(Qt::CTRL | Qt::Key_S));
-        menuProject->addAction(i18n("Save Project As"), QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_S));
+        menuProject->addAction(i18n("Save Project As…"), QKeySequence(Qt::CTRL | Qt::SHIFT | Qt::Key_S));
         menuProject->addAction(i18n("Export Project"));
 
         auto menuHelp = new KHelpMenu(menuBar);

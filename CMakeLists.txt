@@ -17,46 +17,10 @@ include(KDECompilerSettings NO_POLICY_SCOPE)
 include(FeatureSummary)
 
 find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Network Widgets Xml)
-
 find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS CoreAddons I18n KIO TextEditor TextWidgets WidgetsAddons XmlGui)
 
-add_executable(soap-klient)
+add_subdirectory(src)
 
-target_sources(soap-klient PRIVATE
-    interface.h
-    interfacepage.cpp interfacepage.h ui_interfacepage.h
-    main.cpp
-    mainwindow.cpp mainwindow.h ui_mainwindow.h
-    operationcall.h
-    operationcallpage.cpp operationcallpage.h ui_operationcallpage.h
-    preferences.h
-    preferencesdialog.cpp preferencesdialog.h ui_preferencesdialog.h
-    project.h
-    projectpage.cpp projectpage.h ui_projectpage.h
-    soapclient.h soapclient.cpp
-    testcase.h
-    teststep.h
-    testsuite.h
-    workspace.h
-    workspacemodel.h workspacemodel.cpp
-    xmlparser.h xmlparser.cpp
-)
-
-target_link_libraries(soap-klient PRIVATE
-    Qt6::Core
-    Qt6::Network
-    Qt6::Widgets
-    Qt6::Xml
-
-    KF6::CoreAddons
-    KF6::I18n
-    KF6::KIOWidgets
-    KF6::TextEditor
-    KF6::TextWidgets
-    KF6::WidgetsAddons
-    KF6::XmlGui
-)
-
-install(TARGETS soap-klient ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+ki18n_install(po)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)

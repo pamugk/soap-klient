@@ -2,7 +2,7 @@
 #define PROJECT_H
 
 #include "interface.h"
-#include "testsuite.h".h"
+#include "testsuite.h"
 
 #include <QList>
 #include <QString>
