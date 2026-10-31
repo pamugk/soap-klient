@@ -9,16 +9,16 @@
 
 namespace xml {
 
-const auto DEFAULT_NAMESPACE = QStringLiteral("");
-const auto SOAPUI_CONFIG_NAMESPACE = QStringLiteral("http://eviware.com/soapui/config");
+const auto DEFAULT_NAMESPACE = QLatin1StringView("");
+const auto SOAPUI_CONFIG_NAMESPACE = QLatin1StringView("http://eviware.com/soapui/config");
 
-const auto DEFINITION_CACHE_ELEMENT = QStringLiteral("definitionCache");
-const auto ENDPOINT_ELEMENT = QStringLiteral("endpoint");
-const auto INTERFACE_ELEMENT = QStringLiteral("interface");
-const auto OPERATION_ELEMENT = QStringLiteral("operation");
-const auto TEST_CASE_ELEMENT = QStringLiteral("testCase");
-const auto TEST_STEP_ELEMENT = QStringLiteral("testStep");
-const auto TEST_SUITE_ELEMENT = QStringLiteral("testSuite");
+const auto DEFINITION_CACHE_ELEMENT = QLatin1StringView("definitionCache");
+const auto ENDPOINT_ELEMENT = QLatin1StringView("endpoint");
+const auto INTERFACE_ELEMENT = QLatin1StringView("interface");
+const auto OPERATION_ELEMENT = QLatin1StringView("operation");
+const auto TEST_CASE_ELEMENT = QLatin1StringView("testCase");
+const auto TEST_STEP_ELEMENT = QLatin1StringView("testStep");
+const auto TEST_SUITE_ELEMENT = QLatin1StringView("testSuite");
 
 void skipUnknownSection(QXmlStreamReader &projectReader)
 {
@@ -43,22 +43,22 @@ void skipUnknownSection(QXmlStreamReader &projectReader)
     } while (!projectReader.atEnd() && nestedLevel > 0);
 }
 
-bool parseBoolean(const QStringView &booleanValue)
+bool parseBoolean(const QAnyStringView &booleanValue)
 {
-    return booleanValue == QStringLiteral("true");
+    return booleanValue == "true";
 }
 
 void parseProjectInterfaceDefinitionCache(QXmlStreamReader &projectReader,
                                           data::DefinitionCache &definitionCache)
 {
-    const auto CONTENT_ELEMENT = QStringLiteral("content");
-    const auto PART_ELEMENT = QStringLiteral("part");
-    const auto TYPE_ELEMENT = QStringLiteral("type");
-    const auto URL_ELEMENT = QStringLiteral("url");
+    const auto CONTENT_ELEMENT = QLatin1StringView("content");
+    const auto PART_ELEMENT = QLatin1StringView("part");
+    const auto TYPE_ELEMENT = QLatin1StringView("type");
+    const auto URL_ELEMENT = QLatin1StringView("url");
 
     const auto definitionCacheAttributes = projectReader.attributes();
-    definitionCache.type = QString(definitionCacheAttributes.value(DEFAULT_NAMESPACE, "type"));
-    definitionCache.rootPart = QString(definitionCacheAttributes.value(DEFAULT_NAMESPACE, "rootPart"));
+    definitionCache.type = QString(definitionCacheAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("type")));
+    definitionCache.rootPart = QString(definitionCacheAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("rootPart")));
     do
     {
         projectReader.readNext();
@@ -143,24 +143,24 @@ void parseProjectInterfaceDefinitionCache(QXmlStreamReader &projectReader,
 
 data::Operation parseProjectInterfaceOperation(QXmlStreamReader &projectReader)
 {
-    const auto CALL_ELEMENT = QStringLiteral("call");
-    const auto ENCODING_ELEMENT = QStringLiteral("encoding");
-    const auto REQUEST_ELEMENT = QStringLiteral("request");
-    const auto WSA_CONFIG_ELEMENT = QStringLiteral("wsaConfig");
+    const auto CALL_ELEMENT = QLatin1StringView("call");
+    const auto ENCODING_ELEMENT = QLatin1StringView("encoding");
+    const auto REQUEST_ELEMENT = QLatin1StringView("request");
+    const auto WSA_CONFIG_ELEMENT = QLatin1StringView("wsaConfig");
 
     const auto operationAttributes = projectReader.attributes();
     data::Operation operation;
-    operation.id = QString(operationAttributes.value(DEFAULT_NAMESPACE, "id"));
-    operation.isOneWay = parseBoolean(operationAttributes.value(DEFAULT_NAMESPACE, "isOneWay"));
-    operation.action = QString(operationAttributes.value(DEFAULT_NAMESPACE, "action"));
-    operation.name = QString(operationAttributes.value(DEFAULT_NAMESPACE, "name"));
-    operation.bindingOperationName = QString(operationAttributes.value(DEFAULT_NAMESPACE, "bindingOperationName"));
-    operation.type = QString(operationAttributes.value(DEFAULT_NAMESPACE, "type"));
-    operation.outputName = QString(operationAttributes.value(DEFAULT_NAMESPACE, "outputName"));
-    operation.inputName = QString(operationAttributes.value(DEFAULT_NAMESPACE, "inputName"));
-    operation.receivesAttachments = parseBoolean(operationAttributes.value(DEFAULT_NAMESPACE, "receivesAttachments"));
-    operation.sendsAttachments = parseBoolean(operationAttributes.value(DEFAULT_NAMESPACE, "sendsAttachments"));
-    operation.anonymous = QString(operationAttributes.value(DEFAULT_NAMESPACE, "anonymous"));
+    operation.id = QString(operationAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("id")));
+    operation.isOneWay = parseBoolean(operationAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("isOneWay")));
+    operation.action = QString(operationAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("action")));
+    operation.name = QString(operationAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("name")));
+    operation.bindingOperationName = QString(operationAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("bindingOperationName")));
+    operation.type = QString(operationAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("type")));
+    operation.outputName = QString(operationAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("outputName")));
+    operation.inputName = QString(operationAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("inputName")));
+    operation.receivesAttachments = parseBoolean(operationAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("receivesAttachments")));
+    operation.sendsAttachments = parseBoolean(operationAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("sendsAttachments")));
+    operation.anonymous = QString(operationAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("anonymous")));
     do
     {
         projectReader.readNext();
@@ -171,8 +171,8 @@ data::Operation parseProjectInterfaceOperation(QXmlStreamReader &projectReader)
         {
             const auto callAttributes = projectReader.attributes();
             data::OperationCall call;
-            call.id = QString(callAttributes.value(DEFAULT_NAMESPACE, "id"));
-            call.name = QString(callAttributes.value(DEFAULT_NAMESPACE, "name"));
+            call.id = QString(callAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("id")));
+            call.name = QString(callAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("name")));
             do
             {
                 projectReader.readNext();
@@ -226,9 +226,9 @@ data::Operation parseProjectInterfaceOperation(QXmlStreamReader &projectReader)
                     else if (elementName == WSA_CONFIG_ELEMENT)
                     {
                         const auto wsaConfigAttributes = projectReader.attributes();
-                        call.wsaConfig.mustUnderstand = QString(wsaConfigAttributes.value(DEFAULT_NAMESPACE, "mustUnderstand"));
-                        call.wsaConfig.version = QString(wsaConfigAttributes.value(DEFAULT_NAMESPACE, "version"));
-                        call.wsaConfig.action = QString(wsaConfigAttributes.value(DEFAULT_NAMESPACE, "action"));
+                        call.wsaConfig.mustUnderstand = QString(wsaConfigAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("mustUnderstand")));
+                        call.wsaConfig.version = QString(wsaConfigAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("version")));
+                        call.wsaConfig.action = QString(wsaConfigAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("action")));
                     }
                     else
                     {
@@ -256,18 +256,18 @@ data::Operation parseProjectInterfaceOperation(QXmlStreamReader &projectReader)
 
 data::Interface parseProjectInterface(QXmlStreamReader &projectReader)
 {
-    const auto ENDPOINTS_ELEMENT = QStringLiteral("endpoints");
+    const auto ENDPOINTS_ELEMENT = QLatin1StringView("endpoints");
 
     const auto interfaceAttributes = projectReader.attributes();
     data::Interface interfaceEntry;
-    interfaceEntry.id = QString(interfaceAttributes.value(DEFAULT_NAMESPACE, "id"));
-    interfaceEntry.wsaVersion = QString(interfaceAttributes.value(DEFAULT_NAMESPACE, "wsaVersion"));
-    interfaceEntry.name = QString(interfaceAttributes.value(DEFAULT_NAMESPACE, "name"));
-    interfaceEntry.type = QString(interfaceAttributes.value(DEFAULT_NAMESPACE, "type"));
-    interfaceEntry.bindingName = QString(interfaceAttributes.value(DEFAULT_NAMESPACE, "bindingName"));
-    interfaceEntry.soapVersion = QString(interfaceAttributes.value(DEFAULT_NAMESPACE, "soapVersion"));
-    interfaceEntry.anonymous = QString(interfaceAttributes.value(DEFAULT_NAMESPACE, "anonymous"));
-    interfaceEntry.definition = QString(interfaceAttributes.value(DEFAULT_NAMESPACE, "definition"));
+    interfaceEntry.id = QString(interfaceAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("id")));
+    interfaceEntry.wsaVersion = QString(interfaceAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("wsaVersion")));
+    interfaceEntry.name = QString(interfaceAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("name")));
+    interfaceEntry.type = QString(interfaceAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("type")));
+    interfaceEntry.bindingName = QString(interfaceAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("bindingName")));
+    interfaceEntry.soapVersion = QString(interfaceAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("soapVersion")));
+    interfaceEntry.anonymous = QString(interfaceAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("anonymous")));
+    interfaceEntry.definition = QString(interfaceAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("definition")));
     do
     {
         projectReader.readNext();
@@ -333,8 +333,8 @@ data::TestStep parseTestStep(QXmlStreamReader &projectReader)
 {
     const auto testStepAttributes = projectReader.attributes();
     data::TestStep testStep;
-    testStep.id = QString(testStepAttributes.value(DEFAULT_NAMESPACE, "id"));
-    testStep.name = QString(testStepAttributes.value(DEFAULT_NAMESPACE, "name"));
+    testStep.id = QString(testStepAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("id")));
+    testStep.name = QString(testStepAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("name")));
     do
     {
         projectReader.readNext();
@@ -348,14 +348,14 @@ data::TestCase parseTestCase(QXmlStreamReader &projectReader)
 {
     const auto testCaseAttributes = projectReader.attributes();
     data::TestCase testCase;
-    testCase.id = QString(testCaseAttributes.value(DEFAULT_NAMESPACE, "id"));
-    testCase.failOnError = parseBoolean(testCaseAttributes.value(DEFAULT_NAMESPACE, "failOnError"));
-    testCase.failTestCaseOnErrors = parseBoolean(testCaseAttributes.value(DEFAULT_NAMESPACE, "failTestCaseOnErrors"));
-    testCase.keepSession = parseBoolean(testCaseAttributes.value(DEFAULT_NAMESPACE, "keepSession"));
-    testCase.maxResults = testCaseAttributes.value(DEFAULT_NAMESPACE, "maxResults").toUInt();
-    testCase.name = QString(testCaseAttributes.value(DEFAULT_NAMESPACE, "name"));
-    testCase.searchProperties = parseBoolean(testCaseAttributes.value(DEFAULT_NAMESPACE, "searchProperties"));
-    testCase.name = QString(testCaseAttributes.value(DEFAULT_NAMESPACE, "name"));
+    testCase.id = QString(testCaseAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("id")));
+    testCase.failOnError = parseBoolean(testCaseAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("failOnError")));
+    testCase.failTestCaseOnErrors = parseBoolean(testCaseAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("failTestCaseOnErrors")));
+    testCase.keepSession = parseBoolean(testCaseAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("keepSession")));
+    testCase.maxResults = testCaseAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("maxResults")).toUInt();
+    testCase.name = QString(testCaseAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("name")));
+    testCase.searchProperties = parseBoolean(testCaseAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("searchProperties")));
+    testCase.name = QString(testCaseAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("name")));
     do
     {
         if (projectReader.readNextStartElement())
@@ -378,12 +378,12 @@ data::TestCase parseTestCase(QXmlStreamReader &projectReader)
 
 data::TestSuite parseTestSuite(QXmlStreamReader &projectReader)
 {
-    const auto RUN_TYPE_ELEMENT = QStringLiteral("runType");
+    const auto RUN_TYPE_ELEMENT = QLatin1StringView("runType");
 
     const auto testSuiteAttributes = projectReader.attributes();
     data::TestSuite testSuite;
-    testSuite.id = QString(testSuiteAttributes.value(DEFAULT_NAMESPACE, "id"));
-    testSuite.name = QString(testSuiteAttributes.value(DEFAULT_NAMESPACE, "name"));
+    testSuite.id = QString(testSuiteAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("id")));
+    testSuite.name = QString(testSuiteAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("name")));
     do
     {
         if (projectReader.readNextStartElement())
@@ -424,7 +424,7 @@ std::optional<data::Project> parseProjectFile(const QString &projectFilePath)
     std::optional<data::Project> result = std::nullopt;
     QFile projectFile(projectFilePath);
 
-    const auto PROJECT_ELEMENT = QStringLiteral("soapui-project");
+    const auto PROJECT_ELEMENT = QLatin1StringView("soapui-project");
 
     if (projectFile.open(QIODeviceBase::ReadOnly | QIODevice::Text))
     {
@@ -439,13 +439,13 @@ std::optional<data::Project> parseProjectFile(const QString &projectFilePath)
                     && projectReader.name() == PROJECT_ELEMENT)
             {
                 const auto projectAttributes = projectReader.attributes();
-                project.id = QString(projectAttributes.value(DEFAULT_NAMESPACE, "id"));
-                project.activeEnvironment = QString(projectAttributes.value(DEFAULT_NAMESPACE, "activeEnvironment"));
-                project.name = QString(projectAttributes.value(DEFAULT_NAMESPACE, "name"));
-                project.resourceRoot = QString(projectAttributes.value(DEFAULT_NAMESPACE, "resourceRoot"));
-                project.appVersion = QString(projectAttributes.value(DEFAULT_NAMESPACE, "soapui-version"));
-                project.abortOnError = parseBoolean(projectAttributes.value(DEFAULT_NAMESPACE, "abortOnError"));
-                project.runType = QString(projectAttributes.value(DEFAULT_NAMESPACE, "runType"));
+                project.id = QString(projectAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("id")));
+                project.activeEnvironment = QString(projectAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("activeEnvironment")));
+                project.name = QString(projectAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("name")));
+                project.resourceRoot = QString(projectAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("resourceRoot")));
+                project.appVersion = QString(projectAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("soapui-version")));
+                project.abortOnError = parseBoolean(projectAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("abortOnError")));
+                project.runType = QString(projectAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("runType")));
                 do
                 {
                     projectReader.readNext();
@@ -485,7 +485,7 @@ std::optional<data::Project> parseProjectFile(const QString &projectFilePath)
     return result;
 }
 
-QList<QPair<QString, QString>> parseSettingsKeyValueList(const QStringView &xml)
+QList<QPair<QString, QString>> parseSettingsKeyValueList(const QAnyStringView &xml)
 {
     QList<QPair<QString, QString>> result;
 
@@ -500,8 +500,8 @@ QList<QPair<QString, QString>> parseSettingsKeyValueList(const QStringView &xml)
                 && xmlReader.name() == ENTRY_ELEMENT)
         {
             auto entryAttributes = xmlReader.attributes();
-            result.append(QPair<QString, QString>(QString(entryAttributes.value(DEFAULT_NAMESPACE, "key")),
-                                                  QString(entryAttributes.value(DEFAULT_NAMESPACE, "value"))));
+            result.append(QPair<QString, QString>(QString(entryAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("key"))),
+                                                  QString(entryAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("value")))));
         }
         else
         {
@@ -512,13 +512,13 @@ QList<QPair<QString, QString>> parseSettingsKeyValueList(const QStringView &xml)
     return result;
 }
 
-QList<QPair<QString, QString>> parseSettingsPropertyList(const QStringView &xml)
+QList<QPair<QString, QString>> parseSettingsPropertyList(const QAnyStringView &xml)
 {
     QList<QPair<QString, QString>> result;
 
-    const auto NAME_ELEMENT = QStringLiteral("name");
-    const auto PROPERTY_ELEMENT = QStringLiteral("property");
-    const auto VALUE_ELEMENT = QStringLiteral("value");
+    const auto NAME_ELEMENT = QLatin1StringView("name");
+    const auto PROPERTY_ELEMENT = QLatin1StringView("property");
+    const auto VALUE_ELEMENT = QLatin1StringView("value");
 
     QXmlStreamReader xmlReader(xml);
     while (!xmlReader.atEnd())
@@ -588,11 +588,11 @@ QList<QPair<QString, QString>> parseSettingsPropertyList(const QStringView &xml)
     return result;
 }
 
-QStringList parseSettingsValueList(const QStringView &xml)
+QStringList parseSettingsValueList(const QAnyStringView &xml)
 {
     QStringList result;
 
-    const auto ENTRY_ELEMENT = QStringLiteral("entry");
+    const auto ENTRY_ELEMENT = QLatin1StringView("entry");
 
     QXmlStreamReader xmlReader(xml);
     while (!xmlReader.atEnd())
@@ -627,8 +627,8 @@ std::optional<data::Preferences> parseSettingsFile(const QString &settingsFilePa
     std::optional<data::Preferences> result = std::nullopt;
     QFile settinsgFile(settingsFilePath);
 
-    const auto SETTING_ELEMENT = QStringLiteral("setting");
-    const auto SETTINGS_ELEMENT = QStringLiteral("soapui-settings");
+    const auto SETTING_ELEMENT = QLatin1StringView("setting");
+    const auto SETTINGS_ELEMENT = QLatin1StringView("soapui-settings");
     if (settinsgFile.open(QIODeviceBase::ReadOnly | QIODevice::Text))
     {
         data::Preferences preferences;
@@ -650,7 +650,7 @@ std::optional<data::Preferences> parseSettingsFile(const QString &settingsFilePa
                             && settingsReader.name() == SETTING_ELEMENT)
                     {
                         auto settingsEntryAttributes = settingsReader.attributes();
-                        QString id = QString(settingsEntryAttributes.value(DEFAULT_NAMESPACE, QStringLiteral("id")));
+                        QString id = QString(settingsEntryAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("id")));
                         QVariant value;
 
                         do
@@ -708,8 +708,8 @@ std::optional<data::Workspace> parseWorkspaceFile(const QString &workspaceFilePa
     std::optional<data::Workspace> result = std::nullopt;
     QFile workspaceFile(workspaceFilePath);
 
-    const auto PROJECT_ELEMENT = QStringLiteral("project");
-    const auto WORKSPACE_ELEMENT = QStringLiteral("soapui-workspace");
+    const auto PROJECT_ELEMENT = QLatin1StringView("project");
+    const auto WORKSPACE_ELEMENT = QLatin1StringView("soapui-workspace");
     if (workspaceFile.open(QIODeviceBase::ReadOnly | QIODevice::Text))
     {
         data::Workspace workspace;
@@ -723,8 +723,8 @@ std::optional<data::Workspace> parseWorkspaceFile(const QString &workspaceFilePa
                     && workspaceReader.name() == WORKSPACE_ELEMENT)
             {
                 auto workspaceAttributes = workspaceReader.attributes();
-                workspace.name = QString(workspaceAttributes.value(DEFAULT_NAMESPACE, QStringLiteral("name")));
-                workspace.appVersion = QString(workspaceAttributes.value(DEFAULT_NAMESPACE, QStringLiteral("soapui-version")));
+                workspace.name = QString(workspaceAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("name")));
+                workspace.appVersion = QString(workspaceAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("soapui-version")));
 
                 do
                 {
@@ -736,9 +736,9 @@ std::optional<data::Workspace> parseWorkspaceFile(const QString &workspaceFilePa
                     {
                         data::ProjectEntry projectEntry;
                         auto projectAttributes = workspaceReader.attributes();
-                        projectEntry.name = QString(projectAttributes.value(DEFAULT_NAMESPACE, QStringLiteral("name")));
-                        projectEntry.closed = projectAttributes.value(DEFAULT_NAMESPACE, QStringLiteral("status")) == QStringLiteral("CLOSED");
-                        projectEntry.remote = projectAttributes.value(DEFAULT_NAMESPACE, QStringLiteral("type")) == QStringLiteral("REMOTE");
+                        projectEntry.name = QString(projectAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("name")));
+                        projectEntry.closed = projectAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("status")) == QLatin1StringView("CLOSED");
+                        projectEntry.remote = projectAttributes.value(DEFAULT_NAMESPACE, QLatin1StringView("type")) == QLatin1StringView("REMOTE");
 
                         do
                         {

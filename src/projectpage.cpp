@@ -12,3 +12,7 @@ ProjectPage::~ProjectPage()
 {
     delete ui;
 }
+
+void ProjectPage::initialize(const std::optional<data::Project> *project)
+{
+}

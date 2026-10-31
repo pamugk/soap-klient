@@ -63,7 +63,7 @@ MainWindow::MainWindow(QWidget *parent)
     }
     else
     {
-        for (const auto &entry: recentProjects)
+        for (const auto &entry: std::as_const(recentProjects))
         {
             ui->menuRecentProjects->addAction(entry.second);
         }
@@ -77,7 +77,7 @@ MainWindow::MainWindow(QWidget *parent)
     }
     else
     {
-        for (const auto &entry: recentWorkspaces)
+        for (const auto &entry: std::as_const(recentWorkspaces))
         {
             ui->menuRecentWorkspaces->addAction(entry.second);
         }
@@ -127,11 +127,17 @@ void MainWindow::selectWorkspaceModelItem(const QModelIndex &index)
         switch (entryData.kind)
         {
         case WorkspaceModel::NodeData::PROJECT:
+        {
             nextPage = new ProjectPage(ui->mainContentWidget);
+            static_cast<ProjectPage*>(nextPage)->initialize(&entryData.project->value());
             break;
+        }
         case WorkspaceModel::NodeData::INTERFACE:
+        {
             nextPage = new InterfacePage(ui->mainContentWidget);
+            static_cast<InterfacePage*>(nextPage)->initialize(entryData.interface);
             break;
+        }
         case WorkspaceModel::NodeData::OPERATION_CALL:
         {
             nextPage = new OperationCallPage(ui->mainContentWidget);

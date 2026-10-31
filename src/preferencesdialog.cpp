@@ -19,7 +19,7 @@ PreferencesDialog::~PreferencesDialog()
     delete ui;
 }
 
-QRegularExpression fontRegexp(QLatin1String("^(.+)\\s+(\\d+)$"));
+QRegularExpression fontRegexp(QStringLiteral("^(.+)\\s+(\\d+)$"));
 
 void PreferencesDialog::setPreferences(const data::Preferences &preferences)
 {
@@ -29,15 +29,15 @@ void PreferencesDialog::setPreferences(const data::Preferences &preferences)
     ui->httpUserAgentHeaderLineEdit->setText(this->preferences.value(QStringLiteral("HttpSettings@user-agent")).toString());
     auto requestCompression = this->preferences.value(QStringLiteral("HttpSettings@request-compression")).toString();
     int selectedRequestCompression;
-    if (requestCompression == QStringLiteral("None"))
+    if (requestCompression == QLatin1StringView("None"))
     {
         selectedRequestCompression = 0;
     }
-    else if (requestCompression == QStringLiteral("gzip"))
+    else if (requestCompression == QLatin1StringView("gzip"))
     {
         selectedRequestCompression = 1;
     }
-    else if (requestCompression == QStringLiteral("deflate"))
+    else if (requestCompression == QLatin1StringView("deflate"))
     {
         selectedRequestCompression = 2;
     }
@@ -160,15 +160,15 @@ void PreferencesDialog::setPreferences(const data::Preferences &preferences)
     ui->wsiProfileComboBox->setCurrentText(this->preferences.value(QStringLiteral("WSISettings@profile_type")).toString());
     auto wsiCorrelation = this->preferences.value(QStringLiteral("WSISettings@correlation_type")).toString();
     int selectedWsiCorrelation;
-    if (wsiCorrelation == QStringLiteral("endpoint"))
+    if (wsiCorrelation == QLatin1StringView("endpoint"))
     {
         selectedWsiCorrelation = 0;
     }
-    else if (wsiCorrelation == QStringLiteral("namespace"))
+    else if (wsiCorrelation == QLatin1StringView("namespace"))
     {
         selectedWsiCorrelation = 1;
     }
-    else if (wsiCorrelation == QStringLiteral("operation"))
+    else if (wsiCorrelation == QLatin1StringView("operation"))
     {
         selectedWsiCorrelation = 2;
     }

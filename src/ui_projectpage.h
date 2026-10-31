@@ -25,6 +25,7 @@ struct ProjectPage
         auto overviewPage = new QWidget(contentTabWidget);
         overviewPage->setLayout(new QVBoxLayout(overviewPage));
         auto overviewPageScrollArea = new QScrollArea(overviewPage);
+        overviewPageScrollArea->setWidgetResizable(true);
         auto overviewPageScrollAreaContentWidget = new QWidget(overviewPageScrollArea);
         overviewPageScrollAreaContentWidget->setLayout(new QVBoxLayout(overviewPageScrollAreaContentWidget));
         auto projectSummaryCollapsibleGroupBox = new KCollapsibleGroupBox(overviewPageScrollAreaContentWidget);

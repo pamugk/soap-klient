@@ -24,15 +24,15 @@ void OperationCallPage::initialize(const data::Interface *interface,
                                    const data::Operation *operation,
                                    const data::OperationCall *operationCall)
 {
-    if (interface->soapVersion == QStringLiteral("1_0"))
+    if (interface->soapVersion == QLatin1StringView("1_0"))
     {
         this->interfaceSoapVersion = SoapVersion::VERSION_1_0;
     }
-    else if (interface->soapVersion == QStringLiteral("1_1"))
+    else if (interface->soapVersion == QLatin1StringView("1_1"))
     {
         this->interfaceSoapVersion = SoapVersion::VERSION_1_1;
     }
-    else if (interface->soapVersion == QStringLiteral("1_2"))
+    else if (interface->soapVersion == QLatin1StringView("1_2"))
     {
         this->interfaceSoapVersion = SoapVersion::VERSION_1_2;
     }
@@ -51,22 +51,23 @@ QString buildRequestDescription(const QNetworkRequest &request,
     auto newline = QChar::fromLatin1('\n');
 
     QString result;
-    result.append(QStringLiteral("POST "));
+    result.append(QLatin1StringView("POST "));
     result.append(request.url().toDisplayString());
     result.append(QChar::fromLatin1(' '));
     if (request.attribute(QNetworkRequest::Http2WasUsedAttribute).toBool())
     {
-        result.append(QStringLiteral("HTTP/2"));
+        result.append(QLatin1StringView("HTTP/2"));
     }
     else
     {
-        result.append(QStringLiteral("HTTP/1.1"));
+        result.append(QLatin1StringView("HTTP/1.1"));
     }
     result.append(newline);
-    for (const auto &headerEntry: request.headers().toListOfPairs())
+    const auto headerEntries = request.headers().toListOfPairs();
+    for (const auto &headerEntry: headerEntries)
     {
         result.append(QString::fromLatin1(headerEntry.first));
-        result.append(QStringLiteral(": "));
+        result.append(QLatin1StringView(": "));
         result.append(QString::fromLatin1(headerEntry.second));
         result.append(newline);
     }
@@ -97,7 +98,8 @@ QString buildResponseDescription(const QNetworkReply *reply,
         result.append(reply->attribute(QNetworkRequest::HttpReasonPhraseAttribute).toByteArray());
     }
     result.append('\n');
-    for (const auto &headerEntry: reply->headers().toListOfPairs())
+    const auto headerEntries = reply->headers().toListOfPairs();
+    for (const auto &headerEntry: headerEntries)
     {
         result.append(headerEntry.first);
         result.append(": ");

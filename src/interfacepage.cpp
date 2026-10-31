@@ -12,3 +12,8 @@ InterfacePage::~InterfacePage()
 {
     delete ui;
 }
+
+void InterfacePage::initialize(const data::Interface *interface)
+{
+
+}
