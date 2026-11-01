@@ -14,7 +14,7 @@ public:
     explicit ProjectPage(QWidget *parent = nullptr);
     ~ProjectPage();
 
-    void initialize(const std::optional<data::Project> *project);
+    void initialize(const QString &path, const std::optional<data::Project> *project);
 
 private:
     Ui::ProjectPage *ui;

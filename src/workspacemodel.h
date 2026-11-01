@@ -38,7 +38,10 @@ public:
             TEST_CASE,
             TEST_STEP,
         } kind;
-        const std::optional<data::Project> *project;
+        struct {
+            const QString path;
+            const std::optional<data::Project> *data;
+        } project;
         const data::Interface *interface;
         const data::Operation *operation;
         const data::OperationCall *operationCall;

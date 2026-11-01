@@ -129,7 +129,7 @@ void MainWindow::selectWorkspaceModelItem(const QModelIndex &index)
         case WorkspaceModel::NodeData::PROJECT:
         {
             nextPage = new ProjectPage(ui->mainContentWidget);
-            static_cast<ProjectPage*>(nextPage)->initialize(&entryData.project->value());
+            static_cast<ProjectPage*>(nextPage)->initialize(entryData.project.path, entryData.project.data);
             break;
         }
         case WorkspaceModel::NodeData::INTERFACE:

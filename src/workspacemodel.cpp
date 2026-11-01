@@ -79,6 +79,7 @@ QVariant WorkspaceModel::data(const QModelIndex &index, int role) const
 
         if (path[3] != -1)
         {
+            const QString projectPath = workspace.projects[path[3]].path;
             auto project = &workspace.projects[path[3]].data;
             if (path[2] >= project->value().interfaces.size())
             {
@@ -93,7 +94,10 @@ QVariant WorkspaceModel::data(const QModelIndex &index, int role) const
                     return QVariant::fromValue<NodeData>(
                                 {
                                     NodeData::TEST_STEP,
-                                    &workspace.projects[path[0]].data,
+                                    {
+                                        projectPath,
+                                        project,
+                                    },
                                     nullptr,
                                     nullptr,
                                     nullptr,
@@ -114,7 +118,10 @@ QVariant WorkspaceModel::data(const QModelIndex &index, int role) const
                     return QVariant::fromValue<NodeData>(
                                 {
                                     NodeData::OPERATION_CALL,
-                                    project,
+                                    {
+                                        projectPath,
+                                        project,
+                                    },
                                     interface,
                                     operation,
                                     operationCall,
@@ -124,6 +131,7 @@ QVariant WorkspaceModel::data(const QModelIndex &index, int role) const
         }
         else if (path[2] != -1)
         {
+            const QString projectPath = workspace.projects[path[2]].path;
             auto project = &workspace.projects[path[2]].data;
             if (path[1] >= project->value().interfaces.size())
             {
@@ -142,7 +150,10 @@ QVariant WorkspaceModel::data(const QModelIndex &index, int role) const
                     return QVariant::fromValue<NodeData>(
                                 {
                                     NodeData::TEST_CASE,
-                                    &workspace.projects[path[0]].data,
+                                    {
+                                        projectPath,
+                                        project,
+                                    },
                                     nullptr,
                                     nullptr,
                                     nullptr,
@@ -166,7 +177,10 @@ QVariant WorkspaceModel::data(const QModelIndex &index, int role) const
                     return QVariant::fromValue<NodeData>(
                                 {
                                     NodeData::OPERATION,
-                                    project,
+                                    {
+                                        projectPath,
+                                        project,
+                                    },
                                     interface,
                                     operation,
                                     nullptr,
@@ -176,6 +190,7 @@ QVariant WorkspaceModel::data(const QModelIndex &index, int role) const
         }
         else if (path[1] != -1)
         {
+            const QString projectPath = workspace.projects[path[1]].path;
             auto project = &workspace.projects[path[1]].data;
             if (path[0] >= project->value().interfaces.size())
             {
@@ -194,7 +209,10 @@ QVariant WorkspaceModel::data(const QModelIndex &index, int role) const
                     return QVariant::fromValue<NodeData>(
                                 {
                                     NodeData::TEST_SUITE,
-                                    &workspace.projects[path[0]].data,
+                                    {
+                                        projectPath,
+                                        project,
+                                    },
                                     nullptr,
                                     nullptr,
                                     nullptr,
@@ -217,7 +235,10 @@ QVariant WorkspaceModel::data(const QModelIndex &index, int role) const
                     return QVariant::fromValue<NodeData>(
                                 {
                                     NodeData::INTERFACE,
-                                    project,
+                                    {
+                                        projectPath,
+                                        project,
+                                    },
                                     interface,
                                     nullptr,
                                     nullptr,
@@ -252,7 +273,10 @@ QVariant WorkspaceModel::data(const QModelIndex &index, int role) const
                 return QVariant::fromValue<NodeData>(
                             {
                                 NodeData::PROJECT,
-                                &workspace.projects[path[0]].data,
+                                {
+                                    workspace.projects[path[0]].path,
+                                    &workspace.projects[path[0]].data,
+                                },
                                 nullptr,
                                 nullptr,
                                 nullptr,

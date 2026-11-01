@@ -13,6 +13,7 @@ ProjectPage::~ProjectPage()
     delete ui;
 }
 
-void ProjectPage::initialize(const std::optional<data::Project> *project)
+void ProjectPage::initialize(const QString &path, const std::optional<data::Project> *project)
 {
+    ui->projectPathLabel->setText(path);
 }
